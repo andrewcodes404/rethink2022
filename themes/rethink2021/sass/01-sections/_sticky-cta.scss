@@ -1,0 +1,30 @@
+.sticky-cta {
+    display: inline-block;
+  
+  text-align: center;
+    background-color: $green;
+    padding: 10px 20px 10px 10px;
+    text-decoration: none;
+    color: $white;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.4s;
+
+
+    @media (min-width: $break-desktop){
+        position: absolute;
+        top: 100px;
+        right: 0;
+        z-index: 1;
+    }
+
+    &:hover {
+        background-color: $grey;
+        color: $green;
+    }
+
+    @media (min-width: $break-desktop) {
+        position: fixed;
+        font-size: 18px;
+    }
+}

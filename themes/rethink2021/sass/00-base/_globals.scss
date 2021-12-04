@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+}
+
+/**
+ * @section Breakpoints
+ * These values will not show up in content, but can be queried by JavaScript to know which breakpoint is active.
+ * Add or remove as many breakpoints as you like.
+ */
+
+body:before {
+  content: "navMobile";
+  display: none;
+  visibility: hidden;
+}
+
+// @media (min-width: 20em) {
+//   body:before {
+//     content: "small";
+//   }
+// }
+
+@media (min-width: 980px) {
+  body:before {
+    content: "navDesktop";
+  }
+}
+
+// @media (min-width: 60em) {
+//   body:before {
+//     content: "large";
+//   }
+// }
+
+// @media (min-width: 80em) {
+//   body:before {
+//     content: "xlarge";
+//   }
+// }
+
+// end breakpoints --- end breakpoints --- end breakpoints ---
+
+.body {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+// using bodyclass() page slug
+// using bodyclass() page slug
+// using bodyclass() page slug
+
+.bec-theatre {
+  h1 {
+    text-decoration-color: $bectheatre;
+  }
+}
+
+.sustainable-transformation {
+  h1 {
+    text-decoration-color: $sustainabletransformation;
+  }
+}
+
+.sustainable-resources {
+  h1 {
+    text-decoration-color: $sustainableresources;
+  }
+}
+
+.sustainable-partnerships {
+  h1 {
+    text-decoration-color: $sustainablepartnerships;
+  }
+}
+
+.sustainable-communities {
+  h1 {
+    text-decoration-color: $sustainablecommunities;
+  }
+}
+
+.change-makers {
+  h1 {
+    text-decoration-color: $changemakers;
+  }
+}
+
+.wp-block-image {
+  margin: 30px auto 40px;
+
+  @media (min-width: $break-desktop) {
+    margin: 45px auto 55px;
+  }
+}
+
+hr,
+.wp-block-separator {
+  height: 1px;
+  border: none;
+}

@@ -1,0 +1,34 @@
+@import "00-base/reset";
+@import "00-base/vars_mixins_layout";
+@import "00-base/fonts";
+@import "00-base/typography";
+@import "00-base/globals";
+@import "00-base/wp_block";
+@import "00-base/aos-anim";
+
+@import "01-sections/blogs.scss";
+@import "01-sections/cards";
+@import "01-sections/content";
+@import "01-sections/footer";
+@import "01-sections/fp-hero";
+@import "01-sections/nav";
+@import "01-sections/odoo-form";
+@import "01-sections/pop-up";
+@import "01-sections/profile";
+@import "01-sections/sticky-cta";
+
+@import "02-blocks/cta";
+@import "02-blocks/space-invader";
+@import "02-blocks/programme-snippets";
+@import "02-blocks/programme";
+@import "02-blocks/speakers-list";
+@import "03-vendor/tiny-slider.scss";
+
+@import "04-pages/single-session";
+@import "04-pages/single";
+
+@import "05-template/speakers.scss";
+@import "05-template/partners.scss";
+@import "05-template/sponsors.scss";
+@import "05-template/modal.scss";
+@import "05-template/sdgs.scss";

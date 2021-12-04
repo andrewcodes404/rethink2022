@@ -1,0 +1,1 @@
+<?php get_template_part('template-parts/single-page', null, array('post_id' => $post_id))?>

@@ -1,0 +1,63 @@
+[data-aos="anim-icon-bar"] {
+  opacity: 0;
+  transition-property: transform, opacity;
+
+  &.aos-animate {
+    opacity: 1;
+  }
+
+  @media screen and (min-width: 768px) {
+    transform: translateX(100px);
+
+    &.aos-animate {
+      transform: translateX(0);
+    }
+  }
+}
+
+[data-aos="my-anim"] {
+  /* opacity: 0; */
+  transition-property: transform, opacity;
+  transition: 1s;
+  /* transform: translateX(100px); */
+
+  &:before {
+    transition: 1s;
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 8px;
+    left: 9px;
+    top: 22px;
+    background: gold;
+    z-index: -1;
+  }
+
+  &.aos-animate {
+    /* opacity: 1; */
+    &:before {
+      width: 100px;
+    }
+
+    @media (min-width: 767px) {
+      &:before {
+        transition: 1s;
+        content: "";
+        position: absolute;
+        width: 0px;
+        height: 15px;
+        left: 30px;
+        top: 39px;
+        background: gold;
+        z-index: -1;
+      }
+
+      &.aos-animate {
+        /* opacity: 1; */
+        &:before {
+          width: 130px;
+        }
+      }
+    }
+  }
+}

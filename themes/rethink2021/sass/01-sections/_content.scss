@@ -1,0 +1,10 @@
+.content-layout {
+  width: 95%;
+  max-width: 900px;
+  margin: 30px auto 30px;
+  float: 1px;
+
+  @media (min-width: $break-desktop) {
+    margin: 60px auto 30px;
+  }
+}

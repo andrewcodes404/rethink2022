@@ -1,0 +1,34 @@
+.b-spacer {
+  margin-bottom: 5px;
+
+  @media (min-width: $break-desktop) {
+    margin-bottom: 10px;
+  }
+  &--sml {
+    height: 15px;
+
+    @media (min-width: $break-desktop) {
+      height: 30px;
+    }
+  }
+  &--med {
+    height: 30px;
+
+    @media (min-width: $break-desktop) {
+      height: 60px;
+    }
+  }
+  &--lrg {
+    height: 45px;
+
+    @media (min-width: $break-desktop) {
+      height: 90px;
+    }
+  }
+}
+
+.acf-block-preview {
+  .b-spacer {
+    border: 1px dashed lightgrey;
+  }
+}

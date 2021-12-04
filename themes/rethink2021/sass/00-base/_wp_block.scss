@@ -1,0 +1,27 @@
+// EDITOR ONLY --- EDITOR ONLY --- EDITOR ONLY ---
+// EDITOR ONLY --- EDITOR ONLY --- EDITOR ONLY ---
+.wp-block {
+  // @include block-layout;
+  width: 95%;
+  max-width: 900px;
+}
+
+.wp-block-embed__wrapper {
+  margin: 50px 0;
+  text-align: center;
+
+  iframe {
+    width: 560px;
+    height: 50vw;
+
+    @media (min-width: $break-tablet) {
+      width: 560px;
+      height: 315px;
+    }
+
+    @media (min-width: $break-desktop-wide) {
+      width: 840px;
+      height: 460px;
+    }
+  }
+}

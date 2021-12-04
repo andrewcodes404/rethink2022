@@ -1,0 +1,78 @@
+$black: #000;
+$white: #fff;
+$grey: #d6d6d6;
+$lightgrey: #f7f7f7;
+$green: green; //#008000
+$yellow: gold;
+$blue: rgb(0%, 35.688782%, 67.059326%);
+
+$bectheatre: #cdda60;
+$sustainabletransformation: #20a056;
+$sustainableresources: #e5593f;
+$sustainablepartnerships: #19bbee;
+$sustainablecommunities: #edb71a;
+$changemakers: #e97193;
+
+// bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
+///function to turn px into rem
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+////use it like this
+//h1 {@include fontSize(32px);//}
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
+// Breakpoints --- Breakpoints --- Breakpoints --- Breakpoints ---
+$break-mobile: 321px;
+$break-tablet: 567px;
+$break-desktop: 768px;
+$break-desktop-med: 1090px;
+$break-desktop-wide: 1200px;
+
+// Layout --- Layout --- Layout --- Layout ---
+
+@mixin block-wrapper {
+  background-color: $white;
+  color: $black;
+}
+
+@mixin block-width {
+  width: 95%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@mixin block-padding {
+  padding: 0 0 30px 0;
+  @media (min-width: $break-desktop) {
+    padding: 0 0 40px 0;
+  }
+}
+
+@mixin block-layout {
+  @include block-width;
+  @include block-padding;
+}
+
+.b-layout {
+  @include block-layout;
+}
+
+@mixin hover {
+  &:hover {
+    transition: transform 0.4;
+    opacity: 0.7;
+    transform: scale(0.99);
+  }
+}
+
+@mixin link-plain {
+  a {
+    color: black;
+    text-decoration: none;
+  }
+}

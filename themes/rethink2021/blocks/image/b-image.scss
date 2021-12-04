@@ -1,0 +1,33 @@
+@import "../../sass/00-base/vars_mixins_layout";
+
+// .b-image-wrapper {
+// }
+
+.b-image {
+  &__img {
+    text-align: center;
+    margin-bottom: 20px;
+    img {
+      width: 300px;
+      height: auto;
+      margin: 0 auto;
+
+      @media (min-width: $break-tablet) {
+        width: 500px;
+      }
+      @media (min-width: $break-desktop) {
+        width: 700px;
+      }
+
+      @media (min-width: $break-desktop-wide) {
+        width: 800px;
+      }
+    }
+  }
+
+  &__caption {
+    display: block;
+    border-top: 1px solid $black;
+    padding-top: 10px;
+  }
+}

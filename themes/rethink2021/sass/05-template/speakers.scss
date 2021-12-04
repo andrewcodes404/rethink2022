@@ -1,0 +1,53 @@
+.t-speakers {
+    display: flex;
+    flex-wrap: wrap;
+    @include link-plain;
+}
+.t-speaker {
+    cursor: pointer;
+    width: 45%;
+    max-width: 200px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    @media (min-width: $break-desktop) {
+        margin-right: 20px;
+    }
+    &__img {
+        margin-bottom: 5px;
+    }
+
+    transition: transform 0.4;
+    transform: scale(1);
+    @include hover;
+
+    &__text {
+        padding: 6px;
+        &__mod {
+            background-color: $yellow;
+
+            font-weight: bold;
+            text-align: center;
+            display: block;
+            margin-bottom: 10px;
+        }
+        &__title {
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+        &__position {
+            @include font-size(15);
+            font-weight: 500;
+        }
+
+        &__company {
+            @include font-size(14);
+            line-height: 1.2;
+        }
+    }
+
+    &--moderator {
+        outline: 5px solid $yellow;
+    }
+}

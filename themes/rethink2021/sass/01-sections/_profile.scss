@@ -1,0 +1,88 @@
+.s-profile {
+  h1 {
+    font-size: 28px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-decoration: underline $yellow;
+    margin-bottom: 15px;
+
+    @media (min-width: $break-desktop) {
+      margin-bottom: 20px;
+      font-size: 50px;
+    }
+  }
+
+  &__image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__position {
+    margin-bottom: 3px;
+    @include font-size(16);
+    color: grey;
+  }
+
+  &__company {
+    margin-bottom: 20px;
+  }
+
+  &__social {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  &__social-icon {
+    margin-right: 15px;
+    cursor: pointer;
+    transition: 0.4s;
+
+    a {
+      text-decoration: none;
+    }
+    svg {
+      color: $green;
+      padding: 3px;
+      transition: 0.4s;
+      width: 30px;
+      height: 30px;
+    }
+
+    p {
+      @include font-size(20);
+      line-height: 1;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: $green;
+      transition: 0.4s;
+      padding: 3px;
+      &:hover {
+        background-color: $yellow;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      svg {
+        background-color: $yellow;
+        // fill,
+        // path,
+        // circle,
+        // line {
+        //   stroke: $yellow;
+        // }
+      }
+    }
+  }
+}

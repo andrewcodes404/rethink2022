@@ -1,0 +1,14 @@
+.t-partners {
+    display: flex;
+    flex-wrap: wrap;
+}
+.t-partner {
+    width: 45%;
+    max-width: 200px;
+
+    @include hover;
+    margin-right: 10px;
+    @media (min-width: $break-desktop) {
+        margin-right: 20px;
+    }
+}

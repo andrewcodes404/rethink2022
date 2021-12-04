@@ -1,0 +1,16 @@
+<p>day - <?php the_field('day', $post_id)?> </p>
+<p>time_start - <?php the_field('time_start', $post_id)?> </p>
+<p>time_end - <?php the_field('time_end', $post_id)?> </p>
+<p>duration - <?php the_field('duration', $post_id)?> </p>
+<p>madatory - <?php the_field('madatory', $post_id)?> </p>
+<p>display_priority - <?php the_field('display_priority', $post_id)?> </p>
+<p>location - <?php the_field('location', $post_id)?> </p>
+<p>category - <?php the_field('category', $post_id)?> </p>
+<p>sdg - <?php the_field('sdg', $post_id)?> </p>
+<p>presentation_type' - <?php the_field('presentation_type', $post_id)?> </p>
+<p>speakers - <?php the_field('speakers', $post_id)?> </p>
+<p>partners - <?php the_field('partners', $post_id)?> </p>
+<p>sponsors - <?php the_field('sponsors', $post_id)?> </p>
+<p>overview - <?php the_field('overview', $post_id)?> </p>
+<p>learnings - <?php the_field('learnings', $post_id)?> </p>
+<p>post_event_actions - <?php the_field('post_event_actions', $post_id)?> </p>

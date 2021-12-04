@@ -1,0 +1,41 @@
+.b-speakers-list {
+}
+
+.filters {
+    margin-bottom: 10px;
+}
+
+.filter-button {
+    background-color: #fff;
+    outline: 0;
+    padding: 10px;
+    margin-bottom: 8px;
+    margin-right: 3px;
+    cursor: pointer;
+    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    &:hover {
+        background-color: lightgrey;
+    }
+}
+
+.filter-button--active {
+    background-color: green;
+    color: white;
+}
+
+@keyframes speaker-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.b-speakers-list__speaker {
+    display: block;
+    animation: speaker-fade-in 1.4s forwards;
+    &--hide {
+        display: none;
+    }
+}
