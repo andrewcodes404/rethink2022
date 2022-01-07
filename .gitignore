@@ -1,3 +1,8 @@
+# Stuff added by local #
+########################
+.htaccess
+wp-content/wflogs/
+
 # Compiled source #
 ###################
 *.com
