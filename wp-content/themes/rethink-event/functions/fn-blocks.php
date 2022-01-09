@@ -21,7 +21,7 @@ add_action('enqueue_block_editor_assets', function () {
 //     wp_enqueue_style( 'photographus-gutenberg', get_theme_file_uri( '/assets/css/gutenberg-editor-style.css' ), false );
 // }
 
-add_filter('allowed_block_types', 'apd_allowed_block_types');
+add_filter('allowed_block_types_all', 'apd_allowed_block_types', 10, 2);
 
 function apd_allowed_block_types($allowed_blocks)
 {
@@ -124,7 +124,7 @@ function create_block_category($categories, $post)
         )
     );
 }
-add_filter('block_categories', 'create_block_category', 10, 2);
+add_filter('block_categories_all', 'create_block_category', 10, 2);
 
 add_action('acf/init', 'apd_register_blocks');
 
