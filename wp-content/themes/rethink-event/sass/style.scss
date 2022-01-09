@@ -6,7 +6,7 @@
 @import "00-base/wp_block";
 @import "00-base/aos-anim";
 
-@import "01-sections/blogs.scss";
+@import "01-sections/blogs";
 @import "01-sections/cards";
 @import "01-sections/content";
 @import "01-sections/footer";
@@ -30,5 +30,5 @@
 @import "05-template/speakers.scss";
 @import "05-template/partners.scss";
 @import "05-template/sponsors.scss";
-@import "05-template/modal.scss";
+@import "05-template/modal.scss"; 
 @import "05-template/sdgs.scss";

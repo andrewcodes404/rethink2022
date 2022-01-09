@@ -67,7 +67,7 @@ function blocksFn(cb) {
 // default function
 function serve() {
   browserSync.init({
-    proxy: "http://rethink-event.local/",
+    proxy: "https://rethinkevent.local/",
     notify: false,
     port: 8000,
     ui: {
