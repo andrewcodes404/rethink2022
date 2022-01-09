@@ -7,7 +7,7 @@
 
 add_action('enqueue_block_editor_assets', function () {
     wp_enqueue_style('guttenburg-stylesheet', get_stylesheet_directory_uri() . "/style/gutenburg.min.css", false, '1.0', 'all');
-    
+
 });
 
 // // Add backend styles for Gutenberg.
@@ -35,7 +35,7 @@ function apd_allowed_block_types($allowed_blocks)
         'acf/space-invader',
         'acf/youtube',
         'acf/speakers-list',
-        'acf/prog-snip',
+        'acf/programme-grid',
 
         'acf/partners-co-organiser',
         'acf/partners-sus-partner',
@@ -414,6 +414,16 @@ function apd_register_blocks()
             'icon' => 'button',
             'post_types' => array('post', 'page'),
             'mode' => 'preview',
+        ));
+
+        acf_register_block(array(
+            'name' => 'programme-grid',
+            'title' => __('Programme Grid'),
+            'render_template' => get_template_directory() . '/blocks/b-programme-grid.php',
+            'category' => '',
+            'icon' => 'button',
+            'post_types' => array('post', 'page'),
+            'mode' => 'auto',
         ));
 
         acf_register_block(array(

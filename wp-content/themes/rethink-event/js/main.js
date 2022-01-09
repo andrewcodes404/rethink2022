@@ -8,9 +8,7 @@ const closeBtn = document.querySelector('#closeBtn')
 const menu = document.querySelector('#nav__menu-mobile')
 const mobMenuUl = menu.querySelector('ul')
 const mobMenuUlLength = mobMenuUl.scrollHeight + "px"
-console.log('mobMenuUlLength:', mobMenuUlLength);
 
-console.log('👻');
 hamburger.addEventListener('click', () => {
 
   menu.classList.remove('nav__menu-mobile--hide')

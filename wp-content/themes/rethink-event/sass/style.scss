@@ -21,6 +21,7 @@
 @import "02-blocks/space-invader";
 @import "02-blocks/programme-snippets";
 @import "02-blocks/programme";
+@import "02-blocks/programme-grid";
 @import "02-blocks/speakers-list";
 @import "03-vendor/tiny-slider.scss";
 
@@ -30,5 +31,14 @@
 @import "05-template/speakers.scss";
 @import "05-template/partners.scss";
 @import "05-template/sponsors.scss";
-@import "05-template/modal.scss"; 
+@import "05-template/modal.scss";
 @import "05-template/sdgs.scss";
+
+//fix for wp toolbar when logged in
+body.logged-in .nav-wrapper {
+    top: 32px;
+}
+
+body.logged-in .sticky-cta {
+    top: 132px;
+}

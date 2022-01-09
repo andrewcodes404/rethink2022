@@ -2,16 +2,25 @@ $black: #000;
 $white: #fff;
 $grey: #d6d6d6;
 $lightgrey: #f7f7f7;
-$green: green; //#008000
+// $green: green; //#008000
+// new green
+$green: #20a056;
 $yellow: gold;
 $blue: rgb(0%, 35.688782%, 67.059326%);
 
-$bectheatre: #cdda60;
+$dust: #e5593f;
+$rose: #e97193;
+$sea: #19bbee;
+$gold: #edb71a;
+$lime: #cdda60;
+$plum: plum;
+
+$bectheatre: $lime;
 $sustainabletransformation: #20a056;
-$sustainableresources: #e5593f;
-$sustainablepartnerships: #19bbee;
-$sustainablecommunities: #edb71a;
-$changemakers: #e97193;
+$sustainableresources: $dust;
+$sustainablepartnerships: $sea;
+$sustainablecommunities: $gold;
+$changemakers: $rose;
 
 // bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 ///function to turn px into rem
@@ -74,5 +83,26 @@ $break-desktop-wide: 1200px;
   a {
     color: black;
     text-decoration: none;
+  }
+}
+
+@mixin colour_pick {
+  &--dust {
+    background-color: #e5593f;
+  }
+  &--rose {
+    background-color: #e97193;
+  }
+  &--sea {
+    background-color: #19bbee;
+  }
+  &--gold {
+    background-color: #edb71a;
+  }
+  &--lime {
+    background-color: #cdda60;
+  }
+  &--plum {
+    background-color: plum;
   }
 }
