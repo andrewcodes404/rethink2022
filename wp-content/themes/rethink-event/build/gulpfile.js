@@ -42,6 +42,28 @@ function sassFn(cb) {
     .pipe(browserSync.stream());
 }
 
+
+// .scss
+function guttenburgFn(cb) {
+  //1.where is my scss
+  return src('../sass/gutenburg.scss') //gets all files ending with .scss in src/scss
+    //2. pass that file through sass compiler
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([
+      autoprefixer(),
+      cssnano()
+    ]))
+    //3. rename 
+    .pipe(rename({ extname: '.min.css' }))
+    //4. where do I save the compiled css file
+    .pipe(dest('../style'))
+    
+    
+}
+
+
+
+
 //blocks
 function blocksFn(cb) {
   //1.where is my scss
@@ -90,4 +112,12 @@ function serve() {
 exports.default = function () {
   serve()
 };
+
+exports.guttenburg = function () {
+  return guttenburgFn()
+}
+
+exports.sass = function () {
+  return sassFn()
+}
 
