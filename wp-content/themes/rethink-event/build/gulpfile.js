@@ -57,8 +57,8 @@ function guttenburgFn(cb) {
     .pipe(rename({ extname: '.min.css' }))
     //4. where do I save the compiled css file
     .pipe(dest('../style'))
-    
-    
+
+
 }
 
 
@@ -89,7 +89,7 @@ function blocksFn(cb) {
 // default function
 function serve() {
   browserSync.init({
-    proxy: "https://rethinkevent.local/",
+    proxy: "https://rethinkevent22.local/",
     notify: false,
     port: 8000,
     ui: {

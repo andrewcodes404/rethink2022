@@ -6,14 +6,18 @@
 const hamburger = document.querySelector('#hamburger')
 const closeBtn = document.querySelector('#closeBtn')
 const menu = document.querySelector('#nav__menu-mobile')
-const mobMenuUl = menu.querySelector('ul')
+const mobMenuUl = document.querySelector('#menu-primary-navigation')
 const mobMenuUlLength = mobMenuUl.scrollHeight + "px"
+
+console.log('mobMenuUl:', mobMenuUl);
+console.log('mobMenuUlLength:', mobMenuUlLength);
+console.log('menu:', menu);
 
 hamburger.addEventListener('click', () => {
 
   menu.classList.remove('nav__menu-mobile--hide')
   menu.classList.add('nav__menu-mobile--show')
-  mobMenuUl.style.maxHeight = mobMenuUlLength
+  menu.style.maxHeight = mobMenuUlLength
   hamburger.classList.remove('nav__button--show')
   hamburger.classList.add('nav__button--hide')
   closeBtn.classList.remove('nav__button--hide')
