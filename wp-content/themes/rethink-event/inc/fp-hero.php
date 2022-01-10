@@ -24,8 +24,8 @@
 
             <div class="fp-btn fp-btn--green" id="gtm-hero-attend" data-aos="fade-in" data-aos-delay="500"
                 data-aos-duration="2000">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScyeLbYa9OSbcB5lLAPEEcwL_-xb5nLO2nt7YENbBAOefldwg/viewform" target="_blank"
-                    rel="noopener noreferrer">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScyeLbYa9OSbcB5lLAPEEcwL_-xb5nLO2nt7YENbBAOefldwg/viewform"
+                    target="_blank" rel="noopener noreferrer">
                     Attend
                 </a>
             </div>
@@ -105,7 +105,7 @@
                     <?php echo file_get_contents(get_template_directory() . '/images/svg/case-studies-white.svg'); ?>
                 </div>
                 <div class="card-text">
-                    <h4>7 Themes Theatres</h4>
+                    <h4>7 Themed Theatres</h4>
                 </div>
             </div>
 
