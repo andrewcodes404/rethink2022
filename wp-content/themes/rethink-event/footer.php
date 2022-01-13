@@ -50,7 +50,7 @@
                 </a>
             </div>
             <div class="footer__privacy">
-                <a href="<?php echo get_site_url(); ?>/privacy-policy">privacy policy</a>
+                <a href="<?php echo get_site_url(); ?>/privacy-policy">privacy policy...</a>
 
             </div>
 
