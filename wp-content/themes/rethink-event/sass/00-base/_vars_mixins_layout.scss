@@ -4,23 +4,25 @@ $grey: #d6d6d6;
 $lightgrey: #f7f7f7;
 // $green: green; //#008000
 // new green
-$green: #20a056;
+
 $yellow: gold;
 $blue: rgb(0%, 35.688782%, 67.059326%);
 
-$dust: #e5593f;
-$rose: #e97193;
-$sea: #19bbee;
-$gold: #edb71a;
+$green: #20a056;
 $lime: #cdda60;
-$plum: plum;
+$sea: #1fbbee; //#19bbee;
+$dust: #e5593f;
+$gold: #edb71a;
+$rose: #e97193;
+$plum: #8d5da7;
 
+$sustainabletransformation: $green;
 $bectheatre: $lime;
-$sustainabletransformation: #20a056;
-$sustainableresources: $dust;
 $sustainablepartnerships: $sea;
+$sustainableresources: $dust;
 $sustainablecommunities: $gold;
 $changemakers: $rose;
+$future-leaders: $plum;
 
 // bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 ///function to turn px into rem
@@ -51,7 +53,7 @@ $break-desktop-wide: 1200px;
 
 @mixin block-width {
   width: 95%;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -87,22 +89,31 @@ $break-desktop-wide: 1200px;
 }
 
 @mixin colour_pick {
-  &--dust {
-    background-color: #e5593f;
+  &--green {
+    background-color: $green;
   }
-  &--rose {
-    background-color: #e97193;
-  }
-  &--sea {
-    background-color: #19bbee;
-  }
-  &--gold {
-    background-color: #edb71a;
-  }
+
   &--lime {
-    background-color: #cdda60;
+    background-color: $lime;
   }
+
+  &--sea {
+    background-color: $sea;
+  }
+
+  &--dust {
+    background-color: $dust;
+  }
+
+  &--gold {
+    background-color: $gold;
+  }
+
+  &--rose {
+    background-color: $rose;
+  }
+
   &--plum {
-    background-color: plum;
+    background-color: $plum;
   }
 }

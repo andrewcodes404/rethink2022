@@ -36,6 +36,7 @@ function apd_allowed_block_types($allowed_blocks)
         'acf/youtube',
         'acf/speakers-list',
         'acf/programme-grid',
+        'acf/hero',
 
         'acf/partners-co-organiser',
         'acf/partners-sus-partner',
@@ -420,6 +421,16 @@ function apd_register_blocks()
             'name' => 'programme-grid',
             'title' => __('Programme Grid'),
             'render_template' => get_template_directory() . '/blocks/b-programme-grid.php',
+            'category' => '',
+            'icon' => 'button',
+            'post_types' => array('post', 'page'),
+            'mode' => 'auto',
+        ));
+
+        acf_register_block(array(
+            'name' => 'hero',
+            'title' => __('Hero'),
+            'render_template' => get_template_directory() . '/blocks/b-hero.php',
             'category' => '',
             'icon' => 'button',
             'post_types' => array('post', 'page'),

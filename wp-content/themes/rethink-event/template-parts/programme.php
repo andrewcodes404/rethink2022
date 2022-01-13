@@ -68,7 +68,7 @@ if ($am_or_pm === "both" || null) {
 ?>
 
 <div class="programme-wrapper">
-    <div class="programme">
+    <div class="programme b-layout">
 
         <div class="b-programme__day  b-programme__day--<?php echo $args['data']['location_value'] ?>">
 
