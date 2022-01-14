@@ -328,7 +328,7 @@ if (filterButtons) {
   filterButtons.forEach(filterButton => {
     filterButton.addEventListener('click', () => {
       // console.log('addEventListener Fn 🏃🏻‍♂️');
-      // console.log('👻filter button clicked is..', filterButton);
+      // console.log('👻filter button clicked is..', filterButton); 
 
       //add active class to button remove active class from others in group
       makeFilterActive(filterButton);
