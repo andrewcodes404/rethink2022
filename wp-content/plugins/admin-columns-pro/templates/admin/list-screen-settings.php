@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<section class="ac-setbox ac-ls-settings ac-section -closable" data-section="ls-settings">
+<section class="ac-setbox ac-ls-settings ac-section" data-section="ls-settings">
 	<header class="ac-section__header">
 		<div class="ac-setbox__header__title"><?= __( 'Settings', 'codepress-admin-columns' ); ?>
 			<small>(<?= __( 'optional', 'codepress-admin-columns' ); ?>)</small>
@@ -144,7 +144,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<div class="ac-setbox__row -sub -predefinedfilters" data-setting="filter-segment-preference">
 							<div class="ac-setbox__row__th">
-								<label><?= __( 'Filters', 'codepress-admin-columns' ); ?></label>
+								<label><?= __( 'Pre-applied Filters', 'codepress-admin-columns' ); ?></label>
 								<?php echo $this->tooltip_filters->get_label(); ?>
 								<?php echo $this->tooltip_filters->get_instructions(); ?>
 							</div>

@@ -6,10 +6,14 @@ use DateTime;
 
 class ExpiryDate {
 
-	/** @var DateTime Null is lifetime */
+	/**
+	 * @var DateTime `null` is lifetime
+	 */
 	private $expiry_date;
 
-	/** @var DateTime */
+	/**
+	 * @var DateTime
+	 */
 	private $current_date;
 
 	public function __construct( DateTime $expiry_date = null ) {
@@ -57,6 +61,13 @@ class ExpiryDate {
 		}
 
 		return $this->expiry_date > $lifetime_end_date;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function get_expired_seconds() {
+		return $this->current_date->getTimestamp() - $this->expiry_date->getTimestamp();
 	}
 
 	/**
