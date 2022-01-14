@@ -9,9 +9,9 @@ const menu = document.querySelector('#nav__menu-mobile')
 const mobMenuUl = document.querySelector('#menu-primary-navigation')
 const mobMenuUlLength = mobMenuUl.scrollHeight + "px"
 
-console.log('mobMenuUl:', mobMenuUl);
-console.log('mobMenuUlLength:', mobMenuUlLength);
-console.log('menu:', menu);
+// console.log('mobMenuUl:', mobMenuUl);
+// console.log('mobMenuUlLength:', mobMenuUlLength);
+// console.log('menu:', menu);
 
 hamburger.addEventListener('click', () => {
 
@@ -250,7 +250,7 @@ accordItemButtons.forEach(button => {
 // SpeakersList --- SpeakersList --- SpeakersList --- SpeakersList --- 
 
 const makeFilterActive = (filter) => {
-  console.log('makeFilterActive FN running');
+  // console.log('makeFilterActive FN running');
   const childrenParent = filter.parentElement
   const children = childrenParent.querySelectorAll('button')
   children.forEach(child => {
@@ -327,8 +327,8 @@ if (filterButtons) {
 
   filterButtons.forEach(filterButton => {
     filterButton.addEventListener('click', () => {
-      console.log('addEventListener Fn 🏃🏻‍♂️');
-      console.log('👻filter button clicked is..', filterButton);
+      // console.log('addEventListener Fn 🏃🏻‍♂️');
+      // console.log('👻filter button clicked is..', filterButton);
 
       //add active class to button remove active class from others in group
       makeFilterActive(filterButton);
