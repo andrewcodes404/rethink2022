@@ -1,0 +1,33 @@
+.t-hero {
+  background-color: $grey;
+  @include colour_pick;
+
+  width: 100%;
+  color: $black;
+
+  padding: 10px 0 30px;
+  margin-bottom: 20px;
+  @media (min-width: $break-desktop) {
+    padding: 60px 0 70px;
+    margin-bottom: 50px;
+  }
+
+  h1 {
+    font-size: 36px;
+    text-decoration: none;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    @media (min-width: $break-desktop) {
+      margin-bottom: 20px;
+      font-size: 62px;
+    }
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 400;
+    @media (min-width: $break-desktop) {
+      font-size: 32px;
+    }
+  }
+}

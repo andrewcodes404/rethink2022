@@ -34,7 +34,7 @@ function sassFn(cb) {
       autoprefixer(),
       cssnano()
     ]))
-    //3. rename 
+    //3. rename
     .pipe(rename({ extname: '.min.css' }))
     //4. where do I save the compiled css file
     .pipe(dest('../style'))
@@ -44,7 +44,7 @@ function sassFn(cb) {
 
 
 // .scss
-function guttenburgFn(cb) {
+function gutenburgFn(cb) {
   //1.where is my scss
   return src('../sass/gutenburg.scss') //gets all files ending with .scss in src/scss
     //2. pass that file through sass compiler
@@ -53,7 +53,7 @@ function guttenburgFn(cb) {
       autoprefixer(),
       cssnano()
     ]))
-    //3. rename 
+    //3. rename
     .pipe(rename({ extname: '.min.css' }))
     //4. where do I save the compiled css file
     .pipe(dest('../style'))
@@ -75,7 +75,7 @@ function blocksFn(cb) {
       autoprefixer(),
       cssnano()
     ]))
-    //4. rename 
+    //4. rename
     .pipe(rename({ extname: '.min.css' }))
     //5. where do I save the compiled css file
     .pipe(dest(function (file) {
@@ -113,8 +113,8 @@ exports.default = function () {
   serve()
 };
 
-exports.guttenburg = function () {
-  return guttenburgFn()
+exports.gutenburg = function () {
+  return gutenburgFn()
 }
 
 exports.sass = function () {

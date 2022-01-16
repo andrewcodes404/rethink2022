@@ -16,7 +16,6 @@
 @import "01-sections/pop-up";
 @import "01-sections/profile";
 @import "01-sections/sticky-cta";
-@import "01-sections/hero";
 
 @import "02-blocks/cta";
 @import "02-blocks/space-invader";
@@ -36,6 +35,7 @@
 @import "05-template/modal.scss";
 @import "05-template/sdgs.scss";
 @import "05-template/sessions-link.scss";
+@import "05-template/hero";
 
 //fix for wp toolbar when logged in
 body.logged-in .nav-wrapper {
