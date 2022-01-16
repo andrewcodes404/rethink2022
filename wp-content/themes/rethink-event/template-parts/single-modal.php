@@ -1,8 +1,5 @@
 <?php $post_id = $args['post_id']?>
-<?php
-$post_type = get_post_type($post_id);
-
-?>
+<?php $post_type = get_post_type($post_id);?>
 <?php $image = get_field('image', $post_id);?>
 <?php $companyLogo = get_field('company_logo', $post_id);?>
 <?php $title = get_the_title($post_id)?>
@@ -18,6 +15,9 @@ $post_type = get_post_type($post_id);
 
 <?php $position = get_field("position", $post_id)?>
 <?php $company = get_field("company", $post_id)?>
+
+
+
 <div class="t-modal-wrapper">
     <div class="t-modal t-modal--<?php echo $post_type ?>">
 
@@ -112,6 +112,11 @@ $post_type = get_post_type($post_id);
         </div>
 
         <div class="t-modal__bottom">
+
+
+            <?php get_template_part('template-parts/session-links', null, array('post_id' => $post_id, 'post_type' => $post_type))?>
+
+
             <?php if ($description): ?>
             <div class="t-modal__desc">
                 <?php echo $description ?>

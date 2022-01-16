@@ -5,7 +5,6 @@
 
     <?php $post_id = $speaker->ID;?>
 
-
     <?php $link = get_permalink($speaker->ID);?>
     <?php $image = get_field('image', $post_id);?>
     <?php $moderator = $speaker->moderator?>
@@ -33,13 +32,7 @@
 
     </div>
 
-
-
-
-
     <?php get_template_part('template-parts/single-modal', null, array('post_id' => $post_id))?>
-
-
 
     <?php endforeach;?>
 </div>

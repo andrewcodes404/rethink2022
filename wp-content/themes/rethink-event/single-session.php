@@ -55,9 +55,9 @@
 <div class="content-layout">
 
     <div class="pg-single-session">
-        <div class="pg-single-session__back-btn">
+        <!-- <div class="pg-single-session__back-btn">
             <a href=" <?php echo $backUrl ?> "> &#8592; back to programme</a>
-        </div>
+        </div> -->
 
 
         <h1> <?php the_title()?></h1>

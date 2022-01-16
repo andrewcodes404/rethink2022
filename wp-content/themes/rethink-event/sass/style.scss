@@ -35,12 +35,13 @@
 @import "05-template/sponsors.scss";
 @import "05-template/modal.scss";
 @import "05-template/sdgs.scss";
+@import "05-template/sessions-link.scss";
 
 //fix for wp toolbar when logged in
 body.logged-in .nav-wrapper {
-    top: 32px;
+  top: 32px;
 }
 
 body.logged-in .sticky-cta {
-    top: 132px;
+  top: 132px;
 }

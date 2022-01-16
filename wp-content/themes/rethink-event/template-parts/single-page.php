@@ -1,35 +1,26 @@
-<?php get_header();?>
+<?php $post_id = $args['post_id']?>
+<?php $post_type = get_post_type($post_id);?>
+<?php $image = get_field('image', $post_id);?>
+<?php $companyLogo = get_field('company_logo', $post_id);?>
+<?php $title = get_the_title($post_id)?>
+<?php $booth = get_field('booth', $post_id)?>
+<?php $website = get_field('website', $post_id)?>
+<?php $linkedin = get_field('linkedin', $post_id)?>
+<?php $facebook = get_field('facebook', $post_id)?>
+<?php $twitter = get_field('twitter', $post_id)?>
+<?php $instagram = get_field('instagram', $post_id)?>
 
-<?php if (have_posts()): while (have_posts()): the_post();?>
+<?php $description = get_field("description", $post_id)?>
+<?php $bio = get_field("bio", $post_id)?>
+
+<?php $position = get_field("position", $post_id)?>
+<?php $company = get_field("company", $post_id)?>
 
 <div class="content-layout">
 
-    <?php $post_id = $args['post_id']?>
-    <?php $post_type = get_post_type($post_id);?>
-    <?php $image = get_field('image', $post_id);?>
-    <?php $companyLogo = get_field('company_logo', $post_id);?>
-    <?php $title = get_the_title($post_id)?>
-    <?php $booth = get_field('booth', $post_id)?>
-    <?php $website = get_field('website', $post_id)?>
-    <?php $linkedin = get_field('linkedin', $post_id)?>
-    <?php $facebook = get_field('facebook', $post_id)?>
-    <?php $twitter = get_field('twitter', $post_id)?>
-    <?php $instagram = get_field('instagram', $post_id)?>
 
-    <?php $description = get_field("description", $post_id)?>
-    <?php $bio = get_field("bio", $post_id)?>
-
-    <?php $position = get_field("position", $post_id)?>
-    <?php $company = get_field("company", $post_id)?>
     <div class="pg-single-wrapper">
         <div class="pg-single pg-single--<?php echo $post_type ?>">
-
-            <!-- <div class="pg-single__close-btn"> -->
-            <!-- <div class="pg-single__close-btn__svg"> -->
-            <!-- <?php echo file_get_contents(get_template_directory() . '/images/svg/close2.svg'); ?> -->
-            <!-- </div> -->
-            <!-- </div> -->
-
 
             <div class="pg-single__top">
 
@@ -118,6 +109,9 @@
             </div>
 
             <div class="pg-single__bottom">
+
+                <?php get_template_part('template-parts/session-links', 'session-links', array('post_id' => $post_id))?>
+
                 <?php if ($description): ?>
                 <div class="pg-single__desc">
                     <?php echo $description ?>
@@ -134,7 +128,3 @@
     </div>
 
 </div>
-<?php endwhile;else: ?>
-<p><?php esc_html_e('Sorry, no posts matched your criteria.');?></p>
-<?php endif;?>
-<?php get_footer();?>

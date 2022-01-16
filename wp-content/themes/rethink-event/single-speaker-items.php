@@ -1,11 +1,15 @@
 <?php get_header();?>
 
 <?php if (have_posts()): while (have_posts()): the_post();?>
+<?php $post_id = get_the_ID();?>
+<?php $post_type = get_post_type($post_id);?>
+
 <div class="content-layout">
-
     <div class="s-profile">
-
         <h1><?php the_title()?></h1>
+
+        <?php get_template_part('template-parts/session-links', null, array('post_id' => $post_id, 'post_type' => $post_type))?>
+
         <div class="s-profile__image">
             <?php
         $image = get_field('image', $post->ID);
@@ -19,7 +23,6 @@
         <p class="s-profile__position"> <?php the_field('position')?> </p>
         <p class="s-profile__company"> <?php the_field('company')?></p>
         <div class="s-profile__social">
-
 
             <?php $linkedin = get_field('linkedin');if ($linkedin): ?>
             <div class="s-profile__social-icon">
