@@ -91,6 +91,12 @@ function apd_allowed_block_types($allowed_blocks)
         // 'core/audio',
         'core/separator',
         // 'core/spacer',
+        'core/shortcode',
+
+
+        // modula
+        'modula/gallery',
+        'modula/link',
     );
 }
 

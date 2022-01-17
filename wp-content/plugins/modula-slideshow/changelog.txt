@@ -1,0 +1,16 @@
+= 1.0.3 - 30/10/2020 =
+Preparation for Modula Defaults
+Add Modula Slideshow data to migrator
+
+= 1.0.2 - 18/05/2020 =
+Removed Pro Badge
+Fix Pause on hover when Modula Protection is activated
+Fixed slideshow in modula link shortcode
+Update slideshow conditions and child settings
+
+= 1.0.1 - 07/02/2020 =
+Changed plugin author
+Minor improvements
+
+= 1.0.0 =
+First Release ! Yay !

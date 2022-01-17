@@ -1,0 +1,34 @@
+= 1.0.5 -  =
+Fixed play icon not clickable when using "Under image" hover effect
+Fixed .mov file issue not being played
+Fixed lightbox opening when using both custom url and video url
+Fixed FancyBox custom vimeo link not opening
+
+= 1.0.4 -  =
+Typos fixes
+Added Modula Video data to migrator
+Preparation for Modula Defaults
+
+= 1.0.3 - 21/05/2020 =
+Undefined index fix
+
+= 1.0.2 - 18/05/2020 =
+Added size controls for Video Icon
+Added RGBA colour for Video Icon
+Galleries in backend with video url will now display the play icon
+Added options conditions
+Check for License and PRO version
+Removed Pro Badge
+Fix play icon color
+Added video in slider functionality
+Added support for Modula Albums
+Added autoplay for videos
+Added support for modula link shortcode
+
+= 1.0.1 - 19/06/2019 =
+Fix updater
+Fix textdomain
+Added .po file
+
+= 1.0.0 =
+Initial Release
