@@ -22,15 +22,21 @@
 
             <span class="programme-grid-item__title"><?php echo $title ?></span>
 
-            <?php if ($info): ?>
+            <?php if ($info || $link): ?>
             <div class="programme-grid-item__overlay programme-grid-item__overlay--<?php echo $colour ?>">
 
                 <div class="programme-grid-item__content">
+
+                    <?php if ($info): ?>
                     <p class="programme-grid-item__title"> <?php echo $info ?></p>
+                    <?php endif?>
+
+                    <?php if ($link): ?>
                     <a class="programme-grid-item__link" href="<?php echo $link_url ?>"
                         target="<?php echo $link_target ?>">
                         <?php echo $link_title ?>
                     </a>
+                    <?php endif?>
 
                 </div>
             </div>
