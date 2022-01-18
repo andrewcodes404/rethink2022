@@ -1,15 +1,64 @@
 .t-hero {
-  background-color: $grey;
-  @include colour_pick;
-
   width: 100%;
   color: $black;
-
   padding: 10px 0 30px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  position: relative;
   @media (min-width: $break-desktop) {
     padding: 60px 0 70px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: $break-desktop-med) {
+    min-height: 500px;
+  }
+
+  @media (min-width: $break-desktop-wide) {
+    min-height: 550px;
+  }
+}
+
+.t-hero__background {
+  //if --bg_colour this sets it
+  @include colour_pick;
+  background-color: $grey;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -2;
+}
+
+.t-hero__background-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  &--darken {
+    filter: brightness(0.6);
+  }
+}
+
+.t-hero__text {
+  &--white {
+    color: $white;
+  }
+
+  &--black {
+    color: $black;
+  }
+
+  &--green {
+    color: $green;
   }
 
   h1 {
