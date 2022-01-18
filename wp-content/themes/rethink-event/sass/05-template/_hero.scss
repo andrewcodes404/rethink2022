@@ -21,7 +21,7 @@
 .t-hero__background {
   //if --bg_colour this sets it
   @include colour_pick;
-  background-color: $grey;
+  background-color: $green;
   position: absolute;
   top: 0;
   bottom: 0;
