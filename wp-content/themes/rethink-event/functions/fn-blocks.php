@@ -96,7 +96,7 @@ function apd_allowed_block_types($allowed_blocks)
 
         // modula
         'modula/gallery',
-        'modula/link',
+        // 'modula/link',
     );
 }
 
