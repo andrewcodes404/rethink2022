@@ -2,9 +2,9 @@
 
 function apd_custom_theme_js()
 {
-    if ( ! is_admin() ) {
-		wp_deregister_script( 'jquery' );
-    }
+    // if ( ! is_admin() ) {
+		// wp_deregister_script( 'jquery' );
+    // }
     //wp_enqueue_script( $handle, $src, $deps, $ver, $in_footer );
     wp_enqueue_script('app', get_template_directory_uri() . '/js/main.min.js', '', '', true);
 
