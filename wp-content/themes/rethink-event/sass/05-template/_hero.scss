@@ -1,20 +1,33 @@
+//the default is no custom fileds are used
+.t-hero-simple {
+  margin-top: 0px;
+  @media (min-width: $break-desktop) {
+    margin-top: 60px;
+  }
+}
+
 .t-hero {
   width: 100%;
   color: $black;
-  padding: 10px 0 30px;
+  // padding: 10px 0 30px;
   margin-bottom: 10px;
   position: relative;
   @media (min-width: $break-desktop) {
-    padding: 60px 0 70px;
+    padding: 100px 0 60px;
     margin-bottom: 30px;
   }
 
-  @media (min-width: $break-desktop-med) {
-    min-height: 500px;
-  }
+  display: flex;
+  align-items: center;
 
-  @media (min-width: $break-desktop-wide) {
-    min-height: 550px;
+  &--with-image {
+    @media (min-width: $break-desktop-med) {
+      min-height: 500px;
+    }
+
+    @media (min-width: $break-desktop-wide) {
+      min-height: 550px;
+    }
   }
 }
 

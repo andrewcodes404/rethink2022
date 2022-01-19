@@ -1,49 +1,43 @@
-<?php 
+<?php
 /*
 Template Name: On Demand
-*/
-get_header(); ?>
+ */
+get_header();?>
 <div class="content-layout">
-    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    <?php if (have_posts()): while (have_posts()): the_post();?>
 
-    <h1><?php the_title()?></h1>
-    <?php the_content(); ?>
+    <?php $post_id = get_the_ID();?>
+    <?php get_template_part('template-parts/hero', 'hero', array('post_id' => $post_id))?>
 
-    <?php endwhile; else : ?>
-    <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-    <?php endif; ?>
+    <div class="content-layout">
+        <?php the_content();?>
+    </div>
 
-    <?php wp_reset_postdata(); ?>
+    <?php endwhile;else: ?>
+    <p><?php esc_html_e('Sorry, no posts matched your criteria.');?></p>
+    <?php endif;?>
 
+    <?php wp_reset_postdata();?>
+    <?php
 
-    <?php 
-
-        $temp = $wp_query;
-        $wp_query= null;
-        $wp_query = new WP_Query();
-        $wp_query->query('cat=21&showposts=9&orderby=menu_order'.'&paged='.$paged);
+$temp = $wp_query;
+$wp_query = null;
+$wp_query = new WP_Query();
+$wp_query->query('cat=21&showposts=9&orderby=menu_order' . '&paged=' . $paged);
 ?>
-
 
 
     <div class="s-blogs">
 
-        <?php if ( $wp_query->have_posts() ) : ?>
+        <?php if ($wp_query->have_posts()): ?>
 
         <!-- Start of the main loop. -->
-        <?php while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+        <?php while ($wp_query->have_posts()): $wp_query->the_post();?>
+        <?php $post_id = get_the_ID();?>
 
-        <!-- the rest of your theme's main loop -->
         <div class="s-blog">
             <div class="s-blog__img">
-                <?php 
-            $post_thumbnail_id = get_post_thumbnail_id( $post_id );
-                echo wp_get_attachment_image( 
-                    $post_thumbnail_id,
-                    false,
-                    $size,                                     
-                    array ('title' => $image['title'], 'alt' => $image['alt']));
-        ?>
+                <?php echo get_the_post_thumbnail($post_id, 'medium'); ?>
             </div>
 
             <div class="s-blog__text">
@@ -53,27 +47,27 @@ get_header(); ?>
             </div>
         </div>
 
-        <?php endwhile; ?>
+        <?php endwhile;?>
         <!-- End of the main loop -->
     </div>
 
     <div class="pagination">
 
-        <div class="nav-previous alignleft"><?php previous_posts_link( '&#8592;  newer posts' ); ?></div>
-        <div class="nav-next alignright"><?php next_posts_link( 'older posts  &#8594;' ); ?></div>
+        <div class="nav-previous alignleft"><?php previous_posts_link('&#8592;  newer posts');?></div>
+        <div class="nav-next alignright"><?php next_posts_link('older posts  &#8594;');?></div>
 
     </div>
 
 
-    <?php wp_reset_postdata(); ?>
+    <?php wp_reset_postdata();?>
 
-    <?php else : ?>
-    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-    <?php endif; ?>
+    <?php else: ?>
+    <p><?php _e('Sorry, no posts matched your criteria.');?></p>
+    <?php endif;?>
 
 
 
 
 </div>
 </div>
-<?php get_footer(); ?>
+<?php get_footer();?>

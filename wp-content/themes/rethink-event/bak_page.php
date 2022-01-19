@@ -5,7 +5,6 @@
 <?php get_template_part('template-parts/hero', 'hero', array('post_id' => $post_id))?>
 
 <div class="content-layout">
-
     <?php the_content();?>
 </div>
 

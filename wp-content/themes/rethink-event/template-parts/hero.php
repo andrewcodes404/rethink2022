@@ -1,6 +1,15 @@
 <?php $post_id = $args['post_id'];?>
 
 
+<?php if(!get_field('show_custom_header')): ?>
+  <div class="t-hero-simple">
+    <div class="content-layout">
+        <h1><?php the_title() ?></h1>
+    </div>
+  </div>
+  <?php endif ?>
+
+<?php if(get_field('show_custom_header')): ?>
 
 <div class="t-hero">
 
@@ -38,3 +47,5 @@ if ($image) {
     </div>
 
 </div>
+
+<?php endif ?>
