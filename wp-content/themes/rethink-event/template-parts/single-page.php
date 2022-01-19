@@ -110,8 +110,6 @@
 
             <div class="pg-single__bottom">
 
-                <?php get_template_part('template-parts/session-links', 'session-links', array('post_id' => $post_id))?>
-
                 <?php if ($description): ?>
                 <div class="pg-single__desc">
                     <?php echo $description ?>
@@ -123,6 +121,8 @@
                     <?php echo $bio ?>
                 </div>
                 <?php endif?>
+
+                <?php get_template_part('template-parts/session-links', 'session-links', array('post_id' => $post_id))?>
             </div>
         </div>
     </div>
