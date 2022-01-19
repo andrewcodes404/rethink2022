@@ -1,17 +1,17 @@
 <?php $post_id = $args['post_id'];?>
 
 
-<?php if(!get_field('show_custom_header')): ?>
-  <div class="t-hero-simple">
+<?php if (!get_field('show_custom_header')): ?>
+<div class="t-hero-simple">
     <div class="content-layout">
-        <h1><?php the_title() ?></h1>
+        <h1><?php the_title()?></h1>
     </div>
-  </div>
-  <?php endif ?>
+</div>
+<?php endif?>
 
-<?php if(get_field('show_custom_header')): ?>
+<?php if (get_field('show_custom_header')): ?>
 
-<div class="t-hero">
+<div class="t-hero <?php echo get_field('background_image') ? 't-hero--with-image' : "" ?>">
 
     <div class="t-hero__background  t-hero__background--<?php echo the_field('background_color', $post_id); ?>"></div>
 
@@ -48,4 +48,4 @@ if ($image) {
 
 </div>
 
-<?php endif ?>
+<?php endif?>
