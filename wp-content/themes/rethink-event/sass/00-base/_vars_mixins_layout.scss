@@ -24,6 +24,14 @@ $sustainablecommunities: $gold;
 $changemakers: $rose;
 $future-leaders: $plum;
 
+$susTrans: $green;
+$bec: $lime;
+$susPart: $sea;
+$susRes: $dust;
+$susCom: $gold;
+$change: $rose;
+$future: $plum;
+
 // bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 ///function to turn px into rem
 @function calculateRem($size) {
@@ -89,31 +97,49 @@ $break-desktop-wide: 1200px;
 }
 
 @mixin colour_pick {
-  &--green {
+  &--green,
+  &--susTrans {
     background-color: $green;
   }
-
-  &--lime {
+  &--lime,
+  &--bec {
     background-color: $lime;
   }
 
-  &--sea {
+  &--sea,
+  &--susPart {
     background-color: $sea;
   }
 
-  &--dust {
+  &--dust,
+  &--susRes {
     background-color: $dust;
   }
 
-  &--gold {
+  &--gold,
+  &--susCom {
     background-color: $gold;
   }
 
-  &--rose {
+  &--rose,
+  &--change {
     background-color: $rose;
   }
 
-  &--plum {
+  &--plum,
+  &--future {
     background-color: $plum;
+  }
+}
+@mixin link-block {
+  margin-bottom: 15px;
+  color: white;
+  background-color: $green;
+  padding: 5px 10px;
+  font-weight: bold;
+  transition: 0.4s;
+  &:hover {
+    background-color: $grey;
+    color: $black;
   }
 }
