@@ -78,7 +78,7 @@
         </div>
 
 
-        <h4> <?php echo  $category ?></h4>
+        <!-- <h4> <?php echo  $category ?></h4> -->
 
         <?php if ($overview) : ?>
           <div class="pg-single-session__section">
