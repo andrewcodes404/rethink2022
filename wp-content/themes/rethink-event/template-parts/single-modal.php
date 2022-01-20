@@ -114,9 +114,6 @@
         <div class="t-modal__bottom">
 
 
-            <?php get_template_part('template-parts/session-links', null, array('post_id' => $post_id, 'post_type' => $post_type))?>
-
-
             <?php if ($description): ?>
             <div class="t-modal__desc">
                 <?php echo $description ?>
@@ -128,6 +125,12 @@
                 <?php echo $bio ?>
             </div>
             <?php endif?>
+
+
+
+            <?php get_template_part('template-parts/session-links', null, array('post_id' => $post_id, 'post_type' => $post_type))?>
+
+
         </div>
     </div>
 </div>
