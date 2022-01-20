@@ -1,93 +1,93 @@
 .s-profile {
-  h1 {
-    font-size: 28px;
-    font-weight: bold;
-    padding-bottom: 10px;
-    text-decoration: underline $yellow;
-    margin-bottom: 15px;
+}
 
-    @media (min-width: $break-desktop) {
-      margin-bottom: 20px;
-      font-size: 50px;
-    }
+.s-profile__images {
+  display: flex;
+  // justify-content: space-between;
+}
+.s-profile__image,
+.s-profile__logo {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
   }
 
-  &__image {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 20px;
-
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: contain;
-    }
-
-    @media (min-width: $break-desktop) {
-      width: 300px;
-      height: 300px;
-    }
+  @media (min-width: $break-desktop) {
+    width: 300px;
+    height: 300px;
   }
+}
 
-  &__position {
-    margin-bottom: 3px;
-    @include font-size(16);
-    color: grey;
+.s-profile__image {
+  margin-right: 20px;
+  @media (min-width: $break-desktop) {
+    margin-right: 150px;
   }
+}
 
-  &__company {
-    margin-bottom: 20px;
-  }
+.s-profile__position {
+  margin-bottom: 3px;
+  @include font-size(16);
+  color: grey;
+}
 
-  &__social {
-    display: flex;
-    // justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+.s-profile__company {
+  margin-bottom: 20px;
+}
+
+.s-profile__social {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.s-profile__social-icon {
+  margin-right: 15px;
+  cursor: pointer;
+  transition: 0.4s;
+
+  a {
+    text-decoration: none;
   }
-  &__social-icon {
-    margin-right: 15px;
-    cursor: pointer;
+  svg {
+    color: $green;
+    padding: 3px;
     transition: 0.4s;
+    width: 30px;
+    height: 30px;
+  }
 
-    a {
-      text-decoration: none;
-    }
-    svg {
-      color: $green;
-      padding: 3px;
-      transition: 0.4s;
-      width: 30px;
-      height: 30px;
-    }
-
-    p {
-      @include font-size(20);
-      line-height: 1;
-      margin-bottom: 5px;
-      font-weight: bold;
-      color: $green;
-      transition: 0.4s;
-      padding: 3px;
-      &:hover {
-        background-color: $yellow;
-      }
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-
+  p {
+    @include font-size(20);
+    line-height: 1;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: $green;
+    transition: 0.4s;
+    padding: 3px;
     &:hover {
-      svg {
-        background-color: $yellow;
-        // fill,
-        // path,
-        // circle,
-        // line {
-        //   stroke: $yellow;
-        // }
-      }
+      background-color: $yellow;
+    }
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    svg {
+      background-color: $yellow;
+      // fill,
+      // path,
+      // circle,
+      // line {
+      //   stroke: $yellow;
+      // }
     }
   }
 }

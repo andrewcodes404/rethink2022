@@ -4,21 +4,37 @@
 <?php $post_id = get_the_ID();?>
 <?php $post_type = get_post_type($post_id);?>
 
+<?php get_template_part('template-parts/hero', 'hero', array('post_id' => $post_id))?>
+
 <div class="content-layout">
     <div class="s-profile">
-        <h1><?php the_title()?></h1>
 
-        <?php get_template_part('template-parts/session-links', null, array('post_id' => $post_id, 'post_type' => $post_type))?>
 
-        <div class="s-profile__image">
-            <?php
+        <div class="s-profile__images">
+            <div class="s-profile__image">
+                <?php
         $image = get_field('image', $post->ID);
         $size = 'carousel';
         if ($image) {
             echo wp_get_attachment_image($image, $size);
         }
         ?>
+            </div>
+
+            <div class="s-profile__logo">
+                <?php
+        $image = get_field('company_logo', $post->ID);
+        $size = 'carousel';
+        if ($image) {
+            echo wp_get_attachment_image($image, $size);
+        }
+        ?>
+            </div>
+
         </div>
+
+
+
 
         <p class="s-profile__position"> <?php the_field('position')?> </p>
         <p class="s-profile__company"> <?php the_field('company')?></p>
@@ -27,7 +43,8 @@
             <?php $linkedin = get_field('linkedin');if ($linkedin): ?>
             <div class="s-profile__social-icon">
                 <a href="<?php echo $linkedin ?>" target="_blank" rel="noopener noreferrer">
-                    <?php echo file_get_contents(get_template_directory() . '/images/svg/linkedin.svg'); ?>
+
+                    <?php echo load_inline_svg('linkedin.svg') ?>
                 </a>
             </div>
             <?php endif;?>
@@ -36,7 +53,7 @@
             <?php $facebook = get_field('facebook');if ($facebook): ?>
             <div class="s-profile__social-icon">
                 <a href="<?php the_field('facebook')?>" target="_blank" rel="noopener noreferrer">
-                    <?php echo file_get_contents(get_theme_file_uri('images/svg/facebook.svg')); ?>
+                    <?php include get_theme_file_uri('images/svg/facebook.svg');?>
                 </a>
             </div>
             <?php endif;?>
@@ -44,7 +61,7 @@
             <?php $instagram = get_field('instagram');if ($instagram): ?>
             <div class="s-profile__social-icon">
                 <a href="<?php the_field('instagram')?>" target="_blank" rel="noopener noreferrer">
-                    <?php echo file_get_contents(get_theme_file_uri('images/svg/insta.svg')); ?>
+                    <?php include get_theme_file_uri('images/svg/insta.svg');?>
                 </a>
             </div>
             <?php endif;?>
@@ -53,7 +70,7 @@
             <?php $twitter = get_field('twitter');if ($twitter): ?>
             <div class="s-profile__social-icon">
                 <a href="<?php the_field('twitter')?>" target="_blank" rel="noopener noreferrer">
-                    <?php echo file_get_contents(get_theme_file_uri('images/svg/twitter.svg')); ?>
+                    <?php include get_theme_file_uri('images/svg/twitter.svg');?>
                 </a>
             </div>
             <?php endif;?>
@@ -75,7 +92,7 @@
     </div>
 
 
-
+    <?php get_template_part('template-parts/session-links', null, array('post_id' => $post_id, 'post_type' => $post_type))?>
 
 
 </div>
