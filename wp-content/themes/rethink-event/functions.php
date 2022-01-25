@@ -5,25 +5,27 @@
 
 //for page titles
 add_theme_support('title-tag');
+// add_theme_support('editor-styles');
+
 
 // Image sizes
 add_image_size('carousel', 400, 400);
 
 //remove yoast from CPTs
 
-function my_remove_wp_seo_meta_box_speakers()
-{
-    remove_meta_box('wpseo_meta', ['speakers-items', 'partner-items', 'sponser-items'], 'normal');
-}
-add_action('add_meta_boxes', 'my_remove_wp_seo_meta_box_speakers', 100);
+// function my_remove_wp_seo_meta_box_speakers()
+// {
+//     remove_meta_box('wpseo_meta', ['speakers-items', 'partner-items', 'sponser-items'], 'normal');
+// }
+// add_action('add_meta_boxes', 'my_remove_wp_seo_meta_box_speakers', 100);
 
 //Remove category from posts home
 
 function exclude_category($query)
 {
-    if ($query->is_home() && $query->is_main_query()) {
-        $query->set('cat', '-21');
-    }
+  if ($query->is_home() && $query->is_main_query()) {
+    $query->set('cat', '-21');
+  }
 }
 add_action('pre_get_posts', 'exclude_category');
 
@@ -33,7 +35,7 @@ add_action('admin_init', 'posts_order_wpse_91866');
 
 function posts_order_wpse_91866()
 {
-    add_post_type_support('post', 'page-attributes');
+  add_post_type_support('post', 'page-attributes');
 }
 
 /**
@@ -42,20 +44,20 @@ function posts_order_wpse_91866()
  * @link https://wordpress.stackexchange.com/a/198624/26350
  */
 add_filter('posts_orderby', function ($orderby, \WP_Query $q) {
-    if ('wpse_last_word' === $q->get('orderby') && $get_order = $q->get('order')) {
-        if (in_array(strtoupper($get_order), ['ASC', 'DESC'])) {
-            global $wpdb;
-            $orderby = " SUBSTRING_INDEX( {$wpdb->posts}.post_title, ' ', -1 ) " . $get_order;
-        }
+  if ('wpse_last_word' === $q->get('orderby') && $get_order = $q->get('order')) {
+    if (in_array(strtoupper($get_order), ['ASC', 'DESC'])) {
+      global $wpdb;
+      $orderby = " SUBSTRING_INDEX( {$wpdb->posts}.post_title, ' ', -1 ) " . $get_order;
     }
-    return $orderby;
+  }
+  return $orderby;
 }, PHP_INT_MAX, 2);
 
 //ACF
 
 // create options page
 if (function_exists('acf_add_options_page')) {
-    acf_add_options_page();
+  acf_add_options_page();
 }
 
 /**
@@ -68,26 +70,29 @@ if (function_exists('acf_add_options_page')) {
 function load_inline_svg($filename)
 {
 
-    // Add the path to your SVG directory inside your theme.
-    $svg_path = '/images/svg/';
+  // Add the path to your SVG directory inside your theme.
+  $svg_path = '/images/svg/';
 
-    // Check the SVG file exists
-    if (file_exists(get_stylesheet_directory() . $svg_path . $filename)) {
+  // Check the SVG file exists
+  if (file_exists(get_stylesheet_directory() . $svg_path . $filename)) {
 
-        // Load and return the contents of the file
-        return file_get_contents(get_stylesheet_directory_uri() . $svg_path . $filename);
-    }
+    // Load and return the contents of the file
+    return file_get_contents(get_stylesheet_directory_uri() . $svg_path . $filename);
+  }
 
-    // Return a blank string if we can't find the file.
-    return '';
+  // Return a blank string if we can't find the file.
+  return '';
 }
 
-// Import more functions
 
-require_once get_template_directory() . '/functions/fn-stylesheets.php';
+
+// shove YOAST settings panel in editor to bottom
+add_filter( 'wpseo_metabox_prio', function() { return 'low'; } );
+
+
 
 // Scripts
-require_once get_template_directory() . '/functions/fn-js.php';
+require_once get_template_directory() . '/functions/scripts.php';
 
 // Menus
 require_once get_template_directory() . '/functions/fn-menus.php';
