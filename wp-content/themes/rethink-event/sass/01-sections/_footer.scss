@@ -10,7 +10,7 @@
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
-  // height: 140px;
+
 
   padding: 30px 0 45px;
   display: flex;
@@ -38,6 +38,9 @@
     color: $green;
     width: 280px;
     margin: 0 auto;
+    @media (min-width: $break-tablet){
+     width: unset;
+    }
   }
 
   &__flex-item-2 {

@@ -14,7 +14,8 @@
             </div>
 
             <div class="footer__copyright">
-                <small>Copyright © <?php echo date("Y"); ?> EnviroEvents (REthink) · All rights reserved.</small>
+                <small>Copyright © <?php echo date("Y"); ?> EnviroEvents (ReThink Limited)</small>
+                <small>All rights reserved.</small>
             </div>
 
         </div>
