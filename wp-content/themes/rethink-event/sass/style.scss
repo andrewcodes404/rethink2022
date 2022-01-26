@@ -37,6 +37,8 @@
 @import "05-template/sessions-link.scss";
 @import "05-template/hero";
 
+@import "progrid";
+
 //fix for wp toolbar when logged in
 body.logged-in .nav-wrapper {
   top: 32px;

@@ -1,0 +1,49 @@
+.content-layout--sandpit {
+  min-height: 100vh;
+  overflow: scroll;
+}
+
+.progrid {
+  border: 1px solid grey;
+  min-width: 600px;
+}
+
+.progrid__row {
+  display: flex;
+  height: 130px;
+}
+
+.progrid__row--titles {
+  height: 60px;
+}
+
+.progrid__item--row-title {
+}
+
+.progrid__item {
+  border: 1px solid grey;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.progrid__item-text {
+  font-size: 12px;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 0;
+
+  @media (min-width: $break-desktop) {
+    font-size: 16px;
+  }
+
+  @media (min-width: $break-desktop-med) {
+    font-size: 18px;
+  }
+}
+
+.progrid__item--double {
+  width: 40%;
+}
