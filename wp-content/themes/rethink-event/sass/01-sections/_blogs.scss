@@ -28,11 +28,22 @@
   }
 
   &__img {
-    height: 40vw;
-    max-height: 240px;
+    height: 280px;
+    width: 280px;
     margin-bottom: 20px;
+
+    @media (min-width: $break-tablet) {
+      height: 320px;
+      width: 320px;
+    }
+
+    @media (min-width: $break-desktop) {
+      height: 280px;
+      width: 280px;
+    }
+
     img {
-      object-fit: cover;
+      object-fit: contain;
       width: 100%;
       height: 100%;
     }
