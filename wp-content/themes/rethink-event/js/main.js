@@ -356,7 +356,7 @@ if (progridItems) {
       console.log('infoHeight:', infoHeight);
 
       progridItem.addEventListener('mouseenter', () => {
-        progridItemInfo.style.maxHeight = infoHeight + "px";
+        progridItemInfo.style.maxHeight = infoHeight + 30 + "px";
 
       })
       progridItem.addEventListener('mouseleave', () => {
