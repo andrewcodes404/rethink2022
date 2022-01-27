@@ -1,6 +1,6 @@
-// Navigation --- Navigation --- Navigation --- 
-// Navigation --- Navigation --- Navigation --- 
-// Navigation --- Navigation --- Navigation --- 
+// Navigation --- Navigation --- Navigation ---
+// Navigation --- Navigation --- Navigation ---
+// Navigation --- Navigation --- Navigation ---
 
 
 const hamburger = document.querySelector('#hamburger')
@@ -38,9 +38,9 @@ closeBtn.addEventListener('click', () => {
 })
 
 
-// desktop dropdown --- desktop dropdown --- desktop dropdown --- 
-// desktop dropdown --- desktop dropdown --- desktop dropdown --- 
-// desktop dropdown --- desktop dropdown --- desktop dropdown --- 
+// desktop dropdown --- desktop dropdown --- desktop dropdown ---
+// desktop dropdown --- desktop dropdown --- desktop dropdown ---
+// desktop dropdown --- desktop dropdown --- desktop dropdown ---
 
 
 const navDesktop = document.querySelector('#nav__menu-desktop')
@@ -68,9 +68,9 @@ menusWithSubMenu.forEach(menuWithSubMenu => {
 
 
 
-// aos --- aos --- aos --- aos --- aos --- 
-// aos --- aos --- aos --- aos --- aos --- 
-// aos --- aos --- aos --- aos --- aos --- 
+// aos --- aos --- aos --- aos --- aos ---
+// aos --- aos --- aos --- aos --- aos ---
+// aos --- aos --- aos --- aos --- aos ---
 
 const h2s = document.querySelectorAll('h2')
 
@@ -84,9 +84,9 @@ if (h2s) {
 }
 
 
-// old modals --- old modals --- old modals --- old modals --- 
-// old modals --- old modals --- old modals --- old modals --- 
-// old modals --- old modals --- old modals --- old modals --- 
+// old modals --- old modals --- old modals --- old modals ---
+// old modals --- old modals --- old modals --- old modals ---
+// old modals --- old modals --- old modals --- old modals ---
 
 const logos = document.querySelectorAll('.s-card__logo')
 
@@ -127,9 +127,9 @@ modalCloseBtns.forEach(modalCloseBtn => {
 });
 
 
-// modals --- modals --- modals --- modals --- 
-// modals --- modals --- modals --- modals --- 
-// modals --- modals --- modals --- modals --- 
+// modals --- modals --- modals --- modals ---
+// modals --- modals --- modals --- modals ---
+// modals --- modals --- modals --- modals ---
 
 const modalParents = document.querySelectorAll('.t-modal-parent')
 
@@ -215,7 +215,7 @@ if (oddoForms) {
 
 
 
-// programme accordion 
+// programme accordion
 
 const accordItemButtons = document.querySelectorAll('.b-programme__session__top-bar')
 const chevron = document.querySelector('.s-accordion-item__title-chevron')
@@ -245,9 +245,9 @@ accordItemButtons.forEach(button => {
 
 
 
-// SpeakersList --- SpeakersList --- SpeakersList --- SpeakersList --- 
-// SpeakersList --- SpeakersList --- SpeakersList --- SpeakersList --- 
-// SpeakersList --- SpeakersList --- SpeakersList --- SpeakersList --- 
+// SpeakersList --- SpeakersList --- SpeakersList --- SpeakersList ---
+// SpeakersList --- SpeakersList --- SpeakersList --- SpeakersList ---
+// SpeakersList --- SpeakersList --- SpeakersList --- SpeakersList ---
 
 const makeFilterActive = (filter) => {
   // console.log('makeFilterActive FN running');
@@ -328,15 +328,40 @@ if (filterButtons) {
   filterButtons.forEach(filterButton => {
     filterButton.addEventListener('click', () => {
       // console.log('addEventListener Fn 🏃🏻‍♂️');
-      // console.log('👻filter button clicked is..', filterButton); 
+      // console.log('👻filter button clicked is..', filterButton);
 
       //add active class to button remove active class from others in group
       makeFilterActive(filterButton);
 
-      // find matching speakers in list  
+      // find matching speakers in list
       hideShowSpeakers()
 
 
     })
+  });
+}
+
+
+
+const progridItems = document.querySelectorAll('.progrid__item')
+
+if (progridItems) {
+  progridItems.forEach(progridItem => {
+
+    const progridItemInfo = progridItem.querySelector('.progrid__item-info')
+
+    if (progridItemInfo) {
+
+      const infoHeight = progridItemInfo.scrollHeight
+      console.log('infoHeight:', infoHeight);
+
+      progridItem.addEventListener('mouseenter', () => {
+        progridItemInfo.style.maxHeight = infoHeight + "px";
+
+      })
+      progridItem.addEventListener('mouseleave', () => {
+        progridItemInfo.style.maxHeight = 0;
+      })
+    }
   });
 }
