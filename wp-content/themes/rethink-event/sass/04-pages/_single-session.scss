@@ -23,23 +23,40 @@
 }
 
 .pg-single-session__top-bar {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   @media (min-width: $break-desktop-med) {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
   }
 }
 
+.pg-single-session__date-time {
+  margin-bottom: 15px;
+}
+
 .pg-single-session__location {
-  margin-top: 15px;
-  @media (min-width: $break-desktop-med) {
-    margin-top: 0;
-  }
 }
 
 .pg-single-session__location-link {
   @include colour_pick;
   @include link-block;
+}
+
+.pg-single-session__category {
+  p {
+    font-weight: bold;
+    margin-bottom: 0;
+    line-height: 1;
+    border: 3px solid $green;
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    background-color: $green;
+    color: $white;
+  }
 }
 
 .pg-single-session__section {

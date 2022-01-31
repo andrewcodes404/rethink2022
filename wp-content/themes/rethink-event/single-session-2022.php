@@ -24,9 +24,34 @@
     $start = get_field('time_start', $post_id);
     $end = get_field('time_end', $post_id);
     $sdgs = get_field('sdg', $post_id);
-    $category = get_field('category', $post_id);
     $location = get_field('location', $post_id);
     $homeUrl = site_url();
+
+    $category = get_field('category', $post_id);
+    switch ($category) {
+      case "cities":
+        $category_text = "Cities & Mobility";
+        break;
+      case "decarb":
+        $category_text = "Decarbonisation";
+        break;
+      case "cirEcon":
+        $category_text = "Circular Economy";
+        break;
+      case "people":
+        $category_text = "People & Purpose";
+        break;
+      case "redefine":
+        $category_text = "Redefining Value";
+        break;
+      case "foodNature":
+        $category_text = "Food & Nature";
+        break;
+    }
+
+
+
+
     $locationUrl = '';
 
     if ($location == 'susTrans') {
@@ -70,7 +95,7 @@
       <div class="pg-single-session">
 
         <div class="pg-single-session__top-bar">
-          <h4> Day <?php echo ($day = 'day1') ? '1 - 5th Oct' : '2 - 6th Oct'; ?> | <?php echo $start ?> - <?php echo $end ?>
+          <h4 class="pg-single-session__date-time"> Day <?php echo ($day = 'day1') ? '1 - 5th Oct' : '2 - 6th Oct'; ?> | <?php echo $start ?> - <?php echo $end ?>
           </h4>
           <h4 class="pg-single-session__location">
             Location: <a class="pg-single-session__location-link pg-single-session__location-link--<?php echo $location ?>" href="<?php echo $locationUrl ?>"> <?php echo $locationText ?></a>
@@ -78,7 +103,11 @@
         </div>
 
 
-        <!-- <h4> <?php echo  $category ?></h4> -->
+        <?php if ($category) : ?>
+          <div class="pg-single-session__category">
+            <p> <?php echo $category_text ?> </p>
+          </div>
+        <?php endif; ?>
 
         <?php if ($overview) : ?>
           <div class="pg-single-session__section">
