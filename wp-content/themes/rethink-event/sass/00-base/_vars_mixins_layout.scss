@@ -96,7 +96,7 @@ $break-desktop-wide: 1200px;
   }
 }
 
-@mixin colour_pick {
+@mixin colour-pick {
   &--green,
   &--susTrans {
     background-color: $green;
@@ -131,6 +131,43 @@ $break-desktop-wide: 1200px;
     background-color: $plum;
   }
 }
+
+@mixin colour-pick-text {
+  &--green,
+  &--susTrans {
+    color: $white;
+  }
+  &--lime,
+  &--bec {
+    color: $black;
+  }
+
+  &--sea,
+  &--susPart {
+    color: $black;
+  }
+
+  &--dust,
+  &--susRes {
+    color: $white;
+  }
+
+  &--gold,
+  &--susCom {
+    color: $black;
+  }
+
+  &--rose,
+  &--change {
+    color: $white;
+  }
+
+  &--plum,
+  &--future {
+    color: $white;
+  }
+}
+
 @mixin link-block {
   margin-bottom: 15px;
   color: white;
@@ -141,5 +178,27 @@ $break-desktop-wide: 1200px;
   &:hover {
     background-color: $grey;
     color: $black;
+  }
+}
+
+.content-layout {
+  width: 95%;
+  max-width: 900px;
+  margin: 30px auto 30px;
+  float: 1px;
+
+  @media (min-width: $break-desktop) {
+    margin: 0px auto 30px;
+  }
+}
+
+.content-layout--wide {
+  width: 95%;
+  max-width: 1320px;
+  margin: 30px auto 30px;
+  float: 1px;
+
+  @media (min-width: $break-desktop) {
+    margin: 0px auto 30px;
   }
 }

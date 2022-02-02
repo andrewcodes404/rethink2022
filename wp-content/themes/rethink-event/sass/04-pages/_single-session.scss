@@ -41,7 +41,7 @@
 }
 
 .pg-single-session__location-link {
-  @include colour_pick;
+  @include colour-pick;
   @include link-block;
 }
 

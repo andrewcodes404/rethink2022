@@ -15,7 +15,7 @@
   position: relative;
   @media (min-width: $break-desktop) {
     padding: 100px 0 60px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
 
   display: flex;
@@ -34,7 +34,7 @@
 
 .t-hero__background {
   //if --bg_colour this sets it
-  @include colour_pick;
+  @include colour-pick;
   background-color: $green;
   position: absolute;
   top: 0;
@@ -44,6 +44,7 @@
   z-index: -2;
 }
 
+.t-hero__background-image-mobile,
 .t-hero__background-image {
   position: absolute;
   top: 0;
@@ -62,6 +63,27 @@
   }
 }
 
+.t-hero__background-image {
+  display: none;
+  @media (min-width: $break-tablet) {
+    display: block;
+  }
+}
+
+.t-hero__caption {
+  position: absolute;
+  bottom: -1px;
+  // right: 0;
+  left: 0;
+  background-color: rgba($black, 0.4);
+  color: $white;
+  padding: 15px;
+  display: none;
+  @media (min-width: $break-desktop) {
+    display: block;
+  }
+}
+
 .t-hero__text {
   &--white {
     color: $white;
@@ -75,10 +97,18 @@
     color: $green;
   }
 
+  max-width: 430px;
+  @media (min-width: $break-desktop) {
+    max-width: 650px;
+  }
+  @media (min-width: $break-desktop-med) {
+    max-width: 750px;
+  }
+
   h1 {
     font-size: 36px;
     text-decoration: none;
-    line-height: 1.2;
+    line-height: 1.1;
     margin-bottom: 15px;
     @media (min-width: $break-desktop) {
       margin-bottom: 20px;
@@ -90,7 +120,7 @@
     font-size: 20px;
     font-weight: 400;
     @media (min-width: $break-desktop) {
-      font-size: 32px;
+      font-size: 28px;
     }
   }
 }
