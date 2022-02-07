@@ -1,13 +1,21 @@
 <?php
 $picked_post_type = get_field('picked_post_type');
 $picked_year = get_field('picked_year');
+$carousel_year = "";
+
+if ($picked_year === '2021') {
+  $carousel_year = "carousel_2021";
+} elseif ($picked_year === '20212') {
+  $carousel_year = "carousel_2022";
+}
+
+
 
 if ($picked_post_type === "advisory-com") {
-
   $picked_post_type = "speaker-items";
 
-  $args = array(
 
+  $args = array(
     'numberposts' => -1,
     'post_type'    => $picked_post_type,
     'meta_query' => array(
@@ -23,7 +31,7 @@ if ($picked_post_type === "advisory-com") {
         'compare' => 'LIKE'
       ),
       array(
-        'key' => 'carousel',
+        'key' => $carousel_year,
         'value' => '1',
       ),
     )
@@ -41,7 +49,7 @@ if ($picked_post_type === "advisory-com") {
         'compare' => 'LIKE'
       ),
       array(
-        'key' => 'carousel',
+        'key' => $carousel_year,
         'value' => '1',
       ),
     )
