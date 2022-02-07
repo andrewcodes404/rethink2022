@@ -11,6 +11,7 @@ function apd_allowed_block_types($allowed_blocks)
     'acf/carousel-partners',
     'acf/carousel-speakers',
     'acf/carousel-adv-com',
+    'acf/carousel-2022',
     'acf/space-invader',
     'acf/youtube',
     'acf/speakers-list',
@@ -781,6 +782,24 @@ function apd_register_blocks()
       'example' => array(
         'attributes' => array(
           'mode' => 'preview',
+        ),
+      ),
+    ));
+
+
+    acf_register_block(array(
+      'name' => 'carousel-2022',
+      'title' => __('Carousel 2022'),
+      'render_template' => get_template_directory() . '/blocks/carousels/b-carousel.php',
+      'category' => 'carousel-blocks',
+      'icon' => 'images-alt2',
+      'keywords' => array('carousel', 'slider'),
+      'post_types' => array('post', 'page'),
+      'mode' => 'edit',
+      'example' => array(
+        'attributes' => array(
+          'mode' => 'edit',
+          'carousel-items' => array(),
         ),
       ),
     ));
