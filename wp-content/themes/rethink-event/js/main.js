@@ -348,16 +348,24 @@ const progridItems = document.querySelectorAll('.progrid__item')
 if (progridItems) {
   progridItems.forEach(progridItem => {
 
+
+    // console.log('progridItem.height:', progridItem.height + "px");
     const progridItemInfo = progridItem.querySelector('.progrid__item-info')
 
     if (progridItemInfo) {
 
-      const infoHeight = progridItemInfo.scrollHeight
-      console.log('infoHeight:', infoHeight);
+      // const infoHeight = progridItemInfo.scrollHeight
+      // console.log('infoHeight:', infoHeight);
 
+      console.log('progridItem:', progridItem);
+      const newMaxHeight = progridItem.offsetHeight + "px"
+      console.log('newMaxHeight:', newMaxHeight);
+      console.log("ghghhh");
       progridItem.addEventListener('mouseenter', () => {
-        progridItemInfo.style.maxHeight = infoHeight + 30 + "px";
-
+        // progridItemInfo.style.maxHeight = infoHeight + 30 + "px";
+        console.log('👻', progridItemInfo.style.maxHeight);
+        progridItemInfo.style.maxHeight = newMaxHeight
+        console.log('👻', progridItemInfo.style.maxHeight);
       })
       progridItem.addEventListener('mouseleave', () => {
         progridItemInfo.style.maxHeight = 0;

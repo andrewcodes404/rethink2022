@@ -16,6 +16,7 @@ function apd_allowed_block_types($allowed_blocks)
     'acf/youtube',
     'acf/speakers-list',
     'acf/programme-grid',
+    'acf/progrid',
 
     'acf/partners-co-organiser',
     'acf/partners-sus-partner',
@@ -411,6 +412,18 @@ function apd_register_blocks()
       'post_types' => array('post', 'page'),
       'mode' => 'auto',
     ));
+
+    acf_register_block(array(
+      'name' => 'progrid',
+      'title' => __('Pro-Grid'),
+      'render_template' => get_template_directory() . '/blocks/b-progrid.php',
+      'category' => '',
+      'icon' => 'button',
+      'post_types' => array('post', 'page'),
+      'mode' => 'preview',
+    ));
+
+
 
     acf_register_block(array(
       'name' => 'partners-charity',

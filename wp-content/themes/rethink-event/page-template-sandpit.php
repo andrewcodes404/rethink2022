@@ -34,112 +34,177 @@ Template Name: Sandpit
         </div>
 
 
-        <div class="progrid__row progrid__row--1 ">
-          <div class="progrid__item progrid__item--row-title">
-            <div class="progrid__item-title">Keynote</div>
+        <div class="progrid__row progrid__row--keynote">
+          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
+            <div class="progrid__item-title">Sustainable Transformation Theatre (Keynote)</div>
+          </div>
+          <div class="progrid__item progrid__item--double">
+            <div class="progrid__item-title">Keynote Address
+              & Opening Welcome
+              -
+              Business of Biodiversity </div>
+            <div class="progrid__item-info">
+              <div class="progrid__item-info-text">
+                Rethinking systemic transformation towards a net-zero, nature-positive and equitable future
+              </div>
+              <!-- <div class="progrid__item-info-link">
+                <span>link</span>
+              </div> -->
+            </div>
+          </div>
+          <div class="progrid__item progrid__item--double">
+            <div class="progrid__item-title">The Sustainability Imperative
+              in Business
+              -
+              Hong Kong and Beyond: Resetting Our Planet's Trajectory Together
+            </div>
+            <div class="progrid__item-info">
+              <div class="progrid__item-info-text">
+                Rethinking the business and moral imperative for sustainable transformation
+              </div>
+            </div>
           </div>
 
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">1</div>
+        </div>
+
+        <div class="progrid__row progrid__row--business">
+          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
+            <div class="progrid__item-title">Sustainable Business Theatre</div>
+          </div>
+          <div class="progrid__item progrid__item--double  progrid__item--no-cursor">
+            <div class="progrid__item-title">Coming Soon</div>
           </div>
           <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">2</div>
+            <div class="progrid__item-title">Rethinking Sustainability for SMEs
+              (Cantonese with English interpretation)
+            </div>
+            <div class="progrid__item-info">
+              <div class="progrid__item-info-text">
+                Rethinking how we mobilise Hong Kong’s SMEs to drive sustainability and prosperity
+              </div>
+            </div>
           </div>
+
+        </div>
+
+
+        <div class="progrid__row  progrid__row--partnership">
+          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
+            <div class="progrid__item-title">Sustainable Partnerships Theatre</div>
+          </div>
+          <div class="progrid__item progrid__item--double">
+            <div class="progrid__item-title">HK2050isNow Energy & Mobility Summit</div>
+            <div class="progrid__item-info">
+              <div class="progrid__item-info-text">
+                Rethinking clean energy and how we move in Hong Kong
+              </div>
+            </div>
+          </div>
+          <div class="progrid__item progrid__item--double">
+            <div class="progrid__item-title">Green Monday Food & Nature Summit</div>
+            <div class="progrid__item-info">
+              <div class="progrid__item-info-text">
+                Rethinking the business of food and natural capital
+              </div>
+            </div>
+          </div>
+
         </div>
 
 
 
-        <div class="progrid__row progrid__row--2">
-          <div class="progrid__item progrid__item--row-title">
-            <div class="progrid__item-title">Resources</div>
+
+        <div class="progrid__row progrid__row--resources">
+          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
+            <div class="progrid__item-title">Sustainable Resources Theatre</div>
           </div>
           <div class="progrid__item">
-            <div class="progrid__item-title">3</div>
+            <div class="progrid__item-title">Rethinking Finance</div>
             <div class="progrid__item-info">
               <div class="progrid__item-info-text">
-                Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus.Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus.Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Pellentesque in ipsum id orci porta dapibus.
+                Rethinking how we finance Hong Kong’s transition to a net-zero future
               </div>
             </div>
           </div>
           <div class="progrid__item">
-            <div class="progrid__item-title">4</div>
+            <div class="progrid__item-title">Rethinking Supply Chains</div>
             <div class="progrid__item-info">
               <div class="progrid__item-info-text">
-                Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec sollicitudin molestie malesuada.
+                Rethinking how we trace and tackle sustainability challenges at source
               </div>
             </div>
           </div>
           <div class="progrid__item">
-            <div class="progrid__item-title">5</div>
+            <div class="progrid__item-title">Rethinking Built Spaces</div>
             <div class="progrid__item-info">
               <div class="progrid__item-info-text">
-                Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Proin eget tortor risus. Proin eget tortor risus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
+                Rethinking our sustainable, vertical city
               </div>
             </div>
           </div>
           <div class="progrid__item">
-            <div class="progrid__item-title">6</div>
+            <div class="progrid__item-title">Rethinking Waste</div>
             <div class="progrid__item-info">
               <div class="progrid__item-info-text">
-                Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+                Rethinking how we tackle the city’s waste crisis
               </div>
             </div>
           </div>
         </div>
 
 
-        <div class="progrid__row progrid__row--3">
-          <div class="progrid__item progrid__item--row-title">
-            <div class="progrid__item-title">Communities</div>
+        <div class="progrid__row progrid__row--sustainable">
+          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
+            <div class="progrid__item-title">Sustainable Communities Theatre</div>
+          </div>
+          <div class="progrid__item">
+            <div class="progrid__item-title">Rethinking People & Purpose</div>
+            <div class="progrid__item-info">
+              <div class="progrid__item-info-text">
+                Rethinking the business case for “purpose”
+              </div>
+            </div>
+          </div>
+          <div class="progrid__item  progrid__item--no-cursor">
+            <div class="progrid__item-title">Coming Soon</div>
+          </div>
+          <div class="progrid__item">
+            <div class="progrid__item-title">Rethinking Workforce Transformation</div>
+            <div class="progrid__item-info">
+              <div class="progrid__item-info-text">
+                Rethinking Diversity, Equity and Inclusion in the workplace
+              </div>
+            </div>
           </div>
           <div class="progrid__item">
             <div class="progrid__item-title">Rethinking Customers & Communications</div>
             <div class="progrid__item-info">
               <div class="progrid__item-info-text">
-                Rethinking Customers & Communications will explore how brands are rethinking their interactions with customers and reacting to the changing values of today’s consumers; how do they communicate big claims around sustainability credentials, goals and ambitions in a way that all stakeholders will care about?
+                Rethinking the role of marketing in a sustainable new world
               </div>
             </div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">Rethinking Workforce Transformation</div>
-
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking Supply Chains will look at the examples from the Apparel, Footwear and Textile industries, and explore how businesses (Brands, Retailers, Sourcing Agents, Manufacturers) have taken collective actions to drive transparency within the supply chain, as well as implement and measure sustainability performance to drive efficiencies and accelerate the adoption of efficient carbon solutions. 
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">Rethinking People and Purpose</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking People & Purpose will share market insight and tried-and-tested best practice from people-centric organisations, practitioners and thought leaders who put their people and their communities at the very core of everything they stand for.
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">TBC</div>
           </div>
         </div>
 
 
-        <div class="progrid__row  progrid__row--4">
-          <div class="progrid__item progrid__item--row-title">
-            <div class="progrid__item-title">Partnerships</div>
+
+        <div class="progrid__row  progrid__row--change">
+          <div class=" progrid__item pro grid__item--row-title progrid__item--no-cursor">
+            <div class="progrid__item-title">Change Makers Stage</div>
           </div>
           <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">11</div>
+            <div class="progrid__item-title">Rethinking Innovation & Technology</div>
             <div class="progrid__item-info">
               <div class="progrid__item-info-text">
-                Rethinking People & Purpose will share market insight and tried-and-tested best practice from people-centric organisations, practitioners and thought leaders who put their people and their communities at the very core of everything they stand for.
+                Rethinking tech for good
               </div>
             </div>
           </div>
           <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">12</div>
+            <div class="progrid__item-title">Rethinking Value</div>
             <div class="progrid__item-info">
               <div class="progrid__item-info-text">
-                Rethinking People & Purpose will share market insight and tried-and-tested best practice from people-centric organisations, practitioners and thought leaders who put their people and their communities at the very core of everything they stand for.
+                Rethinking how we create business value while addressing societal challenges
               </div>
             </div>
           </div>
@@ -147,43 +212,25 @@ Template Name: Sandpit
         </div>
 
 
-        <div class="progrid__row  progrid__row--5">
-          <div class="progrid__item progrid__item--row-title">
-            <div class="progrid__item-title">Business</div>
+        <div class="progrid__row  progrid__row--future">
+          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
+            <div class="progrid__item-title">Future Leaders Stage</div>
           </div>
           <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">13</div>
+            <div class="progrid__item-title">Social Innovators of Tomorrow</div>
+            <div class="progrid__item-info">
+              <div class="progrid__item-info-text">
+                Rethinking Hong Kong’s next generation entrepreneurial leaders and solutions for sustainable societal impact
+              </div>
+            </div>
           </div>
           <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">Rethinking Sustainability for SMEs (Cantonese with English interpretation)</div>
-          </div>
-
-        </div>
-
-
-        <div class="progrid__row  progrid__row--6">
-          <div class=" progrid__item pro grid__item--row-title">
-            <div class="progrid__item-title">Change Makers</div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">15</div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">16</div>
-          </div>
-
-        </div>
-
-
-        <div class="progrid__row  progrid__row--7">
-          <div class="progrid__item progrid__item--row-title">
-            <div class="progrid__item-title">Future Leaders</div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">17</div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">18</div>
+            <div class="progrid__item-title">Green Leaders of Tomorrow</div>
+            <div class="progrid__item-info">
+              <div class="progrid__item-info-text">
+                Rethinking Hong Kong’s environmentally conscious business leaders of the future
+              </div>
+            </div>
           </div>
 
         </div>
