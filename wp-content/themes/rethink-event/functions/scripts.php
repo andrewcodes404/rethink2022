@@ -38,8 +38,6 @@ function apd_custom_theme_styles()
 
 add_action('wp_enqueue_scripts', 'apd_custom_theme_styles');
 
-
-
 add_action('enqueue_block_editor_assets', function () {
-  wp_enqueue_style('guttenburg-stylesheet', get_stylesheet_directory_uri() . "/style/gutenburg.min.css", false, '1.0', 'all');
+  wp_enqueue_style('guttenburg-stylesheet', get_stylesheet_directory_uri() . "/style/gutenburg.min.css", array(), filemtime(get_template_directory() . '/style/gutenburg.min.css'), false);
 });
