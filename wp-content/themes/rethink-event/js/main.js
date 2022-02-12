@@ -7,35 +7,45 @@ const hamburger = document.querySelector('#hamburger')
 const closeBtn = document.querySelector('#closeBtn')
 const menu = document.querySelector('#nav__menu-mobile')
 const mobMenuUl = document.querySelector('#menu-primary-navigation')
-const mobMenuUlLength = mobMenuUl.scrollHeight + "px"
+
+if (mobMenuUl) {
+  const mobMenuUlLength = mobMenuUl.scrollHeight + "px"
+}
+
 
 // console.log('mobMenuUl:', mobMenuUl);
 // console.log('mobMenuUlLength:', mobMenuUlLength);
 // console.log('menu:', menu);
 
-hamburger.addEventListener('click', () => {
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
 
-  menu.classList.remove('nav__menu-mobile--hide')
-  menu.classList.add('nav__menu-mobile--show')
-  menu.style.maxHeight = mobMenuUlLength
-  hamburger.classList.remove('nav__button--show')
-  hamburger.classList.add('nav__button--hide')
-  closeBtn.classList.remove('nav__button--hide')
-  closeBtn.classList.add('nav__button--show')
-
-
-})
+    menu.classList.remove('nav__menu-mobile--hide')
+    menu.classList.add('nav__menu-mobile--show')
+    menu.style.maxHeight = mobMenuUlLength
+    hamburger.classList.remove('nav__button--show')
+    hamburger.classList.add('nav__button--hide')
+    closeBtn.classList.remove('nav__button--hide')
+    closeBtn.classList.add('nav__button--show')
 
 
-closeBtn.addEventListener('click', () => {
-  menu.classList.remove('nav__menu-mobile--show')
-  menu.classList.add('nav__menu-mobile--hide')
-  // mobMenuUl.style.maxHeight = "0px";
-  closeBtn.classList.remove('nav__button--show')
-  closeBtn.classList.add('nav__button--hide')
-  hamburger.classList.remove('nav__button--hide')
-  hamburger.classList.add('nav__button--show')
-})
+  })
+}
+
+
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    menu.classList.remove('nav__menu-mobile--show')
+    menu.classList.add('nav__menu-mobile--hide')
+    // mobMenuUl.style.maxHeight = "0px";
+    closeBtn.classList.remove('nav__button--show')
+    closeBtn.classList.add('nav__button--hide')
+    hamburger.classList.remove('nav__button--hide')
+    hamburger.classList.add('nav__button--show')
+  })
+}
+
+
 
 
 // desktop dropdown --- desktop dropdown --- desktop dropdown ---
@@ -44,6 +54,7 @@ closeBtn.addEventListener('click', () => {
 
 
 const navDesktop = document.querySelector('#nav__menu-desktop')
+
 
 const menusWithSubMenu = navDesktop.querySelectorAll('.menu-item-has-children')
 
@@ -348,24 +359,18 @@ const progridItems = document.querySelectorAll('.progrid__item')
 if (progridItems) {
   progridItems.forEach(progridItem => {
 
-
-    // console.log('progridItem.height:', progridItem.height + "px");
     const progridItemInfo = progridItem.querySelector('.progrid__item-info')
 
     if (progridItemInfo) {
 
-      // const infoHeight = progridItemInfo.scrollHeight
-      // console.log('infoHeight:', infoHeight);
 
-      console.log('progridItem:', progridItem);
       const newMaxHeight = progridItem.offsetHeight + "px"
-      console.log('newMaxHeight:', newMaxHeight);
-      console.log("ghghhh");
+
       progridItem.addEventListener('mouseenter', () => {
         // progridItemInfo.style.maxHeight = infoHeight + 30 + "px";
-        console.log('👻', progridItemInfo.style.maxHeight);
+
         progridItemInfo.style.maxHeight = newMaxHeight
-        console.log('👻', progridItemInfo.style.maxHeight);
+
       })
       progridItem.addEventListener('mouseleave', () => {
         progridItemInfo.style.maxHeight = 0;
@@ -373,3 +378,43 @@ if (progridItems) {
     }
   });
 }
+
+
+// Anchor Links in page scroll --- Anchor Links in page scroll ---
+// Anchor Links in page scroll --- Anchor Links in page scroll ---
+// Anchor Links in page scroll --- Anchor Links in page scroll ---
+
+function _scrollTo(selector, yOffset = 0) {
+  const el = document.querySelector(selector);
+
+  if (el) {
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+}
+
+
+
+const progridInfos = document.querySelectorAll('.progrid__item-info');
+
+progridInfos.forEach(progridInfo => {
+
+
+  progridInfo.addEventListener('click', () => {
+    console.log('👻');
+
+
+    console.log(progridInfo.dataset.link);
+
+    const target = "#" + progridInfo.dataset.link
+    console.log('target:', target);
+    _scrollTo(target, -200);
+
+  })
+})
+
+
+
+
+

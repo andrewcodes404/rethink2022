@@ -72,6 +72,7 @@
 .progrid__row--titles {
   height: 80px;
   border-top: 1px solid grey;
+  font-weight: bold;
 }
 
 .progrid__item--row-title {
@@ -147,6 +148,10 @@
 
   @media (min-width: $break-desktop-med) {
     font-size: 18px;
+  }
+
+  &--bold {
+    font-weight: bold;
   }
 }
 
