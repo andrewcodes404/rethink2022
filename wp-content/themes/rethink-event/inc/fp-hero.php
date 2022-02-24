@@ -2,7 +2,7 @@
   <div class="bkg-img-black">
 
   </div>
-  <div class="bkg-img" data-aos="fade-in" data-aos-delay="500" data-aos-duration="500">
+  <div class="bkg-img">
     <img src="<?php echo get_template_directory_uri(); ?>/images/jpg/hero-bg-lrg2.jpg" srcSet="
                   <?php echo get_template_directory_uri(); ?>/images/jpg/hero-bg-sml2.jpg 700w,
                   <?php echo get_template_directory_uri(); ?>/images/jpg/hero-bg-lrg2.jpg 1000w,
@@ -10,33 +10,45 @@
   </div>
 
 
-  <div class="hero-content" data-aos="fade-in" data-aos-delay="1500" data-aos-duration="1500">
+  <div class="hero-content">
     <div class="hero-logo">
       <img src="<?php echo get_template_directory_uri(); ?>/images/jpg/hero-logo-white.png" alt="" />
     </div>
 
+    <div class="hero-line-break"></div>
+
     <h1 class="h1-front-page">
       05 - 06 October 2022 <br /> Hall 3FG, HKCEC, Hong Kong
     </h1>
+
+    <div class="hero-line-break"></div>
+
+    <div class="fp-co-org">
+      <p>co-organised by</p>
+      <div class="fp-co-org__logo">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/png/BEC-logo-30.png" alt="">
+      </div>
+    </div>
+
     <h1 class="h1-front-page">#AccelerateTheChange</h1>
 
 
     <div class="fp-btns">
 
-      <div class="fp-btn fp-btn--green" id="gtm-hero-attend" data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
+      <div class="fp-btn fp-btn--green" id="gtm-hero-attend">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScyeLbYa9OSbcB5lLAPEEcwL_-xb5nLO2nt7YENbBAOefldwg/viewform" target="_blank" rel="noopener noreferrer">
           Attend
         </a>
       </div>
 
-      <div class="fp-btn fp-btn--yellow" id="gtm-hero-newsletter" data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
+      <div class="fp-btn fp-btn--yellow" id="gtm-hero-newsletter">
 
         <a href="https://enviro.wantech.com.hk/newsletter-subscription" target="_blank" rel="noopener noreferrer">
           Newsletter
         </a>
       </div>
 
-      <div class="fp-btn fp-btn--green" id="gtm-hero-sponsor" data-aos="fade-in" data-aos-delay="500" data-aos-duration="2000">
+      <div class="fp-btn fp-btn--green" id="gtm-hero-sponsor">
 
         <a href="https://enviro.wantech.com.hk/sponsorship-enquiry" target="_blank" rel="noopener noreferrer">
           Sponsor
@@ -45,17 +57,11 @@
 
     </div>
 
-    <!-- <div class="fp-co-org">
-            <p>co-organised by</p>
-            <div class="fp-co-org__logo">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/png/BEC-logo.png" alt="">
-            </div>
-        </div> -->
+
 
   </div>
 
-
-  <div class="icon-bar" data-aos="anim-icon-bar" data-aos-delay="1500" data-aos-duration="2000">
+  <div class="icon-bar">
     <div class="icon-bar-content">
 
       <div class="icon-card">

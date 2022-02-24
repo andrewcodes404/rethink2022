@@ -5,12 +5,12 @@
   align-items: center;
   position: relative;
   text-align: center;
-  padding: 80px 0 30px;
+  padding: 30px 0 30px;
   margin-bottom: 30px;
   @media (min-width: $break-desktop) {
-    min-height: 800px;
+    min-height: 870px;
     height: calc(100vh - 80px);
-    min-height: 450px;
+    // min-height: 450px;
     margin-bottom: 50px;
   }
 }
@@ -47,8 +47,8 @@
   max-width: 1000px;
 
   @media (min-width: $break-desktop) {
-    // min-height: 940px;
     margin-top: -150px;
+    padding-top: 65px;
   }
 
   .hero-logo {
@@ -58,11 +58,16 @@
   }
 
   h1 {
-    padding-top: 20px;
-    border-top: 3px solid white;
-    max-width: 640px;
-    margin: 0 auto 10px;
+    // padding-top: 20px;
+    margin-bottom: 10px;
   }
+}
+
+.hero-line-break {
+  border-top: 3px solid white;
+  width: 90%;
+  max-width: 640px;
+  margin: 0 auto 10px;
 }
 
 .fp-btns {
@@ -144,18 +149,18 @@
   }
 
   &__logo {
-    max-width: 300px;
+    max-width: 400px;
     margin: 20px auto;
   }
 
   @media (min-width: $break-desktop) {
     text-align: unset;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
 
     &__logo {
-      margin: 0;
+      margin: 0 auto;
     }
   }
 }
