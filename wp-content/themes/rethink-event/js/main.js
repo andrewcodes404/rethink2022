@@ -144,11 +144,11 @@ modalCloseBtns.forEach(modalCloseBtn => {
 
 const modalParents = document.querySelectorAll('.t-modal-parent')
 
-modalParents.forEach(modalParent => {
-  modalParent.addEventListener('click', function () {
-    this.nextElementSibling.classList.add("t-modal-wrapper--show")
-  })
-});
+// modalParents.forEach(modalParent => {
+//   modalParent.addEventListener('click', function () {
+//     this.nextElementSibling.classList.add("t-modal-wrapper--show")
+//   })
+// });
 
 
 const tmodalWrappers = document.querySelectorAll('.t-modal-wrapper')
