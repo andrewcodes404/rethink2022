@@ -5,15 +5,26 @@ $carousel_year = "";
 
 if ($picked_year === '2021') {
   $carousel_year = "carousel_2021";
-} elseif ($picked_year === '20212') {
+} elseif ($picked_year === '2022') {
   $carousel_year = "carousel_2022";
 }
 
+$carousel_type  = "";
+if ($picked_post_type === ("advisory-com" || "speaker-items")) {
+  $carousel_type = "speakers";
+}
 
+if ($picked_post_type === "sponsor-items") {
+  $carousel_type = "sponsors";
+}
+
+if ($picked_post_type === "partner-items") {
+  $carousel_type = "partners";
+}
 
 if ($picked_post_type === "advisory-com") {
-  $picked_post_type = "speaker-items";
 
+  $picked_post_type = "speaker-items";
 
   $args = array(
     'numberposts' => -1,
@@ -64,7 +75,11 @@ $the_query = new WP_Query($args);
 <?php if ($the_query->have_posts()) : ?>
 
   <div class="b-carousel-wrapper">
-    <div class="b-carousel b-carousel--speakers">
+
+    <?php echo $picked_post_type ?>
+
+
+    <div class="b-carousel b-carousel--<?php echo $carousel_type  ?>">
 
       <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
         <?php $post_id = get_the_ID(); ?>
