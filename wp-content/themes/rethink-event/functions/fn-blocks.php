@@ -339,14 +339,8 @@ function apd_register_blocks()
       'keywords' => array('odoo', 'form'),
       'post_types' => array('post', 'page'),
       'mode' => 'edit',
-      'example' => array(
-        'attributes' => array(
-          'mode' => 'edit',
-          'data' => array(
-            'text' => "This is an Odoo Form",
-          ),
-        ),
-      ),
+      'supports' => array('mode' => false),
+
     ));
 
     acf_register_block(array(
@@ -808,7 +802,8 @@ function apd_register_blocks()
       'icon' => 'images-alt2',
       'keywords' => array('carousel', 'slider'),
       'post_types' => array('post', 'page'),
-      'mode' => 'edit',
+      'mode'  => 'edit',
+      'supports' => array('mode' => false),
       'example' => array(
         'attributes' => array(
           'mode' => 'edit',
@@ -826,12 +821,8 @@ function apd_register_blocks()
       'keywords' => array('carousel', 'slider'),
       'post_types' => array('post', 'page'),
       'mode' => 'edit',
-      'example' => array(
-        'attributes' => array(
-          'mode' => 'edit',
-          'carousel-items' => array(),
-        ),
-      ),
+      'supports' => array('mode' => false),
+
     ));
 
     acf_register_block(array(
@@ -843,6 +834,7 @@ function apd_register_blocks()
       'keywords' => array('carousel', 'slider'),
       'post_types' => array('post', 'page'),
       'mode' => 'edit',
+      'supports' => array('mode' => false),
 
     ));
 
@@ -855,6 +847,7 @@ function apd_register_blocks()
       'keywords' => array('carousel', 'slider'),
       'post_types' => array('post', 'page'),
       'mode' => 'edit',
+      'supports' => array('mode' => false),
 
     ));
 
@@ -867,6 +860,7 @@ function apd_register_blocks()
       'keywords' => array('carousel', 'slider'),
       'post_types' => array('post', 'page'),
       'mode' => 'edit',
+      'supports' => array('mode' => false),
 
     ));
   }
