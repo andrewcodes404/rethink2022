@@ -76,9 +76,6 @@ $the_query = new WP_Query($args);
 
   <div class="b-carousel-wrapper">
 
-    <?php echo $picked_post_type ?>
-
-
     <div class="b-carousel b-carousel--<?php echo $carousel_type  ?>">
 
       <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
