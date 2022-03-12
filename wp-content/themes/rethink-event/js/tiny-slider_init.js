@@ -133,21 +133,16 @@ if (carouselsAdvCom) {
     items: 1,
     swipeAngle: false,
     speed: 600,
-
     nav: false,
     controls: true,
     controlsPosition: "top",
     controlsText: ["&lt;", "&gt;"],
     arrowKeys: true,
-
     autoplay: true,
     autoplayButtonOutput: false,
     autoplayTimeout: 1500,
-
     loop: true,
     rewind: false,
-
-
     responsive: {
 
       500: {
