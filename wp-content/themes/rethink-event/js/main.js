@@ -143,44 +143,42 @@ modalCloseBtns.forEach(modalCloseBtn => {
 // modals --- modals --- modals --- modals ---
 
 const modalParents = document.querySelectorAll('.t-modal-parent')
-
-// modalParents.forEach(modalParent => {
-//   modalParent.addEventListener('click', function () {
-//     this.nextElementSibling.classList.add("t-modal-wrapper--show")
-//   })
-// });
+if (modalParents) {
+  modalParents.forEach(modalParent => {
+    modalParent.addEventListener('click', function () {
+      this.nextElementSibling.classList.add("t-modal-wrapper--show")
+    })
+  });
+}
 
 
 const tmodalWrappers = document.querySelectorAll('.t-modal-wrapper')
+if (tmodalWrappers) {
+  tmodalWrappers.forEach(tmodalWrapper => {
+    tmodalWrapper.addEventListener('click', function (event) {
+      event.stopPropagation();
+      this.classList.remove("t-modal-wrapper--show")
+    })
+  });
+}
 
-
-tmodalWrappers.forEach(tmodalWrapper => {
-  tmodalWrapper.addEventListener('click', function (event) {
-    event.stopPropagation();
-    this.classList.remove("t-modal-wrapper--show")
-  })
-});
-
-const tmodals = document.querySelectorAll('.t-modal')
-
-tmodals.forEach(tmodal => {
-  tmodal.addEventListener('click', function (event) {
-    event.stopPropagation();
-    // this.classList.remove("s-modal-wrapper--show")
-  })
-});
-
+// const tmodals = document.querySelectorAll('.t-modal')
+// tmodals.forEach(tmodal => {
+//   tmodal.addEventListener('click', function (event) {
+//     event.stopPropagation();
+//     // this.classList.remove("s-modal-wrapper--show")
+//   })
+// });
 
 const tmodalCloseBtns = document.querySelectorAll('.t-modal__close-btn')
-
-tmodalCloseBtns.forEach(tmodalCloseBtn => {
-  tmodalCloseBtn.addEventListener('click', function (event) {
-    event.stopPropagation();
-    this.parentElement.parentElement.classList.remove("t-modal-wrapper--show")
-  })
-});
-
-
+if (tmodalCloseBtns) {
+  tmodalCloseBtns.forEach(tmodalCloseBtn => {
+    tmodalCloseBtn.addEventListener('click', function (event) {
+      event.stopPropagation();
+      this.parentElement.parentElement.classList.remove("t-modal-wrapper--show")
+    })
+  });
+}
 
 
 //home-page pop-up

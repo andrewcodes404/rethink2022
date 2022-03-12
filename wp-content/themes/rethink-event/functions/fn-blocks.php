@@ -11,12 +11,13 @@ function apd_allowed_block_types($allowed_blocks)
     'acf/carousel-partners',
     'acf/carousel-speakers',
     'acf/carousel-adv-com',
-    'acf/carousel-2022',
+    'acf/carousel-all-in-one',
     'acf/space-invader',
     'acf/youtube',
     'acf/speakers-list',
     'acf/programme-grid',
     'acf/progrid',
+    'acf/logos',
 
     'acf/partners-co-organiser',
     'acf/partners-sus-partner',
@@ -46,7 +47,6 @@ function apd_allowed_block_types($allowed_blocks)
     'acf/sponsors-startup',
 
     'acf/odoo-form',
-
     'acf/programmes',
 
     'acf/prog-snip-bec',
@@ -119,6 +119,18 @@ function apd_register_blocks()
 {
 
   if (function_exists('acf_register_block')) {
+
+
+    acf_register_block(array(
+      'name' => 'logos',
+      'title' => __('logos'),
+      'render_template' => get_template_directory() . '/blocks/b-logos.php',
+      'category' => 'media',
+      'icon' => 'images-alt',
+      'post_types' => array('post', 'page'),
+      'mode'  => 'edit',
+      'supports' => array('mode' => false)
+    ));
 
     acf_register_block(array(
       'name' => 'programmes',
@@ -795,11 +807,11 @@ function apd_register_blocks()
 
 
     acf_register_block(array(
-      'name' => 'carousel-2022',
-      'title' => __('Carousel 2022'),
+      'name' => 'carousel-all-in-one',
+      'title' => __('Carousel - All in One'),
       'render_template' => get_template_directory() . '/blocks/carousels/b-carousel.php',
       'category' => 'carousel-blocks',
-      'icon' => 'images-alt2',
+      'icon' => 'buddicons-groups',
       'keywords' => array('carousel', 'slider'),
       'post_types' => array('post', 'page'),
       'mode'  => 'edit',
