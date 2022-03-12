@@ -414,5 +414,23 @@ progridInfos.forEach(progridInfo => {
 
 
 
+// Carousel help fro multiple uses --- Carousel help fro multiple uses ---
+// Carousel help fro multiple uses --- Carousel help fro multiple uses ---
+// Carousel help fro multiple uses --- Carousel help fro multiple uses ---
+
+
+
+// const carousel_all_in_one = document.querySelectorAll('.b-carousel--all-in-one')
+// console.log('👻');
+// carousel_all_in_one.forEach(carousel => {
+
+//   console.log("yes");
+//   var index = +1
+//   var newClass = `b-carousel--all-in-one${index}`
+//   carousel.classList.add(newClass)
+//   console.log('newClass:', newClass);
+// });
+
+
 
 

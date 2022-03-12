@@ -106,6 +106,8 @@ function serve() {
   watch('../sass/**/*.scss', sassFn)
   // ./js/main.js
   watch('../js/main.js', jsFn)
+
+  watch('../js/tiny-slider_init.js', jsFn)
 }
 
 // Set the  default gulp function(s)

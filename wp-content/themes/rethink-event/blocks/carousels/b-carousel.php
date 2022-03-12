@@ -1,9 +1,10 @@
 <?php
 $carousel_items = get_field('carousel_items');
+$index = get_field('index');
 if ($carousel_items) : ?>
 
   <div class="b-carousel-wrapper">
-    <div class="b-carousel b-carousel--all-in-one">
+    <div class="b-carousel b-carousel--all-in-one b-carousel--all-in-one<?php echo $index ?>">
 
       <?php foreach ($carousel_items as $carousel_item) : ?>
 
