@@ -14,7 +14,6 @@
     </div>
 
     <div class="progrid__item progrid__item--no-padding progrid__item--double progrid__item--col-title">
-
       <div class="date"> Thurs 6th October</div>
       <div class="time time--border">AM</div>
       <div class="time">PM</div>
@@ -27,45 +26,61 @@
     <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
       <div class="progrid__item-title progrid__item-title--bold">Sustainable Transformation Theatre (Keynote)</div>
     </div>
-    <div class="progrid__item progrid__item--double">
-      <div class="progrid__item-title">Keynote Address
-        & Opening Welcome
-        -
-        Business of Biodiversity </div>
-      <div class="progrid__item-info" data-link="keynote">
-        <div class="progrid__item-info-text">
 
-          Rethinking systemic transformation towards a net-zero, nature-positive and equitable future</a>
-        </div>
-        <!-- <div class="progrid__item-info-link">
-          <span>link</span>
-        </div> -->
-      </div>
-    </div>
-    <div class="progrid__item progrid__item--double">
-      <div class="progrid__item-title">The Sustainability Imperative
-        in Business
-        -
-        Hong Kong and Beyond: Resetting Our Planet's Trajectory Together
-      </div>
-      <div class="progrid__item-info" data-link="keynote">
+    <div class="progrid__item">
+      <div class="progrid__item-title progrid__item--no-cursor">Keynote Address & Opening Welcome</div>
+      <!-- <div class="progrid__item-info" data-link="keynote">
         <div class="progrid__item-info-text">
-          Rethinking the business and moral imperative for sustainable transformation
+          Rethinking how we finance Hong Kong’s transition to a net-zero future
         </div>
-      </div>
+      </div> -->
     </div>
+    <div class="progrid__item progrid__item--no-cursor">
+      <div class="progrid__item-title">Business for Biodiversity</div>
+      <!-- <div class="progrid__item-info" data-link="keynote">
+        <div class="progrid__item-info-text">
+          Rethinking how we trace and tackle sustainability challenges at source
+        </div>
+      </div> -->
+    </div>
+
+    <div class="progrid__item progrid__item--no-cursor">
+      <div class="progrid__item-title">The Sustainability Imperative for Business</div>
+      <!-- <div class="progrid__item-info" data-link="keynote">
+        <div class="progrid__item-info-text">
+          Rethinking how we finance Hong Kong’s transition to a net-zero future
+        </div>
+      </div> -->
+    </div>
+    <div class="progrid__item progrid__item--no-cursor">
+      <div class="progrid__item-title">Hong Kong and Beyond: Resetting Our Planet's Trajectory Together</div>
+      <!-- <div class="progrid__item-info" data-link="keynote">
+        <div class="progrid__item-info-text">
+          Rethinking how we trace and tackle sustainability challenges at source
+        </div>
+      </div> -->
+    </div>
+
 
   </div>
 
   <div class="progrid__row progrid__row--business">
+
     <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
-      <div class="progrid__item-title progrid__item-title--bold">Sustainable Business Theatre</div>
+      <div class="progrid__item-title progrid__item-title--bold">BEC Sustainable Business Theatre</div>
     </div>
-    <div class="progrid__item progrid__item--double  progrid__item--no-cursor">
-      <div class="progrid__item-title">Coming Soon</div>
-    </div>
+
     <div class="progrid__item progrid__item--double">
-      <div class="progrid__item-title">Rethinking Sustainability for SMEs
+      <div class="progrid__item-title">Mainstreaming Circularity in Business Strategies and Practices</div>
+      <div class="progrid__item-info" data-link="business">
+        <div class="progrid__item-info-text">
+          Rethinking why and how circularity is everyone’s business
+        </div>
+      </div>
+    </div>
+
+    <div class="progrid__item progrid__item--double">
+      <div class="progrid__item-title">Mainstreaming Sustainability for SMEs
         (Cantonese with English interpretation)
       </div>
       <div class="progrid__item-info" data-link="business">
@@ -91,17 +106,14 @@
       </div>
     </div>
     <div class="progrid__item progrid__item--double">
-      <div class="progrid__item-title">Green Monday Food & Nature Summit</div>
+      <div class="progrid__item-title">Green Monday Food & ESG Summit</div>
       <div class="progrid__item-info" data-link="partner">
         <div class="progrid__item-info-text">
-          Rethinking the business of food and natural capital
+          Rethinking the business of food and ESG transformation
         </div>
       </div>
     </div>
-
   </div>
-
-
 
 
   <div class="progrid__row progrid__row--resources">
@@ -128,7 +140,7 @@
       <div class="progrid__item-title">Rethinking Built Spaces</div>
       <div class="progrid__item-info" data-link="resource">
         <div class="progrid__item-info-text">
-          Rethinking our sustainable, vertical city
+          Rethinking our built environment towards net-zero carbon
         </div>
       </div>
     </div>
