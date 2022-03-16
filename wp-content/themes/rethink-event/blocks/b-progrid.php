@@ -167,8 +167,13 @@
         </div>
       </div>
     </div>
-    <div class="progrid__item  progrid__item--no-cursor">
-      <div class="progrid__item-title">Coming Soon</div>
+    <div class="progrid__item">
+      <div class="progrid__item-title">Rethinking Urban Resilience</div>
+      <div class="progrid__item-info" data-link="comm">
+        <div class="progrid__item-info-text">
+          Rethinking and redesigning our cities for resilience – Powered by Farm the City
+        </div>
+      </div>
     </div>
     <div class="progrid__item">
       <div class="progrid__item-title">Rethinking Workforce Transformation</div>
