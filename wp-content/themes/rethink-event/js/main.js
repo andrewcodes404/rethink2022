@@ -392,23 +392,20 @@ function _scrollTo(selector, yOffset = 0) {
 
 }
 
-
-
 const progridInfos = document.querySelectorAll('.progrid__item-info');
-
 progridInfos.forEach(progridInfo => {
-
-
   progridInfo.addEventListener('click', () => {
-    console.log('👻');
-
-
-    console.log(progridInfo.dataset.link);
-
     const target = "#" + progridInfo.dataset.link
-    console.log('target:', target);
     _scrollTo(target, -200);
+  })
+})
 
+const progridNoInfos = document.querySelectorAll('.progrid__item-keynote');
+progridNoInfos.forEach(progridNoInfo => {
+  progridNoInfo.addEventListener('click', () => {
+    console.log('👻');
+    const target = "#" + progridNoInfo.dataset.link
+    _scrollTo(target, -200);
   })
 })
 

@@ -27,15 +27,15 @@
       <div class="progrid__item-title progrid__item-title--bold">Sustainable Transformation Theatre (Keynote)</div>
     </div>
 
-    <div class="progrid__item">
-      <div class="progrid__item-title progrid__item--no-cursor">Keynote Address & Opening Welcome</div>
+    <div class="progrid__item progrid__item-keynote" data-link="keynote">
+      <div class="progrid__item-title">Keynote Address & Opening Welcome</div>
       <!-- <div class="progrid__item-info" data-link="keynote">
         <div class="progrid__item-info-text">
           Rethinking how we finance Hong Kong’s transition to a net-zero future
         </div>
       </div> -->
     </div>
-    <div class="progrid__item progrid__item--no-cursor">
+    <div class="progrid__item progrid__item-keynote" data-link="keynote">
       <div class="progrid__item-title">Business for Biodiversity</div>
       <!-- <div class="progrid__item-info" data-link="keynote">
         <div class="progrid__item-info-text">
@@ -44,7 +44,7 @@
       </div> -->
     </div>
 
-    <div class="progrid__item progrid__item--no-cursor">
+    <div class="progrid__item progrid__item-keynote" data-link="keynote">
       <div class="progrid__item-title">The Sustainability Imperative for Business</div>
       <!-- <div class="progrid__item-info" data-link="keynote">
         <div class="progrid__item-info-text">
@@ -52,7 +52,7 @@
         </div>
       </div> -->
     </div>
-    <div class="progrid__item progrid__item--no-cursor">
+    <div class="progrid__item progrid__item-keynote" data-link="keynote">
       <div class="progrid__item-title">Hong Kong and Beyond: Resetting Our Planet's Trajectory Together</div>
       <!-- <div class="progrid__item-info" data-link="keynote">
         <div class="progrid__item-info-text">
