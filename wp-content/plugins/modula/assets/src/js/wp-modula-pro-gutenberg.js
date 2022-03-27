@@ -12,7 +12,7 @@ const withProFilters = createHigherOrderComponent((ModulaItemsExtraComponent) =>
 	return (props) => {
 
 		useEffect(() => {
-			
+
 			if (undefined != props.attributes.settings.filters && props.attributes.settings.filters.length > 1) {
 				props.setAttributes({ modulaDivClassName: galleryContainerExtraClassName});
 			} else {
@@ -20,7 +20,11 @@ const withProFilters = createHigherOrderComponent((ModulaItemsExtraComponent) =>
 			}
 		}, []);
 
-		if ( undefined == props.attributes.settings.filters || 1 == props.attributes.settings.filters.length) {
+		if ( undefined == props.attributes.settings.filters || 1 == props.attributes.settings.filters.length ) {
+			return <ModulaItemsExtraComponent />;
+		}
+
+		if( 'slider' == props.attributes.settings.type ) {
 			return <ModulaItemsExtraComponent />;
 		}
 		const { position, attributes } = props;
@@ -58,7 +62,7 @@ const withProFilters = createHigherOrderComponent((ModulaItemsExtraComponent) =>
 				'top_bottom' == filterPositioning ? 'horizontal-filters both-horizontal' : 'horizontal-filters';
 		}
 
-		
+
 
 		const filterRender = (
 			<div className={`filters styled-menu menu--${filterStyle} ${filtersAlignmnent}`}>
@@ -98,8 +102,6 @@ const withProFilters = createHigherOrderComponent((ModulaItemsExtraComponent) =>
 			</div>
 		);
 
-		
-
 		if (position == 'top') {
 			if (
 				'top' == filterPositioning ||
@@ -133,6 +135,10 @@ const withProFiltersImage = createHigherOrderComponent((ModulaGalleryImage) => {
 
 		if (undefined == settings.filters || 1 == settings.filters.length) {
 			return <ModulaGalleryImage {...props} />;
+		}
+
+		if( 'slider' == settings.type ) {
+			return <ModulaGalleryImage {...props} />
 		}
 		let filterClassName = '';
 

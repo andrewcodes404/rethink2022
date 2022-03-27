@@ -40,17 +40,11 @@ class Modula_Slideshow {
 	public function __construct() {
 
 		// Load the plugin textdomain.
-		add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
+		add_action( 'init', array( $this, 'set_locale' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
-		add_action( 'modula_scripts_after_wp_modula', array( $this, 'modula_slideshow_backbone' ) ,40);
-		add_action( 'modula_defaults_scripts_after_wp_modula', array( $this, 'modula_slideshow_backbone' ) ,40);
-
-
-		// Filter Modula Slideshow Tab
-		add_filter( 'modula_gallery_tabs', array( $this, 'modula_slideshow_tabs' ), 99 );
-
-		// Filter Modula Slideshow Fields
-		add_filter( 'modula_gallery_fields', array( $this, 'modula_slideshow_fields' ) );
+		add_action( 'modula_scripts_after_wp_modula', array( $this, 'modula_slideshow_backbone' ), 40 );
+		add_action( 'modula_defaults_scripts_after_wp_modula', array( $this, 'modula_slideshow_backbone' ), 40 );
 
 		// Add defaults
 		add_filter( 'modula_lite_default_settings', array( $this, 'set_defaults' ) );
@@ -86,7 +80,7 @@ class Modula_Slideshow {
 	 * @since 1.0.1
 	 */
 	public function plugin_activation() {
-		if ( !class_exists( 'Modula_PRO' ) ) {
+		if ( ! class_exists( 'Modula_PRO' ) ) {
 			deactivate_plugins( plugin_basename( MODULA_SLIDESHOW_FILE ) );
 			wp_die( __( 'Please install and activate Modula Pro before using Modula Slideshow add-on.', 'modula-slideshow' ) );
 
@@ -99,8 +93,8 @@ class Modula_Slideshow {
 	 *
 	 * @since 1.0.0
 	 */
-	public function load_plugin_textdomain() {
-		load_plugin_textdomain( $this->plugin_slug, false, MODULA_SLIDESHOW_PATH . '/languages/' );
+	public function set_locale() {
+		load_plugin_textdomain( $this->plugin_slug, false, dirname( plugin_basename( MODULA_SLIDESHOW_FILE ) ) . '/languages' );
 	}
 
 	/**
@@ -117,10 +111,37 @@ class Modula_Slideshow {
 
 	}
 
+	public function admin_init(){
+
+		if ( class_exists( 'WPChill_Upsells' ) ) {
+
+			$args           = apply_filters(
+				'modula_upsells_args',
+				array(
+					'shop_url' => 'https://wp-modula.com',
+					'slug'     => 'modula',
+				)
+			);
+			$wpchill_upsell = WPChill_Upsells::get_instance( $args );
+
+			if ( $wpchill_upsell && ! $wpchill_upsell->is_upgradable_addon( 'modula-slideshow' ) ) {
+
+				// Filter Modula Slideshow Tab
+				add_filter( 'modula_gallery_tabs', array( $this, 'modula_slideshow_tabs' ), 99 );
+
+				// Filter Modula Slideshow Fields
+				add_filter( 'modula_gallery_fields', array( $this, 'modula_slideshow_fields' ) );
+			}
+		}
+		
+	}
+
 	public function addon_updater( $license_key, $store_url ) {
 
 		if ( class_exists( 'Modula_Pro_Base_Updater' ) ) {
-			$modula_addon_updater = new Modula_Pro_Base_Updater( $store_url, MODULA_SLIDESHOW_FILE,
+			$modula_addon_updater = new Modula_Pro_Base_Updater(
+				$store_url,
+				MODULA_SLIDESHOW_FILE,
 				array(
 					'version' => MODULA_SLIDESHOW_VERSION,        // current version number
 					'license' => $license_key,               // license key (used get_option above to retrieve from DB)
@@ -142,7 +163,7 @@ class Modula_Slideshow {
 	 */
 	public static function get_instance() {
 
-		if ( !isset( self::$instance ) && !( self::$instance instanceof Modula_Slideshow ) ) {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Modula_Slideshow ) ) {
 			self::$instance = new Modula_Slideshow();
 		}
 
@@ -156,7 +177,7 @@ class Modula_Slideshow {
 	 *
 	 * @since 1.0.2
 	 */
-	public function modula_slideshow_backbone(){
+	public function modula_slideshow_backbone() {
 
 		wp_enqueue_script( 'modula-slideshow-conditions', MODULA_SLIDESHOW_URL . 'assets/js/wp-modula-slideshow-conditions.js', array( 'modula-conditions' ), MODULA_SLIDESHOW_VERSION, true );
 
@@ -194,7 +215,6 @@ class Modula_Slideshow {
 			$scripts[] = 'modula-lg-autoplay-script';
 		}
 
-
 		return $scripts;
 	}
 
@@ -208,13 +228,13 @@ class Modula_Slideshow {
 	 */
 	public function modula_slideshow_tabs( $tabs ) {
 
-		if ( !isset( $tabs['slideshow'] ) ) {
+		if ( ! isset( $tabs['slideshow'] ) ) {
 
 			$tabs['slideshow'] = array(
 				'label'       => esc_html__( 'Slideshow', 'modula-slideshow' ),
 				'title'       => esc_html__( 'Lightbox Slideshow Settings', 'modula-slideshow' ),
 				'description' => esc_html__( 'Here you can modify the settings for lightbox slideshow like : autoplay / autoplay time / pause on hover', 'modula-slideshow' ),
-				"icon"        => "dashicons dashicons-images-alt2",
+				'icon'        => 'dashicons dashicons-images-alt2',
 				'priority'    => 110,
 			);
 
@@ -234,61 +254,46 @@ class Modula_Slideshow {
 	 */
 	public function modula_slideshow_fields( $fields ) {
 
-		$licenses_status = get_option( 'modula_pro_license_status', false );
-
-		if ( !$licenses_status || 'valid' != $licenses_status->license ) {
-
-			$fields['slideshow']['modula-slideshow-need-licenses'] = array(
-				"name"     => ' ',
-				"type"     => "content",
-				"content"  => sprintf( esc_html__( 'In order to use slideshow addon with your gallery you\'ll need to activate your license %shere%s.', 'modula-pro' ), '<a href="' . admin_url( 'edit.php?post_type=modula-gallery&page=modula&modula-tab=licenses' ) . '">', '</a>' ),
-				'priority' => 1,
-			);
-
-			return $fields;
-
-		}
-
-		if ( !isset( $fields['slideshow'] ) || !is_array( $fields['slideshow'] ) ) {
+		if ( ! isset( $fields['slideshow'] ) || ! is_array( $fields['slideshow'] ) ) {
 			$fields['slideshow'] = array();
 		}
 
 		// Add slideshow settings
 		$fields['slideshow'] = array(
-			"enable_slideshow" => array(
-				"name"        => esc_html__( 'Enable Slideshow', 'modula-slideshow' ),
-				"type"        => "toggle",
-				"default"     => 0,
+			'enable_slideshow' => array(
+				'name'        => esc_html__( 'Enable Slideshow', 'modula-slideshow' ),
+				'type'        => 'toggle',
+				'default'     => 0,
 				'description' => __( 'Enables slideshow functionality on Modula Galleries', 'modula-slideshow' ),
 				'priority'    => 10,
 			),
-			"enable_autoplay"  => array(
-				"name"        => esc_html__( 'Enable Slideshow Autoplay', 'modula-slideshow' ),
-				"type"        => "toggle",
-				"default"     => 0,
+			'enable_autoplay'  => array(
+				'name'        => esc_html__( 'Enable Slideshow Autoplay', 'modula-slideshow' ),
+				'type'        => 'toggle',
+				'default'     => 0,
 				'description' => __( 'Enables slideshow autoplay functionality on Modula Galleries', 'modula-slideshow' ),
-				'is_child' => true,
+				'is_child'    => true,
 				'priority'    => 11,
 			),
-			"pause_on_hover"   => array(
-				"name"        => esc_html__( 'Pause slideshow on hover', 'modula-slideshow' ),
-				"type"        => "toggle",
-				"default"     => 0,
+			'pause_on_hover'   => array(
+				'name'        => esc_html__( 'Pause slideshow on hover', 'modula-slideshow' ),
+				'type'        => 'toggle',
+				'default'     => 0,
 				'description' => __( 'Enables pausing the slideshow when visitor hovers the gallery', 'modula-slideshow' ),
-				'is_child' => true,
+				'is_child'    => true,
 				'priority'    => 12,
 			),
-			"slideshow_speed"  => array(
-				"name"        => esc_html__( 'Time between slides', 'modula-slideshow' ),
-				"type"        => "ui-slider",
+			'slideshow_speed'  => array(
+				'name'        => esc_html__( 'Time between slides', 'modula-slideshow' ),
+				'type'        => 'ui-slider',
 				'description' => __( 'Set the time of the slideshow, the time between the slides', 'modula-slideshow' ),
-				'is_child' => true,
-				"min"         => 1000,
-				"max"         => 30000,
-				"step"        => 1000,
-				"default"     => 5000,
+				'is_child'    => true,
+				'min'         => 1000,
+				'max'         => 30000,
+				'step'        => 1000,
+				'default'     => 5000,
 				'priority'    => 13,
-			)
+			),
 		);
 
 		return $fields;
@@ -436,7 +441,6 @@ class Modula_Slideshow {
 				$lightboxes_options['lightboxes']['lightgallery']['options']['loop']     = true;
 				$lightboxes_options['lightboxes']['lightgallery']['options']['autoplay'] = $autoplay;
 			}
-
 		}
 
 		return $lightboxes_options;
@@ -461,7 +465,6 @@ class Modula_Slideshow {
 		if ( isset( $source ) ) {
 			switch ( $source ) {
 				case 'envira':
-
 					if ( isset( $guest_settings['config']['slideshow'] ) && 1 == $guest_settings['config']['slideshow'] ) {
 						$modula_settings['enable_slideshow'] = 1;
 					}

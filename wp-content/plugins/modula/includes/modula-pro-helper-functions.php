@@ -158,7 +158,7 @@ function modula_pro_add_filters( $item_data, $item, $settings ) {
  */
 function modula_pro_extra_modula_section_classes($template_data){
 
-	if ( empty( Modula_Pro_Helper::remove_empty_items( $template_data['settings']['filters'] ) ) ) {
+	if ( ! isset( $template_data['settings']['filters'] ) || empty( Modula_Pro_Helper::remove_empty_items( $template_data['settings']['filters'] ) ) ) {
 		return $template_data;
 	}
 

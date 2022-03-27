@@ -57,13 +57,6 @@ class Modula_PRO_Settings {
 		// Add new input for item
 		add_action( 'modula_item_extra_fields', array( $this, 'extra_item_fields' ) );
 
-		// Add license tab
-		add_filter( 'modula_admin_page_tabs', array( $this, 'add_license_tab' ) );
-
-		/* Show pro vs lite tab content */
-		add_action( 'modula_admin_tab_licenses', array( $this, 'show_licenses_tab' ) );
-
-
 		/* Add values for sanitizations */
 		add_filter( 'modula_effect_values', array( $this, 'add_effects_pro' ) );
 
@@ -98,7 +91,6 @@ class Modula_PRO_Settings {
 	public function admin_scripts( $hook ) {
 
 		global $id, $post;
-
 
 		// Get current screen.
 		$screen = get_current_screen();
@@ -206,6 +198,18 @@ class Modula_PRO_Settings {
 	// Modula PRO Tabs
 	public function modula_pro_tabs( $tabs ) {
 
+		$wpchill_upsells = false;
+
+		if ( class_exists( 'WPChill_Upsells' ) ) {
+			// Initialize WPChill upsell class
+			$args = apply_filters( 'modula_upsells_args', array(
+				'shop_url' => 'https://wp-modula.com',
+				'slug'     => 'modula',
+			) );
+
+			$wpchill_upsells = WPChill_Upsells::get_instance( $args );
+		}
+
 		if ( !isset( $tabs['filters'] ) ) {
 			$tabs['filters'] = array(
 				'label'    => esc_html__( 'Filters', 'modula-pro' ),
@@ -216,15 +220,37 @@ class Modula_PRO_Settings {
 			unset( $tabs['filters']['badge'] );
 		}
 
-		$tabs['video']['badge']            = esc_html__( 'not installed', 'modula-pro' );
-		$tabs['misc']['badge']             = esc_html__( 'not installed', 'modula-pro' );
-		$tabs['slideshow']['badge']        = esc_html__( 'not installed', 'modula-pro' );
-		$tabs['password_protect']['badge'] = esc_html__( 'not installed', 'modula-pro' );
-		$tabs['watermark']['badge']        = esc_html__( 'not installed', 'modula-pro' );
-		$tabs['exif']['badge']             = esc_html__( 'not installed', 'modula-pro' );
-		$tabs['download']['badge']         = esc_html__( 'not installed', 'modula-pro' );
-		$tabs['zoom']['badge']             = esc_html__( 'not installed', 'modula-pro' );
+		if ( $wpchill_upsells && ! $wpchill_upsells->is_upgradable_addon( 'modula-video' ) && ! class_exists( 'Modula_Video' ) ) {
+			$tabs['video']['badge']            = esc_html__( 'not installed', 'modula-pro' );
+		}
 
+		if ( $wpchill_upsells && ! $wpchill_upsells->is_upgradable_addon( 'modula-slideshow' ) && ! class_exists( 'Modula_Slideshow' ) ) {
+			$tabs['slideshow']['badge']        = esc_html__( 'not installed', 'modula-pro' );
+		}
+
+		if ( $wpchill_upsells && ! $wpchill_upsells->is_upgradable_addon( 'modula-password-protect' ) && ! class_exists( 'Modula_Password_Protect' ) ) {
+			$tabs['password_protect']['badge'] = esc_html__( 'not installed', 'modula-pro' );
+		}
+
+		if ( $wpchill_upsells && ! $wpchill_upsells->is_upgradable_addon( 'modula-watermark' ) && ! class_exists( 'Modula_Waermark' ) ) {
+			$tabs['watermark']['badge']        = esc_html__( 'not installed', 'modula-pro' );
+		}
+
+		if ( $wpchill_upsells && ! $wpchill_upsells->is_upgradable_addon( 'modula-exif' ) && ! class_exists( 'Modula_Exif' ) ) {
+			$tabs['exif']['badge']             = esc_html__( 'not installed', 'modula-pro' );
+		}
+
+		if ( $wpchill_upsells && ! $wpchill_upsells->is_upgradable_addon( 'modula-download' ) && ! class_exists( 'Modula_Download' ) ) {
+			$tabs['download']['badge']         = esc_html__( 'not installed', 'modula-pro' );
+		}
+
+		if ( $wpchill_upsells && ! $wpchill_upsells->is_upgradable_addon( 'modula-zoom' ) && ! class_exists( 'Modula_Zoom' ) ) {
+			$tabs['zoom']['badge']             = esc_html__( 'not installed', 'modula-pro' );
+		}
+
+		if ( $wpchill_upsells && ( ( ! $wpchill_upsells->is_upgradable_addon( 'modula-deeplink' ) && ! class_exists( 'Modula_Deeplink' ) ) || ( ! $wpchill_upsells->is_upgradable_addon( 'modula-protection' ) && ! class_exists( 'Modula_Protection' ) ) ) ) {
+			$tabs['misc']['badge']             = esc_html__( 'not installed', 'modula-pro' );
+		}
 
 		return $tabs;
 	}
@@ -1280,22 +1306,6 @@ class Modula_PRO_Settings {
 		return $fields;
 
 	}
-
-	public function add_license_tab( $tabs ) {
-
-		$tabs['licenses'] = array(
-			'label'    => esc_html__( 'Licenses', 'modula-pro' ),
-			'priority' => -1,
-		);
-
-		return $tabs;
-
-	}
-
-	public function show_licenses_tab() {
-		include 'tabs/license.php';
-	}
-
 
 	public function add_effects_pro( $values ) {
 

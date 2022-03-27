@@ -2,9 +2,9 @@
 Contributors: wpchill, silkalns
 Tags: best gallery plugin, image gallery, video gallery, free gallery, wordpress gallery plugin, best gallery plugin, masonry gallery, media gallery, portfolio gallery, simple gallery, responsive gallery, photo gallery, grid gallery, product gallery, 
 Requires at least: 5.2
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.5.5
+Stable tag: 2.6.3
 License: GNU General Public License v3.0 or later
 
 The WordPress gallery plugin that's highlighy customizable & you can use to impress your clients. Create beautiful image galleries in minutes.
@@ -183,18 +183,6 @@ This errors means that the browser doesn't know the Modula JavaScript plugin, mo
 = Why does some image look blurry ? =
 
 If you get blurry and pixellated images then you need to raise the "Minimum image width" parameter inside the "General" section.
-
-= I want to use another lightbox instead of the provided one =
-
-The PRO license bundles 6 different lightboxes. However you can use any other lightbox you want also with the Lite license. If you have installed a lightbox plugin then you just need to select "Direct link to image" in the "Lightbox" settings.
-
-= How can I change the lightbox's background? =
-
-You can change the lightbox popup background color using the following code:
-
-  `body .lg-backdrop {
-    background-color: white;
-    }`
 
 = How can I get support? =
 

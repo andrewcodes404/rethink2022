@@ -1,3 +1,13 @@
+= 2.6.0 - 18/02/2022 =
+Added: Settings tab notification for addons avaliable but not installed.
+Changed: Update license checker submodule
+Changed: Gallery title html element (from h2 to div), css as the selector is not longer h2 - https://github.com/WPChill/modula-lite/issues/495
+Changed: Access limitation based on license validation
+Changed: Upsells output
+Fixed: Image sorting based on date
+Fixed: Closing button always last
+Fixed : Filters would display in Gutenberg post editor when having slider gallery type
+
 = 2.5.3 - 26.07.2021 =
 Fixed: Method assignment for upsells
 Fixed: License activation/deactivation
@@ -49,7 +59,7 @@ Added the Install & Activate LITE Notice
 Added Gutenberg block for Modula Link
 Fix for Lily hover effect stretching the image
 Typos fixes
-Fixed migration data 
+Fixed migration data
 Preparation for Modula Defaults
 
 = 2.3.3 - 17/08/2020 =

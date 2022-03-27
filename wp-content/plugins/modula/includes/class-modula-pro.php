@@ -10,7 +10,11 @@
  */
 class Modula_PRO {
 
+	private $license = false;
+
 	function __construct() {
+
+		$this->license = self::check_for_license();
 
 		$this->load_dependencies();
 
@@ -19,7 +23,7 @@ class Modula_PRO {
 			return;
 		}
 
-		$wpchill_license_checker = new Wpchill_License_Checker( $this->get_license_checker_args() );
+		$wpchill_license_checker = Wpchill_License_Checker::get_instance( 'modula', $this->get_license_checker_args() );
 
 		add_action( 'init', array( $this, 'set_locale' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_gallery_scripts' ) );
@@ -46,8 +50,6 @@ class Modula_PRO {
 		add_filter( 'modula_gallery_images', array( $this, 'modula_pro_max_count' ), 10, 2 );
 		add_filter( 'modula_pagination_links', array( $this, 'modula_pro_max_count' ), 10, 2 );
 		add_action( 'modula_shortcode_after_items', array( $this, 'output_removed_items' ), 10, 3 );
-		// Remove Albums upsell metabox
-		add_action( 'do_meta_boxes', array( $this, 'remove_albums_upsell_metabox' ), 16, 1 );
 
 		// Shortpixel fix
 		add_filter( 'modula_shortcode_item_data', array( $this, 'shortpixel_fix' ), 99, 3 );
@@ -57,6 +59,7 @@ class Modula_PRO {
 
 		// Output lightboxes options
 		add_filter( 'modula_fancybox_options', array( $this, 'output_lightbox_options' ), 10, 2 );
+		add_filter( 'modula_fancybox_options', array( $this, 'output_lightbox_close_button' ), 9999, 2 );
 		add_action( 'modula_extra_scripts', array( $this, 'check_for_fonts' ) );
 
 		add_filter( 'modula_shortcode_item_data', array( $this, 'modula_pro_extra_item_data' ), 16, 3 );
@@ -70,28 +73,42 @@ class Modula_PRO {
 		// Add new path for templates
 		add_filter( 'modula_template_paths', array( $this, 'add_modula_pro_templates_path' ), 20 );
 
-		// Alter Shortcode column
-		$cpt_name = apply_filters( 'modula_cpt_name', 'modula-gallery' );
-		add_action( "manage_{$cpt_name}_posts_custom_column", array( $this, 'output_column' ), 20, 2 );
-		add_action( 'modula_admin_after_shortcode_metabox', array( $this, 'output_link_shortcode' ) );
-
-		add_action( 'admin_notices', array( $this, 'modula_license_notices' ), 99 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'modula_pro_license_check' ) );
-
 		add_filter( 'modula_gallery_template_data', array( $this, 'filter_class_helper' ), 20, 1 );
-
-		add_filter( 'modula_uninstall_db_options', array( $this, 'uninstall_process' ), 25, 1 );
-		add_filter( 'modula_uninstall_transients', array( $this, 'uninstall_process_transients' ), 25, 1 );
 
 		add_action( 'modula_shortcode_before_items', array( $this, 'modula_gallery_title' ), 5 );
 
-		// Enqueue block assets
-		add_action( 'modula_block_style', array( $this, 'enqueue_modula_block_styles') );
-		add_action( 'modula_block_scripts', array( $this, 'enqueue_modula_block_scripts') );
+		if ( is_admin() ) {
 
-		add_filter( 'modula_debug_information', array( $this, 'debug_information' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'license_script' ) );
 
+			// Add license tab
+			add_filter( 'modula_admin_page_tabs', array( $this, 'add_license_tab' ) );
 
+			// Show the license tab content.
+			add_action( 'modula_admin_tab_licenses', array( $this, 'show_licenses_tab' ) );
+
+			add_action( 'admin_notices', array( $this, 'modula_license_notices' ), 99 );
+			add_action( 'admin_enqueue_scripts', array( $this, 'modula_pro_license_check' ) );
+			add_filter( 'modula_debug_information', array( $this, 'debug_information' ) );
+			add_filter( 'modula_uninstall_db_options', array( $this, 'uninstall_process' ), 25, 1 );
+			add_filter( 'modula_uninstall_transients', array( $this, 'uninstall_process_transients' ), 25, 1 );
+			// Alter Shortcode column
+			$cpt_name = apply_filters( 'modula_cpt_name', 'modula-gallery' );
+
+			// Add needed filters onlyu if there is a license.
+			if ( $this->license ) {
+
+				// Remove Albums upsell metabox.
+				add_action( 'do_meta_boxes', array( $this, 'remove_albums_upsell_metabox' ), 16, 1 );
+				add_action( "manage_{$cpt_name}_posts_custom_column", array( $this, 'output_column' ), 20, 2 );
+				add_action( 'modula_admin_after_shortcode_metabox', array( $this, 'output_link_shortcode' ) );
+
+				// Enqueue block assets.
+				add_action( 'modula_block_style', array( $this, 'enqueue_modula_block_styles') );
+				add_action( 'modula_block_scripts', array( $this, 'enqueue_modula_block_scripts') );
+
+			}
+		}
 	}
 
 	/**
@@ -117,6 +134,31 @@ class Modula_PRO {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Lets check for license
+	 *
+	 * @return bool
+	*
+	* @since 2.5.2
+	* @since 2.5.6 moved here from class-modula-pro-upsells.php.
+	*/
+	public static function check_for_license() {
+
+		$license_status = get_option( 'modula_pro_license_status' );
+
+		// If the option is false it means it is empty
+		if ( ! $license_status ) {
+			return null;
+		}
+
+		// There is no license or license is not valid anymore, so we get all packages
+		if ( 'valid' != $license_status->license ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -265,7 +307,6 @@ class Modula_PRO {
 
 		}
 
-
 		return $item_data;
 	}
 
@@ -274,8 +315,6 @@ class Modula_PRO {
 
 		require_once MODULA_PRO_PATH . 'includes/modula-pro-helper-functions.php';
 		require_once MODULA_PRO_PATH . 'includes/class-modula-pro-helper.php';
-		require_once MODULA_PRO_PATH . 'includes/admin/class-modula-pro-settings.php';
-		require_once MODULA_PRO_PATH . 'includes/class-modula-pro-gutenberg.php';
 		require_once MODULA_PRO_PATH . 'includes/class-modula-pro-backwards-compatibility.php';
 		require_once MODULA_PRO_PATH . 'includes/license-checker/class-wpchill-license-checker.php';
 
@@ -283,11 +322,16 @@ class Modula_PRO {
 			require_once MODULA_PRO_PATH . 'includes/admin/class-modula-pro-addon.php';
 			require_once MODULA_PRO_PATH . 'includes/admin/modula-pro-addon-ajax.php';
 			require_once MODULA_PRO_PATH . 'includes/admin/class-modula-pro-license-activator.php';
-			require_once MODULA_PRO_PATH . 'includes/admin/class-modula-pro-migrate.php';
 			// Load the PRO Smart Upsells
 			require_once MODULA_PRO_PATH . 'includes/admin/class-modula-pro-upsells.php';
-		}
 
+			// Load only license specific files.
+			if ( $this->license ) {
+				require_once MODULA_PRO_PATH . 'includes/admin/class-modula-pro-settings.php';
+				require_once MODULA_PRO_PATH . 'includes/class-modula-pro-gutenberg.php';
+				require_once MODULA_PRO_PATH . 'includes/admin/class-modula-pro-migrate.php';
+			}
+		}
 	}
 
 	// Register all pro scripts & style in order to be enqueue
@@ -306,6 +350,10 @@ class Modula_PRO {
 
 
 	public function check_for_fonts( $settings ) {
+
+		if ( ! isset( $settings['captionsFontFamily'] ) || ! isset( $settings['titleFontFamily'] )  ) {
+			return;
+		}
 
 		if ( 'Default' == $settings['captionsFontFamily'] && 'Default' == $settings['titleFontFamily'] ) {
 			return;
@@ -439,10 +487,6 @@ class Modula_PRO {
 			$fancybox_options['buttons'][] = 'thumbs';
 		}
 
-		if ( isset( $settings['lightbox_close'] ) && '1' == $settings['lightbox_close'] ) {
-			$fancybox_options['buttons'][] = 'close';
-		}
-
 		if ( isset( $settings['lightbox_keyboard'] ) && '1' == $settings['lightbox_keyboard'] ) {
 			$fancybox_options['keyboard'] = true;
 		} else {
@@ -512,16 +556,38 @@ class Modula_PRO {
 		}
 
 		// Set caption for mobile versions
-		if ( wp_is_mobile() ){
-			if ( isset( $settings['mobile_caption_overlap'] ) && '1' == $settings['mobile_caption_overlap'] ){
-				$fancybox_options['preventCaptionOverlap'] = true;
+		if ( wp_is_mobile() ) {
+			if ( isset( $settings['mobile_caption_overlap'] ) && '1' == $settings['mobile_caption_overlap'] ) {
+				$fancybox_options['preventCaptionOverlap']           = true;
+				$fancybox_options['mobile']['preventCaptionOverlap'] = true;
 			} else {
-				$fancybox_options['preventCaptionOverlap'] = false;
+				$fancybox_options['preventCaptionOverlap']           = false;
+				$fancybox_options['mobile']['preventCaptionOverlap'] = false;
 			}
 		}
 
 		return $fancybox_options;
 
+	}
+
+	/**
+	 * Add close button
+	 * Desc: We add this way in order for the Close button to always be the last one
+	 *
+	 * @param $fancybox_options
+	 * @param $settings
+	 *
+	 * @return array
+	 *
+	 * @since 2.5.4
+	 */
+	public function output_lightbox_close_button( $fancybox_options, $settings ) {
+
+		if ( isset( $settings['lightbox_close'] ) && '1' == $settings['lightbox_close'] ) {
+			$fancybox_options['buttons'][] = 'close';
+		}
+
+		return $fancybox_options;
 	}
 
 	// Add extra scripts for shortcode to enqueue
@@ -549,6 +615,7 @@ class Modula_PRO {
 
 	// Add extra parameter for javascript config
 	public function modula_pro_config( $js_config, $settings ) {
+		
 		$js_config['lightbox'] = $settings['lightbox'];
 
 		if ( apply_filters( 'modula_disable_lightboxes', true ) && !in_array( $settings['lightbox'], array( 'no-link', 'direct', 'attachment-page' ) ) ) {
@@ -567,7 +634,7 @@ class Modula_PRO {
 			}
 		}
 
-		$js_config['defaultActiveFilter'] = esc_attr( sanitize_title( $settings['defaultActiveFilter'] ) );
+		$js_config['defaultActiveFilter'] = ( isset($settings['defaultActiveFilter']) ) ? esc_attr( sanitize_title( $settings['defaultActiveFilter'] ) ) : false;
 		$js_config['initLightbox']        = 'modula_pro_init_lightbox';
 
 		$js_config['haveFilters'] = 0;
@@ -598,57 +665,62 @@ class Modula_PRO {
 
 	public function generate_new_css( $css, $gallery_id, $settings ) {
 
-		$css .= "#{$gallery_id} .modula-item .modula-item-overlay, #{$gallery_id} .modula-item.effect-layla, #{$gallery_id}  .modula-item.effect-ruby,#{$gallery_id} .modula-item.effect-bubba,#{$gallery_id} .modula-item.effect-sarah,#{$gallery_id} .modula-item.effect-milo,#{$gallery_id} .modula-item.effect-julia,#{$gallery_id} .modula-item.effect-hera,#{$gallery_id} .modula-item.effect-winston,#{$gallery_id} .modula-item.effect-selena,#{$gallery_id} .modula-item.effect-terry,#{$gallery_id} .modula-item.effect-phoebe,#{$gallery_id} .modula-item.effect-apollo,#{$gallery_id} .modula-item.effect-steve,#{$gallery_id} .modula-item.effect-ming{ background-color:" . modula_pro_sanitize_color( $settings['hoverColor'] ) . "; }";
+		if ( isset( $settings['hoverColor'] ) ) {
+		
+			$css .= "#{$gallery_id} .modula-item .modula-item-overlay, #{$gallery_id} .modula-item.effect-layla, #{$gallery_id}  .modula-item.effect-ruby,#{$gallery_id} .modula-item.effect-bubba,#{$gallery_id} .modula-item.effect-sarah,#{$gallery_id} .modula-item.effect-milo,#{$gallery_id} .modula-item.effect-julia,#{$gallery_id} .modula-item.effect-hera,#{$gallery_id} .modula-item.effect-winston,#{$gallery_id} .modula-item.effect-selena,#{$gallery_id} .modula-item.effect-terry,#{$gallery_id} .modula-item.effect-phoebe,#{$gallery_id} .modula-item.effect-apollo,#{$gallery_id} .modula-item.effect-steve,#{$gallery_id} .modula-item.effect-ming{ background-color:" . modula_pro_sanitize_color( $settings['hoverColor'] ) . "; }";
 
-		$css .= "#{$gallery_id}  .modula-item.effect-oscar { background: -webkit-linear-gradient(45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#9b4a1b 40%," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 100%);background: linear-gradient(45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#9b4a1b 40%," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 100%);}";
+			$css .= "#{$gallery_id}  .modula-item.effect-oscar { background: -webkit-linear-gradient(45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#9b4a1b 40%," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 100%);background: linear-gradient(45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#9b4a1b 40%," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 100%);}";
 
-		$css .= "#{$gallery_id}  .modula-item.effect-roxy {background: -webkit-linear-gradient(45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#05abe0 100%);background: linear-gradient(45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#05abe0 100%);}";
+			$css .= "#{$gallery_id}  .modula-item.effect-roxy {background: -webkit-linear-gradient(45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#05abe0 100%);background: linear-gradient(45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#05abe0 100%);}";
 
-		$css .= "#{$gallery_id} .modula-item.effect-dexter {background: -webkit-linear-gradient(top," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,rgba(104,60,19,1) 100%); background: linear-gradient(to bottom," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,rgba(104,60,19,1) 100%);}";
+			$css .= "#{$gallery_id} .modula-item.effect-dexter {background: -webkit-linear-gradient(top," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,rgba(104,60,19,1) 100%); background: linear-gradient(to bottom," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,rgba(104,60,19,1) 100%);}";
 
-		$css .= "#{$gallery_id}  .modula-item.effect-jazz {background: -webkit-linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#f33f58 100%);background: linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#f33f58 100%);}";
+			$css .= "#{$gallery_id}  .modula-item.effect-jazz {background: -webkit-linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#f33f58 100%);background: linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#f33f58 100%);}";
 
-		$css .= "#{$gallery_id} .modula-item.effect-lexi {background: -webkit-linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#fff 100%);background: linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#fff 100%);}";
+			$css .= "#{$gallery_id} .modula-item.effect-lexi {background: -webkit-linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#fff 100%);background: linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#fff 100%);}";
 
-		$css .= "#{$gallery_id} .modula-item.effect-duke {background: -webkit-linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#cc6055 100%);background: linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#cc6055 100%);}";
+			$css .= "#{$gallery_id} .modula-item.effect-duke {background: -webkit-linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#cc6055 100%);background: linear-gradient(-45deg," . modula_pro_sanitize_color( $settings['hoverColor'] ) . " 0,#cc6055 100%);}";
+		}
 
-		if ( absint( $settings['hoverOpacity'] ) <= 100 && 'none' != $settings['effect'] ) {
+		if ( isset( $settings['hoverOpacity'] ) && isset( $settings['effect'] ) && absint( $settings['hoverOpacity'] ) <= 100 && 'none' != $settings['effect'] ) {
 			$css .= "#{$gallery_id} .modula-item:hover img { opacity: " . (1 - absint( $settings['hoverOpacity'] ) / 100) . "; }";
 		}
 
 		// Settings for cursor preview
-		if ( 'custom' == $settings['cursor'] && $settings['uploadCursor'] != 0 ) {
+		if ( isset( $settings['cursor'] ) && isset( $settings['uploadCursor'] ) && 'custom' == $settings['cursor'] && $settings['uploadCursor'] != 0 ) {
 			$image_src = wp_get_attachment_image_src( $settings['uploadCursor'] );
 			$css       .= "#{$gallery_id} .modula-item > a, #{$gallery_id} .modula-item, #{$gallery_id} .modula-item-content > a { cursor:url(" . esc_url( $image_src[0] ) . "),auto ; } ";
 		}
 
 		//Settings for font family caption and title
-		if ( 'Default' != $settings['captionsFontFamily'] && '' != $settings['captionsFontFamily'] ) {
+		if ( isset( $settings['captionsFontFamily'] ) && 'Default' != $settings['captionsFontFamily'] && '' != $settings['captionsFontFamily'] ) {
 			$css .= "#{$gallery_id} .description{ font-family:" . esc_attr( $settings['captionsFontFamily'] ) . "; }";
 		}
 
-		if ( 'Default' != $settings['titleFontFamily'] && '' != $settings['titleFontFamily'] ) {
+		if ( isset( $settings['titleFontFamily'] ) &&  'Default' != $settings['titleFontFamily'] && '' != $settings['titleFontFamily'] ) {
 			$css .= "#{$gallery_id} .jtg-title{ font-family:" . esc_attr( $settings['titleFontFamily'] ) . "; }";
 		}
 		// End of font family caption and title
 
 		//Settings for Title Font Weight
-		if ( 'default' != $settings['titleFontWeight'] ) {
+		if ( isset( $settings['titleFontWeight'] ) &&  'default' != $settings['titleFontWeight'] ) {
 			$css .= "#{$gallery_id} .jtg-title {font-weight:" . esc_attr( $settings['titleFontWeight'] ) . "; }";
 		}
 
 
 		//Settings for Captions Font Weight
-		if ( 'default' != $settings['captionFontWeight'] ) {
+		if ( isset( $settings['captionFontWeight'] ) && 'default' != $settings['captionFontWeight'] ) {
 			$css .= "#{$gallery_id} p.description {font-weight:" . esc_attr( $settings['captionFontWeight'] ) . "; }";
 		}
 
-		$css .= "#{$gallery_id}:not(.modula-loaded-scale)  .modula-item .modula-item-content { transform: scale(" . sanitize_text_field( $settings['loadedScale'] ) / 100 . ") translate(" . sanitize_text_field( $settings['loadedHSlide'] ) . 'px,' . sanitize_text_field( $settings['loadedVSlide'] ) . "px) rotate(" . sanitize_text_field( $settings['loadedRotate'] ) . "deg); }";
+		if ( isset( $settings['loadedHSlide'] ) && isset( $settings['loadedScale'] ) && isset( $settings['loadedVSlide'] ) && isset( $settings['loadedRotate'] ) ) {
+			$css .= "#{$gallery_id}:not(.modula-loaded-scale)  .modula-item .modula-item-content { transform: scale(" . sanitize_text_field( $settings['loadedScale'] ) / 100 . ") translate(" . sanitize_text_field( $settings['loadedHSlide'] ) . 'px,' . sanitize_text_field( $settings['loadedVSlide'] ) . "px) rotate(" . sanitize_text_field( $settings['loadedRotate'] ) . "deg); }";
 
-		$css .= "@keyframes modulaScaling { 0% {transform: scale(1) translate(0px,p0x) rotate(0deg);} 50%{transform: scale(" . sanitize_text_field( $settings['loadedScale'] ) / 100 . ") translate(" . sanitize_text_field( $settings['loadedHSlide'] ) . 'px,' . sanitize_text_field( $settings['loadedVSlide'] ) . "px) rotate(" . sanitize_text_field( $settings['loadedRotate'] ) . "deg);}100%{transform: scale(1) translate(0px,p0x) rotate(0deg);}}";
+			$css .= "@keyframes modulaScaling { 0% {transform: scale(1) translate(0px,p0x) rotate(0deg);} 50%{transform: scale(" . sanitize_text_field( $settings['loadedScale'] ) / 100 . ") translate(" . sanitize_text_field( $settings['loadedHSlide'] ) . 'px,' . sanitize_text_field( $settings['loadedVSlide'] ) . "px) rotate(" . sanitize_text_field( $settings['loadedRotate'] ) . "deg);}100%{transform: scale(1) translate(0px,p0x) rotate(0deg);}}";
+		}
 
 		// Filter Text Alignment
-		if ( 'none' != $settings['filterTextAlignment'] ) {
+		if ( isset( $settings['filterTextAlignment'] ) && 'none' != $settings['filterTextAlignment'] ) {
 			$css .= '#' . $gallery_id . '.modula-gallery .filters { text-align: ' . esc_attr( $settings['filterTextAlignment'] ) . ';}';
 		}
 
@@ -775,15 +847,15 @@ class Modula_PRO {
 
 	public function output_removed_items( $settings, $item_data, $images ) {
 
-		if ( absint( $settings['maxImagesCount'] ) == 0 && !wp_is_mobile() ) {
+		if ( ! isset( $settings['maxImagesCount'] ) || ( absint( $settings['maxImagesCount'] ) == 0 && !wp_is_mobile() ) ) {
 			return;
 		}
 
-		if ( absint( $settings['maxImagesCount_mobile'] ) == 0 && wp_is_mobile() ){
+		if ( ! isset( $settings['maxImagesCount_mobile'] ) || ( absint( $settings['maxImagesCount_mobile'] ) == 0 && wp_is_mobile() ) ){
 			return;
 		}
 
-		if ( absint( $settings['showAllOnLightbox'] ) != 1 ) {
+		if ( ! isset( $settings['showAllOnLightbox'] ) || absint( $settings['showAllOnLightbox'] ) != 1 ) {
 			return;
 		}
 
@@ -1307,7 +1379,7 @@ class Modula_PRO {
 	public function modula_gallery_title( $settings ) {
 
 		$title = get_the_title( explode( '-', $settings['gallery_id'] )[1] );
-		if ( '1' == $settings['show_gallery_title'] ) {
+		if ( isset( $settings['show_gallery_title'] ) && '1' == $settings['show_gallery_title'] ) {
 
 			echo " <" . esc_attr( $settings['gallery_title_type'] ) . " class='modula-gallery-title'> " . esc_html( $title ) . " </" . esc_attr( $settings['gallery_title_type'] ) . "> ";
 		}
@@ -1329,13 +1401,13 @@ class Modula_PRO {
 	 */
 	public function enqueue_modula_block_scripts() {
 		$screen = get_current_screen();
-		if( $screen->base != 'post' || $screen->base != 'page' ) {
+		if( $screen->base != 'post' && $screen->base != 'page' ) {
 			return;
 		}
-
 		wp_enqueue_script( 'modula-pro-gutenberg', MODULA_PRO_URL . 'assets/js/admin/modula_pro.js', array( 'jquery' ), MODULA_PRO_VERSION, true );
 		wp_enqueue_script( 'modula-pro', MODULA_PRO_URL . 'assets/js/modula-pro.js', array( 'jquery' ), MODULA_PRO_VERSION, true );
 		wp_enqueue_script( 'modula-pro-tilt', MODULA_PRO_URL . 'assets/js/modula-pro-tilt.min.js', array( 'jquery' ), MODULA_PRO_VERSION, true );
+
 	}
 
 	/**
@@ -1405,6 +1477,62 @@ class Modula_PRO {
 		);
 
 		return $args;
+	}
+
+	/**
+	 * Add the license tab.
+	 *
+	 * @param [type] $tabs
+	 * @return void
+	 * @since 2.5.6 - has been moved from class-modula-pro-settings.php here in order to preserve the license tab
+	 *                if the user doesn't have a valid license.
+	 */
+	public function add_license_tab( $tabs ) {
+
+		$tabs['licenses'] = array(
+			'label'    => esc_html__( 'Licenses', 'modula-pro' ),
+			'priority' => -1,
+		);
+
+		return $tabs;
+
+	}
+
+	/**
+	 * Show the license tab content
+	 *
+	 * @return void
+	 * @since 2.5.6 - has been moved from class-modula-pro-settings.php here in order to preserve the license tab
+	 *                if the user doesn't have a valid license.
+	 */
+	public function show_licenses_tab() {
+		include 'admin/tabs/license.php';
+	}
+
+	/**
+	 * The license script
+	 *
+	 * @return void
+	 * @since 2.5.6 Moved here from class-modula-pro-settings.php for limtation reasons.
+	 */
+	public function license_script() {
+		global $id, $post;
+
+
+		// Get current screen.
+		$screen = get_current_screen();
+
+		// Add license protection scrip
+		// Previous was inline
+		if ( 'modula-gallery_page_modula' == $screen->base ){
+			wp_enqueue_script( 'modula-license-protection_activation', MODULA_PRO_URL . 'assets/js/license-protection_activation.js', array( 'jquery' ), MODULA_PRO_VERSION, true );
+			wp_localize_script( 'modula-license-protection_activation', 'modulaLicense', array(
+				'nonce'   => wp_create_nonce( 'modula_license_save' ),
+				'ajaxURL' => admin_url( 'admin-ajax.php' ),
+				'activatingLicense' => esc_html__('Activating license. Please wait...','modula-pro'),
+				'deactivatingLicense' => esc_html__('Deactivating license. Please wait...','modula-pro'),
+			) );
+		}
 	}
 
 }

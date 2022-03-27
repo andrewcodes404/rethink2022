@@ -73,8 +73,8 @@
 		// mouse over/ mouse out
 		jQuery('#swipebox-slider').on('mouseover', function () {
 
-			if ( '0' == pauseOnHover ) {
-				return true;
+			if ( '0' == pauseOnHover || '0' == options.enableAutoplay) {
+				return ;
 			}
 
 			// if manually paused by user don't do function
@@ -89,7 +89,7 @@
 
 		jQuery('#swipebox-slider').on('mouseout', function () {
 
-			if ( '0' == pauseOnHover ) {
+			if ( '0' == pauseOnHover || '0' == options.enableAutoplay ) {
 				return true;
 			}
 
@@ -128,7 +128,7 @@
 
 		jQuery('.mfp-wrap .mfp-figure').on('mouseover', function () {
 
-			if ( '0' == pauseOnHover ) {
+			if ( '0' == pauseOnHover  || '0' == options.enableAutoplay) {
 				return true;
 			}
 
@@ -144,7 +144,7 @@
 
 		jQuery('.mfp-wrap .mfp-figure').on('mouseout', function () {
 
-			if ( '0' == pauseOnHover ) {
+			if ( '0' == pauseOnHover || '0' == options.enableAutoplay ) {
 				return true;
 			}
 
@@ -189,32 +189,35 @@
 	});
 
 	// Fancybox
-	jQuery(document).on('modula_fancybox_lightbox_after_show', function (event, instance) {
+	jQuery( document ).on( 'modula_fancybox_lightbox_after_show', function ( event, instance ) {
 
-		var options = instance.options,
-			$element = instance.$element,
-			pauseOnHover = options.pauseOnHover,
-			modulaFancybox = jQuery.modulaFancybox.getInstance(),
-			paused;
+		var options        = instance.options,
+		    $element       = instance.$element,
+		    pauseOnHover   = options.pauseOnHover,
+		    modulaFancybox = jQuery.modulaFancybox.getInstance(),
+		    paused = false;
 
 		if ( '1' == pauseOnHover ) {
 
-			jQuery('.modula-fancybox-container .modula-fancybox-stage .modula-fancybox-content').on('mouseover', function (e) {
+			jQuery( '.modula-fancybox-container .modula-fancybox-stage .modula-fancybox-content' ).on( 'mouseover', function ( e ) {
 
-				modulaFancybox.SlideShow.stop();
-				paused = true;
-			});
+				if ( modulaFancybox.SlideShow.isActive ) {
+					modulaFancybox.SlideShow.stop();
+					paused = true;
+				}
 
-			jQuery('.modula-fancybox-container .modula-fancybox-stage .modula-fancybox-content').on('mouseout', function (e) {
+			} );
 
-				if(paused){
+			jQuery( '.modula-fancybox-container .modula-fancybox-stage .modula-fancybox-content' ).on( 'mouseout', function ( e ) {
+
+				if ( paused ) {
 					modulaFancybox.SlideShow.start();
 					paused = false;
 				}
 
-			});
+			} );
 		}
-	});
+	} );
 
 	// Lightbox2
 	function initLightbox2(options) {

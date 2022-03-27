@@ -1,3 +1,10 @@
+= 1.0.6 - 25.01.2022 =
+Fixed: Private link from vimeo
+Fixed: Notices/Warnings
+Changed: Changed "plugins_loaded" priority to 75
+Added: Check if License includes Modula Video
+Added: Setting for video thumbnail https://github.com/WPChill/modula-pro/issues/407
+
 = 1.0.5 -  =
 Fixed play icon not clickable when using "Under image" hover effect
 Fixed .mov file issue not being played

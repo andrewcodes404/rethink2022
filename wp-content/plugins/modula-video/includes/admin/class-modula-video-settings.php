@@ -16,12 +16,17 @@ class Modula_Video_Setings {
 		// Filter Modula Fields
 		add_filter( 'modula_gallery_fields', array( $this, 'modula_video_fields' ) );
 
-		// Filter Defaults
-		add_filter( 'modula_lite_default_settings', array( $this, 'default_settings' ) );
-
 		// Save Filters for our items
         add_filter( 'modula_gallery_image_attributes', array( $this, 'add_item_fields' ) );
+
+		// Save Filters for our resonsive-input types
+        add_filter( 'modula_render_responsive-input_field_type', array( $this, 'edit_icon_size_fields' ),10,3 ); 
+
+        // Backwards compatibility for responsive-input types
+        add_filter( 'modula_admin_field_value', array( $this, 'backward_compatibility_responsive_video_icon' ), 15, 3 );
+        add_filter( 'modula_backbone_settings', array( $this, 'backward_compatibility_backbone_responsive_video_icon' ), 15 );
         
+
         // Custom video icon upload field type
         add_filter( 'modula_render_video_icon_upload_field_type', array( $this, 'video_icon_upload_field_type' ), 10, 5 );
 
@@ -92,9 +97,9 @@ class Modula_Video_Setings {
             "autoplay-videos"   => array(
                 "name"        => esc_html__('Autoplay Videos', 'modula-video'),
                 "type"        => "toggle",
-                "description" => esc_html__('Enable this option to autoplay your videos.', 'modula-video'),
+                "description" => esc_html__('Enable this option to autoplay your videos in the lightbox.', 'modula-video'),
                 "default"     => 0,
-                "afterrow"    => __('On iOS, Autoplay is supported only for self hosted videos. The videos will autoplay on mute. For more details check : <a target="_blank" href="https://webkit.org/blog/6784/new-video-policies-for-ios"> video policies </a> ', 'modula-video'),
+                "afterrow"    => wp_kses_post('On iOS, Autoplay is supported only for self hosted videos. The videos will autoplay on mute. For more details check : <a target="_blank" href="https://webkit.org/blog/6784/new-video-policies-for-ios"> video policies </a> ', 'modula-video'),
                 'priority'    => 1,
             ),
 
@@ -131,46 +136,25 @@ class Modula_Video_Setings {
                 "name"        => esc_html__( 'Play Icon Colour', 'modula-video' ),
                 "type"        => "color",
                 "description" => esc_html__( 'Set the colour of your video icon.', 'modula-video' ),
-                "default"     => "#ffffff",
+                "default"     => "#FFF",
+                'alpha'       => true,
                 "is_child"    => true,
                 'priority'    => 15,
             ),
 
-            "video-icon-size"   => array(
+            "play-icon-size"   => array(
                 "name"        => esc_html__( 'Play Icon Size', 'modula-video'),
-                "type"        => 'text',
-                "default"     => "30px",
-                "description" => esc_html__( 'Please use pixels or % depending on the one you want to use.', 'modula-video'),
+                "type"        => 'responsive-input',
+                "default"     => array( 30, 30, 30 ),
+                "description" => esc_html__( 'Please play button size in pixels.', 'modula-video'),
                 "is_child"    => true,
                 "priority"    => 20,
             ),
 
         );
         
-        $fields['video']['video-icon-color']['alpha']    = true;
 
         return $fields;
-
-	}
-
-	/**
-     * Add default for item's video url.
-     *
-     * @since 1.0.0
-     *
-     * @return array $defaults.
-     */
-	public function default_settings( $defaults ) {
-
-        $defaults['video_url']         = '';
-        $defaults['autoplay-videos']   = 0;
-        $defaults['show-video-icon']   = 1;
-        $defaults['use-custom-icon']   = 0;
-        $defaults['custom-video-icon'] = 0;
-        $defaults['video-icon-color']  = '#ffffff';
-        $defaults['video-icon-size']   = '30px';
-
-		return $defaults;
 
 	}
 
@@ -184,10 +168,17 @@ class Modula_Video_Setings {
 		?>
 		<script type="text/html" id="tmpl-modula-video">
 		    <label class="">
-                <span class="name"><?php _e( 'Video URL', 'modula-video' ); ?></span>
+                <span class="name"><?php esc_html_e( 'Video URL', 'modula-video' ); ?></span>
                 <input type="text" name="video_url" value="{{ data.video_url }}" />
                 <div class="description">
-                    <?php _e( 'Insert a video url, can be YouTube, Vimeo or self hosted.', 'modula-video' ); ?>
+                    <?php esc_html_e( 'Insert a video url, can be YouTube, Vimeo or self hosted.', 'modula-video' ); ?>
+                </div>
+            </label>
+		    <label class="">
+                <span class="name"><?php esc_html_e( 'Video Thumbnail', 'modula-video' ); ?></span>
+                <input type="text" name="video_thumbnail" value="{{ data.video_thumbnail }}" />
+                <div class="description">
+                    <?php esc_html_e( 'Insert a video thumbnail.', 'modula-video' ); ?>
                 </div>
             </label>
 		</script>
@@ -214,10 +205,68 @@ class Modula_Video_Setings {
 	public function add_item_fields( $fields ) {
 
 		$fields[] = 'video_url';
+        $fields[] = 'video_thumbnail';
 		return $fields;
 
     }
-    
+
+	/**
+     * Add input settings for video play button size on different devices.
+     *
+     * @since 1.0.6
+     *
+     * @return string.
+     */
+	public function edit_icon_size_fields($html, $field, $value ) {
+
+        $html  = '<span class="dashicons dashicons-desktop"></span><input type="text" class="responsive-input" name="modula-settings[' . esc_attr( $field['id'] ) . '][]" value="' .esc_attr( $value[0] ). '"><span class="modula_input_suffix">px</span>';
+        $html .= '<span class="dashicons dashicons-tablet"></span><input type="text" class="responsive-input" name="modula-settings[' . esc_attr( $field['id'] ) . '][]" value="' .esc_attr( $value[1] ). '"><span class="modula_input_suffix">px</span>';
+        $html .= '<span class="dashicons dashicons-smartphone"></span><input type="text" class="responsive-input" name="modula-settings[' . esc_attr( $field['id'] ) . '][]"  value="' .esc_attr( $value [2]). '"><span class="modula_input_suffix">px</span>';
+
+        return $html;
+    } 
+
+	/**
+	 *  Backwards compatibility for responsie play button size fields
+	 *
+	 * @since 1.0.6
+	 */
+	public function backward_compatibility_responsive_video_icon( $value, $key, $settings ) {
+        
+		if ( 'play-icon-size' == $key && ! isset( $settings['play-icon-size'] ) ){
+			if ( isset( $settings['video-icon-size'] ) ){
+                $size = str_replace( array('px', '%'), '', $settings['video-icon-size']);
+                return array( $size, $size, $size );
+			}
+		}
+        
+		return $value;
+
+	}
+
+	/**
+	 *  Backwards compatibility for responsie play button size fields
+	 *
+	 * @since 1.0.6
+	 */
+	public function backward_compatibility_backbone_responsive_video_icon( $settings ){
+           
+		if ( isset( $settings['video-icon-size'] ) && !isset( $settings['play-icon-size'][0] ) ){
+			$settings['play-icon-size'][0] = str_replace(['px', '%'], '', $settings['video-icon-size']);
+		}
+
+		if ( isset( $settings['video-icon-size'] ) && !isset( $settings['play-icon-size'][1] ) ){
+			$settings['play-icon-size'][1] = str_replace(['px', '%'], '', $settings['video-icon-size']);
+		}
+
+		if ( isset( $settings['video-icon-size'] ) && !isset( $settings['play-icon-size'][2] ) ){
+			$settings['play-icon-size'][2] = str_replace(['px', '%'], '', $settings['video-icon-size']);
+		}
+        
+		return $settings;
+
+	}
+
     /***
 	 * Add video_icon_upload field type
 	 *
@@ -277,6 +326,7 @@ class Modula_Video_Setings {
                     
         ?> <# } #> <?php 
     }
+
 
 }
 

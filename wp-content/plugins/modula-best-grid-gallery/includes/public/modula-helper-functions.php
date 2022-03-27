@@ -46,31 +46,8 @@ function modula_generate_image_links( $item_data, $item, $settings ){
 		}
 	}
 
-	$align = 'c';
-
-	if ( 'top' == $item['valign'] ) {
-		$valign = 't';
-	} else if ( 'bottom' == $item['valign'] ) {
-		$valign = 'b';
-	} else {
-		$valign = 'c';
-	}
-
-	if ( 'left' == $item['halign'] ) {
-		$halign = 'l';
-	} else if ( 'right' == $item['halign'] ) {
-		$halign = 'r';
-	} else {
-		$halign = 'c';
-	}
-
-	if ( $valign !== $halign ) {
-		$align = $valign . $halign;
-	}
-
-
 	$sizes = $resizer->get_image_size( $item['id'], $gallery_type, $grid_sizes, $crop );
-	$resized    = $resizer->resize_image( $sizes['url'], $sizes['width'], $sizes['height'], $crop, $align );
+	$resized    = $resizer->resize_image( $sizes['url'], $sizes['width'], $sizes['height'], $crop );
 	$image_info = false;
 
 	// If we couldn't resize the image we will return the full image.
@@ -125,9 +102,10 @@ function modula_check_lightboxes_and_links( $item_data, $item, $settings ) {
 
 	if ( 'attachment-page' == $settings['lightbox'] ) {
 
-		$item_data['link_attributes']['class'][] = 'modula-simple-link';
-		$item_data['item_classes'][] = 'modula-simple-link';
-
+		$item_data['link_attributes']['class'][]    = 'modula-simple-link';
+		$item_data['item_classes'][]                = 'modula-simple-link';
+		$item_data['link_attributes']['aria-label'] = esc_html__('Open attachment page', 'modula-best-grid-gallery');
+		$item_data['link_attributes']['title']      = esc_html__('Open attachment page', 'modula-best-grid-gallery');
 		if ( '' != $item['link'] ) {
 
 			$item_data['link_attributes']['href'] = $item['link'];
@@ -143,18 +121,21 @@ function modula_check_lightboxes_and_links( $item_data, $item, $settings ) {
 
 	} else if ( 'direct' == $settings['lightbox'] ) {
 
-		$item_data['link_attributes']['href'] = $item_data['image_full'];
-		$item_data['link_attributes']['class'][] = 'modula-simple-link';
-		$item_data['item_classes'][] = 'modula-simple-link';
+		$item_data['link_attributes']['href']       = $item_data['image_full'];
+		$item_data['link_attributes']['class'][]    = 'modula-simple-link';
+		$item_data['item_classes'][]                = 'modula-simple-link';
+		$item_data['link_attributes']['aria-label'] = esc_html__('Open image', 'modula-best-grid-gallery');
+		$item_data['link_attributes']['title']      = esc_html__('Open image', 'modula-best-grid-gallery');
 
 	} else {
 
 		$item_data['link_attributes']['href']          = $item_data['image_full'];
 		$item_data['link_attributes']['rel']           = $settings['gallery_id'];
 		$item_data['link_attributes']['data-caption']  = $caption;
+		$item_data['link_attributes']['aria-label']    = esc_html__('Open image in lightbox', 'modula-best-grid-gallery');
+		$item_data['link_attributes']['title']         = esc_html__('Open image in lightbox', 'modula-best-grid-gallery');
 
 	}
-
 
 	return $item_data;
 }
@@ -346,12 +327,20 @@ function modula_sources_and_sizes( $data ) {
 	// Get the imag meta
 	$image_meta = wp_get_attachment_metadata( $data->link_attributes['data-image-id'] );
 
+	$mime_type = '';
+
+	if ( isset( $image_meta['sizes']['thumbnail']['mime-type'] ) ) {
+		$mime_type = $image_meta['sizes']['thumbnail']['mime-type'];
+	} else if ( function_exists( 'mime_content_type' ) && $data->image_info['file_path'] ) {
+		$mime_type = mime_content_type( $data->image_info['file_path'] );
+	}
+
 	if ( ! empty( $data->image_info ) ) {
 		$image_meta['sizes']['custom'] = array(
 				'file'      => $data->image_info['name'] . '-' . $data->image_info['suffix'] . '.' . $data->image_info['ext'],
 				'width'     => $data->img_attributes['width'],
 				'height'    => $data->img_attributes['height'],
-				'mime-type' => $image_meta['sizes']['thumbnail']['mime-type']
+				'mime-type' => $mime_type
 		);
 	}
 	// Ensure the image meta exists.
@@ -359,7 +348,6 @@ function modula_sources_and_sizes( $data ) {
 		echo $image;
 		return;
 	}
-
 
 	$attachment_id = $data->link_attributes['data-image-id'];
 

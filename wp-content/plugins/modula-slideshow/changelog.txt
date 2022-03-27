@@ -1,3 +1,8 @@
+= 1.0.4 - 25.01.2022 =
+Fixed: Hover and slideshow play when pause on hover is active but autoplay is not
+Changed: Changed "plugins_loaded" priority to 85
+Added: Check if license includes Modula Slideshow
+
 = 1.0.3 - 30/10/2020 =
 Preparation for Modula Defaults
 Add Modula Slideshow data to migrator

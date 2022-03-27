@@ -50,6 +50,8 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 		 */
 		private $pro_fields = array();
 
+		private $license = false;
+
 		/**
 		 * Modula_PRO_Upsells constructor.
 		 *
@@ -57,23 +59,35 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 		 *
 		 * @since 2.5.2
 		 */
-		function __construct( $args ) {
+		public function __construct( $args ) {
 
 			parent::__construct( $args );
+			$this->license = Modula_PRO::check_for_license();
 
-			if ( class_exists( 'WPChill_Upsells' ) ) {
+			add_action( 'modula_after_license_save', array( $this, 'delete_transients' ) );
+			add_action( 'modula_after_license_deactivated', array( $this, 'delete_transients' ) );
+			add_filter( 'modula_uninstall_transients', array( $this, 'smart_upsells_transients' ), 15 );
+
+			if ( class_exists( 'WPChill_Upsells' ) && $this->license ) {
 
 				// output wpchill lite vs pro page
 				add_action( 'modula_admin_page_link', array( $this, 'lite_vs_premium_page_title' ), 35, 1 );
+				add_filter( 'modula_upgrade_plugin_action', array( $this, 'modula_plugin_action_link' ) );
 				add_filter( 'modula_packages', array( $this, 'modula_pro_packages' ), 35, 1 );
 				add_filter( 'modula_uninstall_transients', array( $this, 'smart_upsells_transients' ), 15 );
 				add_filter( 'modula_upsells_args', array( $this, 'modula_pro_upsell_args' ), 15 );
+				add_filter( 'modula_packages', array( $this, 'modula_pro_packages' ), 35, 1 );
 				add_filter( 'wpchill-upsells-buy-button', array( $this, 'modula_upgrade_button' ), 15, 3 );
-				add_action( 'modula_after_license_save', array( $this, 'delete_transients' ) );
-				add_action( 'modula_after_license_deactivated', array( $this, 'delete_transients' ) );
 				add_filter( 'modula_pro_fields', array( $this, 'fields' ) );
 				add_filter( 'modula_gallery_tabs', array( $this, 'smart_upsells_tabs' ), 99 );
-				add_filter( 'modula_upsell_buttons', array( $this, 'smart_upsells_buttons' ), 99 );
+				add_filter( 'modula_upsell_buttons', array( $this, 'smart_upsells_buttons' ), 99, 2 );
+
+				if ( empty( $this->upsell_extensions ) ) {
+
+					$this->fetch_packages();
+					$packages                = $this->get_packages();
+					$this->upsell_extensions = $this->get_extensions_upsell( $packages );
+				}
 
 				$this->set_pro_fields();
 			}
@@ -97,27 +111,6 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 
 		}
 
-
-		/**
-		 * Lets check for license
-		 *
-		 * @return bool
-		 *
-		 * @since 2.5.2
-		 */
-		public function check_for_license() {
-
-			$license_status = get_option( 'modula_pro_license_status' );
-
-			// There is no license or license is not valid anymore, so we get all packages
-			if ( ! $license_status || 'valid' != $license_status->license ) {
-				return false;
-			}
-
-			return true;
-		}
-
-
 		/**
 		 * The LITE vs Premium page title
 		 *
@@ -131,9 +124,25 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 
 			$packages = get_transient( 'modula_upgradable_packages' );
 
-			// Check for license and current package
-			if ( ! $this->check_for_license() || ! isset( $packages['current_package'] ) || empty( $packages['current_package'] ) ) {
+			// Check for current package
+			if ( ! $this->license || ! isset( $packages['current_package'] ) || empty( $packages['current_package'] ) ) {
 				return $links;
+			}
+
+			if ( ! $this->is_upgradable_addon( 'modula-albums' ) ) {
+				if ( isset( $links['modulaalbums'] ) ) {
+					unset( $links['modulaalbums'] );
+				}
+			}
+
+			if ( ! $this->is_upgradable_addon( 'modula-defaults' ) ) {
+				if ( isset( $links['moduladefaults'] ) ) {
+					unset( $links['moduladefaults'] );
+				}
+
+				if ( isset( $links['albumsdefaults'] ) ) {
+					unset( $links['albumsdefaults'] );
+				}
 			}
 
 			// We made it here, so license is active and there is a current package
@@ -151,10 +160,6 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 				$links['freevspro']['menu_title'] = esc_html__( 'Upgrade', 'modula-best-grid-gallery' );
 			}
 
-			if ( isset( $links['modulaalbums'] ) ) {
-				unset( $links['modulaalbums'] );
-			}
-
 			return $links;
 		}
 
@@ -169,7 +174,7 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 		 */
 		public function modula_pro_packages( $packages ) {
 
-			if ( ! $this->check_for_license() ) {
+			if ( ! $this->license ) {
 				return $packages;
 			}
 
@@ -308,13 +313,6 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 		 */
 		public function fields( $fields ) {
 
-			if ( empty( $this->upsell_extensions ) ) {
-
-				$this->fetch_packages();
-				$packages                = $this->get_packages();
-				$this->upsell_extensions = $this->get_extensions_upsell( $packages );
-			}
-
 			foreach ( $this->upsell_extensions as $key => $package ) {
 
 				if ( isset( $this->pro_fields[ $key ] ) && isset( $fields[ $this->pro_fields[ $key ] ] ) ) {
@@ -337,14 +335,6 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 		 */
 		public function smart_upsells_tabs( $tabs ) {
 
-			// If our class variable is empty get the extensions
-			if ( empty( $this->upsell_extensions ) ) {
-
-				$this->fetch_packages();
-				$packages                = $this->get_packages();
-				$this->upsell_extensions = $this->get_extensions_upsell( $packages );
-			}
-
 			// Set the proper badges for tabs
 			foreach ( $this->upsell_extensions as $key => $package ) {
 
@@ -353,6 +343,11 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 
 					// Set the badge
 					$tabs[ $this->pro_fields[ $key ] ]['badge'] = __( 'Upgrade', 'modula-pro' );
+				}
+
+				// Fix for Misc tab
+				if ( 'modula-deeplink' === $key || 'modula-protection' === $key  ) {
+					$tabs['misc']['badge'] = __( 'Upgrade', 'modula-pro' );
 				}
 			}
 
@@ -363,18 +358,62 @@ if ( class_exists( 'WPChill_Upsells' ) ) {
 		 * Set proper buttons label
 		 *
 		 * @param $buttons
+		 * @param $addon
 		 * @param $tab
 		 *
 		 * @return string
 		 *
 		 * @since 2.5.2
 		 */
-		public function smart_upsells_buttons() {
+		public function smart_upsells_buttons( $buttons, $addon ) {
 
-			return '<a target="_blank" href="' . esc_url( admin_url( 'edit.php?post_type=modula-gallery&page=modula-lite-vs-pro' ) ) . '" class="button-primary button">' . esc_html__( 'Upgrade!', 'modula-pro' ) . '</a>';
+			if ( null === Modula_PRO::check_for_license() ) {
 
+				return '<a target="_blank" href="' . esc_url( admin_url( 'edit.php?post_type=modula-gallery&page=modula' ) ) . '" class="button-primary button">' . esc_html__( 'Activate license!', 'modula-pro' ) . '</a><a target="_blank" href="' . esc_url( admin_url( 'edit.php?post_type=modula-gallery&page=modula-lite-vs-pro' ) ) . '" class="button-primary button">' . esc_html__( 'Upgrade!', 'modula-pro' ) . '</a>';
+
+			} else {
+
+				return '<a target="_blank" href="' . esc_url( admin_url( 'edit.php?post_type=modula-gallery&page=modula-lite-vs-pro' ) ) . '" class="button-primary button">' . esc_html__( 'Upgrade!', 'modula-pro' ) . '</a>';
+			}
 
 		}
+
+		/**
+		 * Upgrade Modula plugin action link
+		 *
+		 * @param $upgrade
+		 *
+		 * @return mixed
+		 * @since 2.5.4
+		 */
+		public function modula_plugin_action_link( $upgrade ) {
+
+			$packages = get_transient( 'modula_upgradable_packages' );
+
+			if ( ! Modula_PRO::check_for_license() ) {
+				return $upgrade;
+			}
+
+			$upgrade['link'] = '<a  class="modula-lite-vs-pro" href="' . admin_url( 'edit.php?post_type=modula-gallery&page=modula-lite-vs-pro' ) . '">' . esc_html__( 'Upgrade now!', 'modula-pro' ) . '</a>';
+
+			// Check for license and current package
+			if ( ! Modula_PRO::check_for_license() || ! isset( $packages['current_package'] ) || empty( $packages['current_package'] ) ) {
+				$upgrade['upgrade_available'] = false;
+
+				return $upgrade;
+			}
+
+			// We made it here, so license is active and there is a current package
+			// If no upsells are present means that the client has the highest package
+			if ( empty( $packages['upsell_packages'] ) ) {
+				$upgrade['upgrade_available'] = false;
+
+				return $upgrade;
+			}
+
+			return $upgrade;
+		}
+
 	}
 
 	// Initialize Modula_PRO_Upsells class

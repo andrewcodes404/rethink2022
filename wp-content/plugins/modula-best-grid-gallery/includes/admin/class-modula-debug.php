@@ -293,7 +293,6 @@ class Modula_Debug {
 	 * @since 2.5.0
 	 */
 	public function add_debug_meta_box() {
-
 		add_meta_box(
 				'modula-debug',      // Unique ID
 				esc_html__('Debug gallery', 'modula-best-grid-gallery'),    // Title
@@ -314,8 +313,8 @@ class Modula_Debug {
 		?>
 		<div class="modula-upsells-carousel-wrapper">
 			<div class="modula-upsells-carousel">
-				<div class="modula-metabox">
-					<p class="modula-metabox-description"><?php echo esc_html__( 'Export gallery and send it to Modula\'s support team so that we can debug your problem much easier.', 'modula-best-grid-gallery' ); ?></p>
+				<div class="modula-upsell modula-upsell-item">
+					<p class="modula-upsell-description"><?php echo esc_html__( 'Export gallery and send it to Modula\'s support team so that we can debug your problem much easier.', 'modula-best-grid-gallery' ); ?></p>
 					<p>
 						<a href="<?php echo add_query_arg( array(
 								'modula_single_download' => absint( get_the_ID() ),

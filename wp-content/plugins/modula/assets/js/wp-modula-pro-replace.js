@@ -33,6 +33,8 @@ wp.Modula = 'undefined' === typeof( wp.Modula ) ? {} : wp.Modula;
 					model.set( 'id', attachmentAtts['id'] );
 					model.set( 'alt', attachmentAtts['alt'] );
 					model.set( 'orientation', attachmentAtts['orientation'] );
+					model.set( 'title', attachmentAtts['title'] );
+					model.set( 'description', attachmentAtts['caption'] );
 
 					model.get( 'view' ).render();
 	            	

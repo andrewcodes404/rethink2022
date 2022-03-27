@@ -1,11 +1,15 @@
 <?php
 $issues = array(
-	'added'   => array(),
+	'added'   => array(
+    ),
 	'changed' => array(
-        esc_html__( 'Free vs PRO page and Upsells integration' ),
     ),
 	'fixed'   => array(
-		esc_html__( 'Image cropping based on image alignment', 'modula-best-grid-gallery' ),
+        esc_html__( 'Sanitization and preparation for WP Core galleries import', 'modula-best-grid-gallery' ),
+        esc_html__( 'Metaboxes forever opened and arrows hidden', 'modula-best-grid-gallery' ),
+        esc_html__( 'Custom Posts Gutenberg block - now available everywhere Gutenberg is', 'modula-best-grid-gallery' ),
+        esc_html__( 'React warnings', 'modula-best-grid-gallery' ),
+        esc_html__( 'Blank links in accesibility reports', 'modula-best-grid-gallery' ),
 	)
 );
 

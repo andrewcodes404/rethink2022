@@ -32,14 +32,19 @@ var ModulaVideoModalView = Backbone.View.extend({
 
         var item = this.model.get('item'),
             videoURL = item.get('video_url'),
+            videoThumbnail = item.get('video_thumbnail'),
             data = {
-                video_url: ''
+                video_url: '',
+                video_thumbnail: ''
             };
 
         if (videoURL) {
             data['video_url'] = videoURL;
         }
 
+        if (videoThumbnail) {
+            data['video_thumbnail'] = videoThumbnail;
+        }
         this.$el.html(this.template(data));
 
         return this;

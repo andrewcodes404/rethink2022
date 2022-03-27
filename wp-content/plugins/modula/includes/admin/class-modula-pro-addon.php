@@ -4,6 +4,7 @@ class Modula_PRO_Addon {
 
 	private $site_host;
 	private $addons = array();
+	public $wpchill_upsells = false;
 
 	function __construct() {
 
@@ -27,6 +28,13 @@ class Modula_PRO_Addon {
 		add_action( 'wp_ajax_modula-get-all-addons', array( $this, 'get_all_addons' ), 30 );
 
 		add_action( 'modula_addon_info', array( $this, 'addon_update' ), 30, 2 );
+		
+		// Add install addon notifications in admin settings tabs
+		add_action('modula_admin_tab_compression', array( $this, 'modula_speedup_notification' ) );
+		add_action('modula_admin_tab_standalone', array( $this, 'modula_albums_notification' ) );
+		add_action('modula_admin_tab_shortcodes', array( $this, 'modula_advanced_shortcodes_notification' ) );
+		add_action('modula_admin_tab_watermark', array( $this, 'modula_watermark_notification' ) );
+		add_action('modula_admin_tab_roles', array( $this, 'modula_roles_notification' ) );
 
 		// Get website domain
 		if ( function_exists( 'domain_mapping_siteurl' ) ) {
@@ -37,6 +45,25 @@ class Modula_PRO_Addon {
 
 		// Get License key
 		$this->license_key = trim( get_option( 'modula_pro_license_key' ) );
+
+		add_action( 'plugins_loaded', array( $this, 'load_addon_upsells' ), 15 );
+
+	}
+
+	/**
+	 * Load the upsells class
+	 */
+	public function load_addon_upsells() {
+
+		// Initialize WPChill upsell class
+		$args = apply_filters( 'modula_upsells_args', array(
+			'shop_url' => 'https://wp-modula.com',
+			'slug'     => 'modula',
+		) );
+
+		if ( class_exists( 'WPChill_Upsells' ) ) {
+			$this->wpchill_upsells = WPChill_Upsells::get_instance( $args );
+		}
 
 	}
 
@@ -436,6 +463,10 @@ class Modula_PRO_Addon {
 	 */
 	public function extra_extensions_actions() {
 
+		if ( isset( $_GET['extensions'] ) && 'free' == $_GET['extensions'] ) {
+			return;
+		}
+
 		$quick_action_options = apply_filters(
 			'modula_extensions_quick_actions',
 			array(
@@ -492,6 +523,95 @@ class Modula_PRO_Addon {
 	public function addon_update( $addon, $plugin_data ){
 		if ( $plugin_data && $addon['version'] != $plugin_data['Version'] && class_exists( 'Modula_PRO' ) ){
 			echo '<a href="' . wp_nonce_url( admin_url( 'update.php?action=upgrade-plugin&plugin=' . esc_attr( $addon['slug'] . '/' . $addon['slug'] . '.php' ) ), 'upgrade-plugin_' . esc_attr( $addon['slug'] . '/' . $addon['slug'] . '.php' ) ) . '"><span>' . esc_html__( 'Update now', 'modula-best-grid-gallery' ) . '</span></a>';
+		}
+
+	}
+
+	/**
+	 * Add notification to install Modula Albums
+	 * @Since 2.5.5
+	 */
+	public function modula_albums_notification(){
+
+		if ( ! class_exists( 'Modula_Albums' ) && $this->wpchill_upsells &&  ! $this->wpchill_upsells->is_upgradable_addon( 'modula-albums' ) ){
+			
+			echo sprintf( esc_html__( 'In order to use Modula Albums addon you need to install it from %shere%s.', 'modula-pro' ), '<a href="' . admin_url( 'edit.php?post_type=modula-gallery&page=modula-addons' ) . '" target="blank">', '</a>' );
+		}
+
+	}
+
+	/**
+	 * Add notification to install Modula SpeedUp
+	 * @Since 2.5.5
+	 */
+	public function modula_speedup_notification(){
+
+		if ( !class_exists( 'Modula_SpeedUp' ) && $this->wpchill_upsells && ! $this->wpchill_upsells->is_upgradable_addon( 'modula-speedup' ) ){
+			?>
+
+			<div class="modula-settings-tab-upsell">
+				<h3><?php esc_html_e( 'Modula SpeedUp', 'modula-best-grid-gallery' ) ?></h3>
+				<p><?php echo sprintf( esc_html__( 'In order to use Modula SpeedUp addon you need to install it from %shere%s.', 'modula-pro' ), '<a href="' . admin_url( 'edit.php?post_type=modula-gallery&page=modula-addons' ) . '" target="blank">', '</a>' ); ?></p>
+			</div>
+			
+			<?php
+		}
+
+	}
+
+	/**
+	 * Add notification to install Modula Advanced Shortcodes
+	 * @Since 2.5.5
+	 */
+	public function modula_advanced_shortcodes_notification(){
+
+		if ( ! class_exists( 'Modula_Advanced_Shortcodes' ) && $this->wpchill_upsells && ! $this->wpchill_upsells->is_upgradable_addon( 'modula-advanced-shortcodes' ) ){
+			?>
+
+			<div class="modula-settings-tab-upsell">
+				<h3><?php esc_html_e( 'Modula Advanced Shortcodes', 'modula-best-grid-gallery' ) ?></h3>
+				<p><?php echo sprintf( esc_html__( 'In order to use Modula Advanced Shortcodes addon you need to install it from %shere%s.', 'modula-pro' ), '<a href="' . admin_url( 'edit.php?post_type=modula-gallery&page=modula-addons' ) . '" target="blank">', '</a>' ); ?></p>
+			</div>
+			
+			<?php
+		}
+
+	}
+
+	/**
+	 * Add notification to install Modula Watermark
+	 * @Since 2.5.5
+	 */
+	public function modula_watermark_notification(){
+
+		if ( ! class_exists( 'Modula_Watermark' ) && $this->wpchill_upsells && ! $this->wpchill_upsells->is_upgradable_addon( 'modula-watermark' )){
+			?>
+
+			<div class="modula-settings-tab-upsell">
+				<h3><?php esc_html_e( 'Modula Watermark', 'modula-best-grid-gallery' ) ?></h3>
+				<p><?php echo sprintf( esc_html__( 'In order to use Modula Watermark addon you need to install it from %shere%s.', 'modula-pro' ), '<a href="' . admin_url( 'edit.php?post_type=modula-gallery&page=modula-addons' ) . '" target="blank">', '</a>' ); ?></p>
+			</div>
+			
+			<?php
+		}
+
+	}
+
+	/**
+	 * Add notification to install Modula Roles
+	 * @Since 2.5.5
+	 */
+	public function modula_roles_notification(){
+
+		if ( !class_exists( 'Modula_Roles' ) && $this->wpchill_upsells && ! $this->wpchill_upsells->is_upgradable_addon( 'modula-roles' )){
+			?>
+
+			<div class="modula-settings-tab-upsell">
+				<h3><?php esc_html_e( 'Modula Roles', 'modula-best-grid-gallery' ) ?></h3>
+				<p><?php echo sprintf( esc_html__( 'In order to use Modula Roles addon you need to install it from %shere%s.', 'modula-pro' ), '<a href="' . admin_url( 'edit.php?post_type=modula-gallery&page=modula-addons' ) . '" target="blank">', '</a>' ); ?></p>
+			</div>
+			
+			<?php
 		}
 
 	}

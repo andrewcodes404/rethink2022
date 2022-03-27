@@ -118,7 +118,7 @@ wp.Modula = 'undefined' === typeof (wp.Modula) ? {} : wp.Modula;
             this._gatherItems();
             switch (key) {
                 case 'dateCreatedOld':
-                    this.sorted = _.sortBy(self.sorted, function (o) { return o.date; }).reverse()
+                    this.sorted = _.sortBy(self.sorted, function (o) { return o.date; });
                     break;
                 case 'titleAZ':
                     this.sorted = _.sortBy(self.sorted, function (o) {
@@ -144,14 +144,15 @@ wp.Modula = 'undefined' === typeof (wp.Modula) ? {} : wp.Modula;
                     this.sorted = _.sortBy(self.sorted, function (o) { return Math.random() - 0.5; });
                     break;
                 case 'dateModifiedFirst':
-                    this.sorted = _.sortBy(self.sorted, function (o) { return o.modified; });
+                    this.sorted = _.sortBy(self.sorted, function (o) { return o.modified; }).reverse();
                     break;
                 case 'dateModifiedLast':
-                    this.sorted = _.sortBy(self.sorted, function (o) { return o.modified; }).reverse();
+                    this.sorted = _.sortBy(self.sorted, function (o) { return o.modified; });
                     break;
                 case 'dateCreatedNew':
                 default:
-                    this.sorted = _.sortBy(self.sorted, function (o) { return o.date; });
+
+                    this.sorted = _.sortBy(self.sorted, function (o) { return o.date; }).reverse();
                     break;
             }
 

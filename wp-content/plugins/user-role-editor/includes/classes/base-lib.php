@@ -103,11 +103,11 @@ class URE_Base_Lib {
 
         if ( $message ) {
             if ( $error_style ) {
-                echo '<div id="message" class="error">';
+                echo '<div id="message" class="notice notice-warning is-dismissible">';
             } else {
-                echo '<div id="message" class="updated fade">';
+                echo '<div id="message" class="notice notice-success is-dismissible">';
             }
-            echo $message . '</div>';
+            echo '<p>'. $message . '</p></div>';
         }
     }
     // end of show_message()
@@ -236,11 +236,12 @@ class URE_Base_Lib {
             if ( is_admin() && ( !defined('DOING_AJAX') || !DOING_AJAX ) ) {
                 require_once ABSPATH . '/wp-admin/includes/plugin.php';
                 deactivate_plugins( $plugin_file_name );
-                wp_die( $error_message );
-            } else {
-                return;
+                new URE_Admin_Notice('warning', $error_message );
+                return false;
             }
         }
+        
+        return true;
     }
     // end of check_version()
 

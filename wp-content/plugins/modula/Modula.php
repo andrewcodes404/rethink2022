@@ -5,7 +5,7 @@
  * Description: Modula is one of the best & most creative WordPress gallery plugins. Use it to create a great grid or masonry image gallery.
  * Author: WPChill
  * Author URI: https://www.wpchill.com/
- * Version: 2.5.3
+ * Version: 2.6.0
  */
 
 /**
@@ -14,7 +14,7 @@
  * @since    2.0.0
  */
 
-define( 'MODULA_PRO_VERSION', '2.5.3' );
+define( 'MODULA_PRO_VERSION', '2.6.0' );
 define( 'MODULA_PRO_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MODULA_PRO_URL', plugin_dir_url( __FILE__ ) );
 define( 'MODULA_PRO_FILE', __FILE__ );
