@@ -13,11 +13,13 @@ if ($profiles) : ?>
           <div class="s-card-logo <?php echo $logo_class ?> s-card__logo t-modal-parent">
             <?php
             $image = get_field('image', $profile->ID);
-            $size = 'carousel';
+            $size = 'large';
             if ($image) {
               echo wp_get_attachment_image($image, $size);
             }
             ?>
+
+
           </div>
           <?php get_template_part('template-parts/single-modal', null, array('post_id' => $profile->ID, 'allow_pop_up' => $allow_pop_up)) ?>
         </div>
