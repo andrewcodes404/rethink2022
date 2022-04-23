@@ -6,20 +6,21 @@
 const hamburger = document.querySelector('#hamburger')
 const closeBtn = document.querySelector('#closeBtn')
 const menu = document.querySelector('#nav__menu-mobile')
-const mobMenuUl = document.querySelector('#menu-primary-navigation')
-
-if (mobMenuUl) {
-  const mobMenuUlLength = mobMenuUl.scrollHeight + "px"
-}
+const mobMenuUl = document.querySelector('#nav__menu-mobile')
 
 
+// why was this if here 🤔.. i dunno
+// if (mobMenuUl) {
+//   const mobMenuUlLength = mobMenuUl.scrollHeight + "px"
+// }
+
+const mobMenuUlLength = mobMenuUl.scrollHeight + "px"
 // console.log('mobMenuUl:', mobMenuUl);
 // console.log('mobMenuUlLength:', mobMenuUlLength);
 // console.log('menu:', menu);
 
 if (hamburger) {
   hamburger.addEventListener('click', () => {
-
     menu.classList.remove('nav__menu-mobile--hide')
     menu.classList.add('nav__menu-mobile--show')
     menu.style.maxHeight = mobMenuUlLength
@@ -53,29 +54,34 @@ if (closeBtn) {
 // desktop dropdown --- desktop dropdown --- desktop dropdown ---
 
 
-const navDesktop = document.querySelector('#nav__menu-desktop')
+// const navDesktop = document.querySelector('#nav__menu-desktop')
 
 
-const menusWithSubMenu = navDesktop.querySelectorAll('.menu-item-has-children')
+// const menusWithSubMenu = navDesktop.querySelectorAll('ul')
 
-menusWithSubMenu.forEach(menuWithSubMenu => {
-  menuWithSubMenu.addEventListener('mouseover', function () {
-    const link = this.firstElementChild
-    const submenu = this.querySelector("ul")
-    const submenuHeight = submenu.scrollHeight + "px"
-    link.style.backgroundColor = "green"
-    submenu.style.maxHeight = submenuHeight;
-  })
+// console.log('menusWithSubMenu.length:', menusWithSubMenu.length);
+
+// menusWithSubMenu.forEach(menuWithSubMenu => {
+
+  // menuWithSubMenu.addEventListener('mouseover', function () {
+  //   // console.log('👻');
+  //   // console.log('menuWithSubMenu:', menuWithSubMenu);
+  //   const link = this.firstElementChild
+  //   const submenu = this.querySelector("ul")
+  //   // const submenuHeight = submenu.scrollHeight + "px"
+  //   link.style.backgroundColor = "green"
+  //   // submenu.style.maxHeight = submenuHeight;
+  // })
 
 
-  menuWithSubMenu.addEventListener('mouseout', function () {
-    const link = this.firstElementChild
-    const submenu = this.querySelector("ul")
-    submenu.style.maxHeight = "0";
-    link.style.backgroundColor = "transparent"
-  })
+  // menuWithSubMenu.addEventListener('mouseout', function () {
+  //   const link = this.firstElementChild
+  //   const submenu = this.querySelector("ul")
+  //   // submenu.style.maxHeight = "0";
+  //   link.style.backgroundColor = "transparent"
+  // })
 
-});
+// });
 
 
 
