@@ -1,3 +1,12 @@
+@keyframes menu-fade-in {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
 .nav-fake {
   height: 80px;
   width: 100%;
@@ -341,15 +350,15 @@
   position: absolute;
   z-index: 999;
   left: 20px;
-  opacity: 0;
   background-color: $green;
   transition: opacity 0.3s ease-in-out;
   min-width: 130px;
+  display: none;
+
 
 }
 
 .nav__menu-desktop ul li ul li {
-
   display: block;
   width: 100%;
   margin: 0;
@@ -378,27 +387,21 @@
 // Level 3 --- Level 3 --- Level 3 ---
 // Level 3 --- Level 3 --- Level 3 ---
 // Level 3 --- Level 3 --- Level 3 ---
-.nav__menu-desktop ul li ul li ul{
 
+.nav__menu-desktop ul li ul li ul{
   position: static;
    top: 10px;
 }
-
 .nav__menu-desktop ul li ul li ul li{
-
-  // margin:  0 0 0 -20px;
   a{
     color: $white !important;
-    // padding: 10px 0 10px 30px;
     &:before {
       content: "- ";
     }
 
     &:hover {
       color: $black !important;
-
     }
-
   }
 }
 
@@ -414,7 +417,8 @@
       background-color: $green;
     }
     ul {
-      opacity: 1;
+      display: block;
+      animation: menu-fade-in 0.4s forwards;
     }
   }
 }

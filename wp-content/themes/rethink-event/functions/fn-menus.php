@@ -27,23 +27,23 @@ add_action('init', 'register_theme_menus');
  * @param array  $items The menu items, sorted by each menu item's menu order.
  * @return array (maybe) modified parent CSS class.
  */
-function wpdocs_add_menu_parent_class($items)
-{
-  $parents = array();
+// function wpdocs_add_menu_parent_class($items)
+// {
+//   $parents = array();
 
-  // Collect menu items with parents.
-  foreach ($items as $item) {
-    if ($item->menu_item_parent && $item->menu_item_parent > 0) {
-      $parents[] = $item->menu_item_parent;
-    }
-  }
+//   // Collect menu items with parents.
+//   foreach ($items as $item) {
+//     if ($item->menu_item_parent && $item->menu_item_parent > 0) {
+//       $parents[] = $item->menu_item_parent;
+//     }
+//   }
 
-  // Add class.
-  foreach ($items as $item) {
-    if (in_array($item->ID, $parents)) {
-      $item->classes[] = 'menu-parent-item 🧨';
-    }
-  }
-  return $items;
-}
-add_filter('wp_nav_menu_objects', 'wpdocs_add_menu_parent_class');
+//   // Add class.
+//   foreach ($items as $item) {
+//     if (in_array($item->ID, $parents)) {
+//       $item->classes[] = 'menu-parent-item 🧨';
+//     }
+//   }
+//   return $items;
+// }
+// add_filter('wp_nav_menu_objects', 'wpdocs_add_menu_parent_class');
