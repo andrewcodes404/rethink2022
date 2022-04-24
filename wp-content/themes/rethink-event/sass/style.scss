@@ -23,6 +23,7 @@
 @import "02-blocks/programme";
 @import "02-blocks/programme-grid";
 @import "02-blocks/speakers-list";
+@import "02-blocks/youtube";
 
 @import "03-vendor/tiny-slider.scss";
 
@@ -48,3 +49,6 @@ body.logged-in .nav-wrapper {
 body.logged-in .sticky-cta {
   top: 132px;
 }
+
+
+
