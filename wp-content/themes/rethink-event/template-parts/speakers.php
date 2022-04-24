@@ -32,7 +32,7 @@
 
     </div>
 
-    <?php get_template_part('template-parts/single-modal', null, array('post_id' => $post_id)) ?>
+    <?php get_template_part('template-parts/single-modal', null, array('post_id' => $post_id, 'allow_pop_up' => true)) ?>
 
   <?php endforeach; ?>
 </div>

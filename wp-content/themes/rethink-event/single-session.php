@@ -59,7 +59,7 @@
       $locationText = "Sustainable Transformation Theatre (Keynote)";
     } elseif ($location == 'bec') {
       $locationUrl = $homeUrl . '/programme/bec-theatre/';
-      $locationText = "BEC Theatre";
+      $locationText = "BEC Sustainable Business Theatre";
     } elseif ($location == 'susPart') {
       $locationUrl = $homeUrl . '/programme/sustainable-partnerships';
       $locationText = "Sustainable Partnership Theatre";

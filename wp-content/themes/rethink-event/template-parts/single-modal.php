@@ -16,8 +16,7 @@
 <?php $position = get_field("position", $post_id) ?>
 <?php $company = get_field("company", $post_id) ?>
 
-<?php $allow_pop_up = $args['allow_pop_up'] ?>
-
+<?php $allow_pop_up = isset($args['allow_pop_up']) ? $args['allow_pop_up'] : ''; ?>
 
 <!-- only show modal if $allow_pop_up true -->
 <?php if ($allow_pop_up) : ?>

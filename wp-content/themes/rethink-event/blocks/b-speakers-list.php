@@ -1,4 +1,5 @@
 <?php
+
 $args = array(
   'post_type' => 'speaker-items',
   'post_status' => 'publish',
@@ -23,7 +24,7 @@ $the_query = new WP_Query($args); ?>
       <button class="location-filter filter-button filter-button--active" data-location="all">All</button>
       <button class="location-filter filter-button" data-location="susTrans">Sustainable Transformation
         Theatre</button>
-      <button class="location-filter filter-button" data-location="bec">BEC Theatre</button>
+      <button class="location-filter filter-button" data-location="bec">BEC Sustainable Business Theatre</button>
       <button class="location-filter filter-button" data-location="susPart">Sustainable Partnerships
         Theatre</button>
       <button class="location-filter filter-button" data-location="susRes">Sustainable Resources
@@ -31,6 +32,8 @@ $the_query = new WP_Query($args); ?>
       <button class="location-filter filter-button" data-location="susCom">Sustainable Communities
         Theatre</button>
       <button class="location-filter filter-button" data-location="change">Change Makers Stage</button>
+      <button class="location-filter filter-button" data-location="futureLeaders">Future Leaders Stage</button>
+
     </div>
 
 
@@ -45,7 +48,7 @@ $the_query = new WP_Query($args); ?>
 
           <?php
           $sessions = get_posts(array(
-            'post_type' => 'session',
+            'post_type' => 'session-2022',
             'meta_query' => array(
               'relation' => 'OR',
               array(

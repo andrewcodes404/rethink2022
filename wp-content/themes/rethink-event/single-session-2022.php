@@ -6,16 +6,19 @@
     <?php
     $overview = get_field('overview', $post_id);
     $moderators = get_field('moderators', $post_id);
+    $speakers_only = get_field('speakers', $post_id);
 
-    if ($moderators) {
-      foreach ($moderators as $i => &$element) {
-        $element->moderator = true;
-      }
-      $speakers_only = get_field('speakers', $post_id);
+    if (!empty($moderators) && !empty($speakers_only)) {
       $speakers = array_merge($moderators, $speakers_only);
+    } elseif (!empty($moderators) && empty($speakers_only)) {
+      $speakers = $moderators;
+    } elseif (empty($moderators) && !empty($speakers_only)) {
+      $speakers = $speakers_only;
     } else {
-      $speakers = get_field('speakers', $post_id);
+      $speakers = [];
     }
+
+
     $partners = get_field('partners', $post_id);
     $sponsors = get_field('sponsors', $post_id);
     $learnings = get_field('learnings', $post_id);
@@ -59,7 +62,7 @@
       $locationText = "Sustainable Transformation Theatre (Keynote)";
     } elseif ($location == 'bec') {
       $locationUrl = $homeUrl . '/programme/bec-theatre/';
-      $locationText = "BEC Theatre";
+      $locationText = "BEC Sustainable Business Theatre";
     } elseif ($location == 'susPart') {
       $locationUrl = $homeUrl . '/programme/sustainable-partnerships';
       $locationText = "Sustainable Partnership Theatre";
@@ -81,9 +84,15 @@
     } elseif ($location == 'workshop3') {
       $locationUrl = $homeUrl . '';
       $locationText = "Workshop 3";
-    } elseif ($location == 'future-leaders') {
+    } elseif ($location == 'futureLeaders') {
       $locationUrl = $homeUrl . '';
       $locationText = "Future Leaders";
+    }
+
+
+    $day_text = '1 - 5th Oct';
+    if ($day = "day2") {
+      $day_text = '2 - 6th Oct';
     }
 
     ?>
@@ -95,7 +104,8 @@
       <div class="pg-single-session">
 
         <div class="pg-single-session__top-bar">
-          <h4 class="pg-single-session__date-time"> Day <?php echo ($day = 'day1') ? '1 - 5th Oct' : '2 - 6th Oct'; ?> | <?php echo $start ?> - <?php echo $end ?>
+
+          <h4 class="pg-single-session__date-time"> Day <?php echo $day_text ?> | <?php echo $start ?> - <?php echo $end ?>
           </h4>
           <h4 class="pg-single-session__location">
             Location: <a class="pg-single-session__location-link pg-single-session__location-link--<?php echo $location ?>" href="<?php echo $locationUrl ?>"> <?php echo $locationText ?></a>
