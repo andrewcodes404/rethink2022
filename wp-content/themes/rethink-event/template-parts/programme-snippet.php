@@ -1,6 +1,6 @@
 <?php
 $the_queryDayOne = new WP_Query(array(
-    'post_type' => 'session',
+    'post_type' => 'session-2022',
     'meta_key' => 'time_start',
     'order' => 'ASC',
     'orderby' => 'meta_value',
@@ -20,7 +20,7 @@ $the_queryDayOne = new WP_Query(array(
 );
 
 $the_queryDayTwo = new WP_Query(array(
-    'post_type' => 'session',
+    'post_type' => 'session-2022',
     'meta_key' => 'time_start',
     'order' => 'ASC',
     'orderby' => 'meta_value',

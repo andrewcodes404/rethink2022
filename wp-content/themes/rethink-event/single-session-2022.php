@@ -18,12 +18,11 @@
       $speakers = [];
     }
 
-
     $partners = get_field('partners', $post_id);
     $sponsors = get_field('sponsors', $post_id);
     $learnings = get_field('learnings', $post_id);
     $postevent = get_field('post_event_actions', $post_id);
-    $day = get_field('day', $post_id);
+    $day = get_field('day', $post_id );
     $start = get_field('time_start', $post_id);
     $end = get_field('time_end', $post_id);
     $sdgs = get_field('sdg', $post_id);
@@ -51,8 +50,6 @@
         $category_text = "Food & Nature";
         break;
     }
-
-
 
 
     $locationUrl = '';
@@ -89,15 +86,13 @@
       $locationText = "Future Leaders";
     }
 
-
     $day_text = '1 - 5th Oct';
-    if ($day = "day2") {
+    if ($day === "day2") {
       $day_text = '2 - 6th Oct';
     }
 
     ?>
 
-    <?php $post_id = get_the_ID(); ?>
     <?php get_template_part('template-parts/hero', 'hero', array('post_id' => $post_id)) ?>
     <div class="content-layout">
 
@@ -111,7 +106,6 @@
             Location: <a class="pg-single-session__location-link pg-single-session__location-link--<?php echo $location ?>" href="<?php echo $locationUrl ?>"> <?php echo $locationText ?></a>
           </h4>
         </div>
-
 
         <?php if ($category) : ?>
           <div class="pg-single-session__category">
