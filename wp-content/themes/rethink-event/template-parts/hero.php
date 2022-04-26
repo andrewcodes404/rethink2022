@@ -38,11 +38,12 @@
       ?>
     </div>
 
+    <?php if(the_field('caption', $post_id)): ?>
 
     <div class="t-hero__caption">
       <span><?php the_field('caption', $post_id); ?> </span>
     </div>
-
+<?php endif ?>
     <div class="content-layout content-layout--wide">
       <!-- check if title is from ACF or post -->
       <?php if (get_field('title', $post_id)) : ?>

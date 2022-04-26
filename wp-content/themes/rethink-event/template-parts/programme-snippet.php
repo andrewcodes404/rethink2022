@@ -41,7 +41,7 @@ $the_queryDayTwo = new WP_Query(array(
 ?>
 
 <?php if (is_admin()) {
-    echo '<p class="b-snippet-hint"> <code >hint: this is the ' . $args["data"]["title"] . ' programme SNIPPPETS block</code></p>';
+    echo '<p class="b-programme-hint"> <code >hint: this is the ' . $args["data"]["title"] . ' programme SNIPPPETS block</code></p>';
 }
 ?>
 <div class="b-snippet-wrapper  b-snippet-wrapper--<?php echo $args['data']['location_value'] ?>">
