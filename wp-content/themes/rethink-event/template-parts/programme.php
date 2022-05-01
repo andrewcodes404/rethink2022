@@ -7,9 +7,9 @@ $am_or_pm = "";
 $am_or_pm = $args['data']['am_or_pm'];
 
 if ($day === "day1") {
-  $daytext = "Day 1 - Tuesday 05 Oct 2021";
+  $daytext = "Day 1 - Tuesday 05 Oct 2022";
 } elseif ($day === "day2") {
-  $daytext = "Day 2 - Wednesday 06 Oct 2021";
+  $daytext = "Day 2 - Wednesday 06 Oct 2022";
 }
 
 if ($am_or_pm === "both" || null) {
@@ -37,7 +37,7 @@ if ($am_or_pm === "both" || null) {
 } else {
   $the_query = new WP_Query(
     array(
-      'post_type' => 'session',
+      'post_type' => 'session-2022',
       'meta_key' => 'time_start',
       'order' => 'ASC',
       'orderby' => 'meta_value',

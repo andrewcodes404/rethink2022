@@ -83,15 +83,11 @@ if ($subtitle || $speakers || $partners || $sponsors || $learnings || $postevent
         <?php endif;?>
 
 
-
-
         <?php if ($overview): ?>
         <div class="b-programme__session__content__overview">
             <p> <?php echo $overview ?> </p>
         </div>
         <?php endif;?>
-
-
 
 
         <?php if ($sdg): ?>
@@ -113,23 +109,23 @@ if ($subtitle || $speakers || $partners || $sponsors || $learnings || $postevent
         <?php endif;?>
 
 
-        <?php if ($speakers): ?>
-        <div class="b-programme__session__content__speakers ">
+        <?php if ($speakers) : ?>
+          <div class="pg-single-session__section">
             <h3>Speakers</h3>
-            <?php get_template_part('template-parts/speakers', null, array('data' => $speakers))?>
-        </div>
-        <?php endif;?>
+            <?php get_template_part('template-parts/speakers', 'speakers', array('data' => $speakers)) ?>
+          </div>
+        <?php endif; ?>
 
 
         <?php if ($partners): ?>
         <h3>Supported by</h3>
-        <?php get_template_part('template-parts/partners', null, array('data' => $partners))?>
+        <?php get_template_part('template-parts/partners', 'partners', array('data' => $partners))?>
         <?php endif;?>
 
 
         <?php if ($sponsors): ?>
         <h3>Sponsored by</h3>
-        <?php get_template_part('template-parts/sponsors', null, array('data' => $sponsors))?>
+        <?php get_template_part('template-parts/sponsors', 'sponsors', array('data' => $sponsors))?>
         <?php endif;?>
 
     </div>
