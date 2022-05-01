@@ -122,6 +122,7 @@
                 </div>
                 <?php endif?>
 
+                <?php get_template_part('template-parts/assoc-speakers', 'assoc-speakers', array('post_id' => $post_id))?>
                 <?php get_template_part('template-parts/session-links', 'session-links', array('post_id' => $post_id))?>
             </div>
         </div>
