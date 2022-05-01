@@ -9,12 +9,14 @@
 <?php $facebook = get_field('facebook', $post_id) ?>
 <?php $twitter = get_field('twitter', $post_id) ?>
 <?php $instagram = get_field('instagram', $post_id) ?>
-
 <?php $description = get_field("description", $post_id) ?>
 <?php $bio = get_field("bio", $post_id) ?>
-
 <?php $position = get_field("position", $post_id) ?>
+<?php $assoc_company = get_field("sponsor_partner_company", $post_id)?>
 <?php $company = get_field("company", $post_id) ?>
+
+
+
 
 <?php $allow_pop_up = isset($args['allow_pop_up']) ? $args['allow_pop_up'] : ''; ?>
 
@@ -58,7 +60,20 @@
             </div>
 
             <?php if ($position) : ?> <p class="t-modal__position"> <?php echo $position ?> </p> <?php endif ?>
-            <?php if ($company) : ?> <p class="t-modal__company"> <?php echo $company ?> </p> <?php endif ?>
+
+                        <?php
+                        if($company){
+                          $company_text = $company;
+                        }
+
+                        if($assoc_company){
+                          foreach ($assoc_company as $value) {
+                            $company_text =  get_the_title();
+                          }
+                        }
+                        ?>
+
+            <?php if ($company_text) : ?> <p class="t-modal__company"> <?php echo $company_text ?></p> <?php endif ?>
           </div>
 
 

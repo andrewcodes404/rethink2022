@@ -33,11 +33,26 @@
 
         </div>
 
-
-
-
         <p class="s-profile__position"> <?php the_field('position')?> </p>
-        <p class="s-profile__company"> <?php the_field('company')?></p>
+
+                <?php $assoc_company = get_field("sponsor_partner_company", $post->ID)?>
+                <?php $company = get_field("company", $post->ID) ?>
+                <?php
+                        if($company){
+                          $company_text = $company;
+                        }
+
+                        if($assoc_company){
+                          foreach ($assoc_company as $value) {
+                            $company_text =  get_the_title($value->ID);
+                          }
+                        }
+                        ?>
+
+        <p class="s-profile__company"> <?php echo $company_text ?></p>
+
+
+
         <div class="s-profile__social">
 
             <?php $linkedin = get_field('linkedin');if ($linkedin): ?>
