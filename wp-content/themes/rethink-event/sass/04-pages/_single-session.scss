@@ -38,6 +38,7 @@
 
 .pg-single-session__location {
   background-color: #fff;
+  @include colour-pick-text;
 }
 
 .pg-single-session__location-link {

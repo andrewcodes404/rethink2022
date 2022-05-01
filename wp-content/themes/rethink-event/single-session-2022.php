@@ -82,8 +82,8 @@
       $locationUrl = $homeUrl . '';
       $locationText = "Workshop 3";
     } elseif ($location == 'futureLeaders') {
-      $locationUrl = $homeUrl . '';
-      $locationText = "Future Leaders";
+      $locationUrl = $homeUrl . '/programme/future-leaders/';
+      $locationText = "Future Leaders Stage";
     }
 
     $day_text = '1 - 5th Oct';

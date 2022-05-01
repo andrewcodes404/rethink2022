@@ -49,7 +49,7 @@ $the_queryDayTwo = new WP_Query(array(
     <?php if ($the_queryDayOne->have_posts()): ?>
 
     <div class="b-snippet">
-        <h4>Day 1 - 05 Oct 2021</h4>
+        <h3>Day 1 - 05 Oct 2022</h3>
         <?php while ($the_queryDayOne->have_posts()): $the_queryDayOne->the_post();?>
         <?php $post_id = get_the_ID();?>
 
@@ -73,7 +73,7 @@ $the_queryDayTwo = new WP_Query(array(
 
 
     <div class="b-snippet">
-        <h4>Day 2 - 06 Oct 2021</h4>
+        <h3>Day 2 - 06 Oct 2022</h3>
         <?php while ($the_queryDayTwo->have_posts()): $the_queryDayTwo->the_post();?>
         <?php $post_id = get_the_ID();?>
 

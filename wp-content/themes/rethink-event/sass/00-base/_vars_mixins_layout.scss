@@ -127,7 +127,7 @@ $break-desktop-wide: 1200px;
   }
 
   &--plum,
-  &--future {
+  &--futureLeaders {
     background-color: $plum;
   }
 }
@@ -136,35 +136,56 @@ $break-desktop-wide: 1200px;
   &--green,
   &--susTrans {
     color: $white;
+    a {
+      color: $white;
+    }
   }
   &--lime,
   &--bec {
     color: $black;
+    a {
+      color: $black;
+    }
   }
 
   &--sea,
   &--susPart {
     color: $black;
+    a {
+      color: $black;
+    }
   }
 
   &--dust,
   &--susRes {
     color: $white;
+    a {
+      color: $white;
+    }
   }
 
   &--gold,
   &--susCom {
     color: $black;
+    a {
+      color: $black;
+    }
   }
 
   &--rose,
   &--change {
     color: $white;
+    a {
+      color: $white;
+    }
   }
 
   &--plum,
-  &--future {
+  &--futureLeaders {
     color: $white;
+    a {
+      color: $white;
+    }
   }
 }
 

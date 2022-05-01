@@ -1,3 +1,10 @@
+.b-snippet-wrapper{
+  padding-bottom: 25px;
+  @media (min-width: $break-desktop){
+   padding-bottom: 45px;
+  }
+}
+
 .b-snippet-hint {
     display: inline;
     background-color: #f2f2f2;
