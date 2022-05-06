@@ -7,9 +7,9 @@ $am_or_pm = "";
 $am_or_pm = $args['data']['am_or_pm'];
 
 if ($day === "day1") {
-  $daytext = "Day 1 - Tuesday 05 Oct 2022";
+  $daytext = "Day 1 - Wednesday 05 Oct 2022";
 } elseif ($day === "day2") {
-  $daytext = "Day 2 - Wednesday 06 Oct 2022";
+  $daytext = "Day 2 - Thursday 06 Oct 2022";
 }
 
 if ($am_or_pm === "both" || null) {
