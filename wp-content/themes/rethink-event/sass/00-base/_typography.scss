@@ -127,9 +127,13 @@ p {
   }
 }
 
-ul,
-ol {
+ul {
   list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 30px;
+}
+
+ol {
   list-style-position: inside;
   margin-bottom: 30px;
 }
