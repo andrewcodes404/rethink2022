@@ -1,7 +1,7 @@
 <div class="programme-grid-wrapper">
     <div class="programme-grid">
-        <?php if (have_rows('programme_grid')): ?>
-        <?php while (have_rows('programme_grid')): the_row();?>
+        <?php if (have_rows('cta_squares')): ?>
+        <?php while (have_rows('cta_squares')): the_row();?>
         <?php
     $title = get_sub_field('title');
     $colour = get_sub_field('colour');

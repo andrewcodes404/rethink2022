@@ -11,7 +11,7 @@ function apd_allowed_block_types($allowed_blocks)
     'acf/space-invader',
     'acf/youtube',
     'acf/speakers-list',
-    'acf/programme-grid',
+    'acf/cta-squares',
     'acf/progrid',
     'acf/logos',
     'acf/odoo-form',
@@ -177,11 +177,11 @@ function apd_register_blocks()
     ));
 
     acf_register_block(array(
-      'name' => 'programme-grid',
-      'title' => __('Programme Grid'),
-      'render_template' => get_template_directory() . '/blocks/b-programme-grid.php',
+      'name' => 'cta-squares',
+      'title' => __('CTA Squares'),
+      'render_template' => get_template_directory() . '/blocks/b-cta-squares.php',
       'category' => '',
-      'icon' => 'button',
+      'icon' => 'grid-view',
       'post_types' => array('post', 'page'),
       'mode' => 'auto',
     ));
