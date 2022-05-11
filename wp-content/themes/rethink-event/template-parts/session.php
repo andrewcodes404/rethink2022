@@ -35,7 +35,16 @@ switch ($category) {
 }
 
 
+
 $speakers = get_field('speakers', $post_id);
+
+// Add a new moderator field to the moderators.. you need this
+if ($moderators) {
+  foreach ($moderators as $i => &$element) {
+      $element->moderator = true;
+  }
+}
+
 
 if (!empty($moderators) && !empty($speakers)) {
   $all_speakers = array_merge($moderators, $speakers);
@@ -46,6 +55,7 @@ if (!empty($moderators) && !empty($speakers)) {
 } else {
   $all_speakers = [];
 }
+
 
 $partners = get_field('partners', $post_id);
 $sponsors = get_field('sponsors', $post_id);
