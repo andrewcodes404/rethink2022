@@ -17,15 +17,7 @@ function apd_allowed_block_types($allowed_blocks)
     'acf/odoo-form',
     'acf/programmes',
     'acf/programme-snippet',
-    // 'acf/prog-snip-bec',
-    // 'acf/prog-snip-change',
-    // 'acf/prog-snip-suscom',
-    // 'acf/prog-snip-suspart',
-    // 'acf/prog-snip-susres',
-    // 'acf/prog-snip-sustrans',
-    // 'acf/prog-snip-workshop1',
-    // 'acf/prog-snip-workshop2',
-    // 'acf/prog-snip-workshop3',
+    'acf/programme-global',
 
     // the wp-blocks
     'core/heading',
@@ -106,6 +98,16 @@ function apd_register_blocks()
       'icon' => 'megaphone',
       'post_types' => array('post', 'page'),
       'mode' => 'auto',
+    ));
+
+    acf_register_block(array(
+      'name' => 'programme-global',
+      'title' => __('Programme Global'),
+      'render_template' => get_template_directory() . '/blocks/b-programme-global.php',
+      'category' => '',
+      'icon' => 'editor-kitchensink',
+      'post_types' => array('post', 'page'),
+      'mode' => 'edit',
     ));
 
     acf_register_block(array(
