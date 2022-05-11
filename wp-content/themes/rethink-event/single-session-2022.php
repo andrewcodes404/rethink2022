@@ -8,6 +8,13 @@
     $moderators = get_field('moderators', $post_id);
     $speakers_only = get_field('speakers', $post_id);
 
+    // Add a new moderator field to the moderators.. you need this
+      if ($moderators) {
+        foreach ($moderators as $i => &$element) {
+            $element->moderator = true;
+        }
+      }
+
     if (!empty($moderators) && !empty($speakers_only)) {
       $speakers = array_merge($moderators, $speakers_only);
     } elseif (!empty($moderators) && empty($speakers_only)) {
