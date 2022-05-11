@@ -9,11 +9,6 @@
     <?php $image = get_field('image', $post_id); ?>
     <?php $moderator = $speaker->moderator ?>
 
-<?php echo '<pre>';
-print_r($speaker);
-echo '</pre> '?>;
-
-
     <div class="t-speaker  t-modal-parent <?php echo $moderator ? 't-speaker--moderator' : '' ?>  ">
 
       <div class="t-speaker__img">
