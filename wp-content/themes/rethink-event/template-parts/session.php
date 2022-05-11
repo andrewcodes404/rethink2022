@@ -5,6 +5,7 @@ $subtitle = get_field('subtitle', $post_id);
 $overview = get_field('overview', $post_id);
 $learnings = get_field('learnings', $post_id);
 $moderators = get_field('moderators', $post_id);
+$all_speakers = get_field('speakers', $post_id);
 $post_event_actions = get_field('post_event_actions', $post_id);
 $category = get_field('category', $post_id);
 $sdg = get_field('sdg', $post_id);
@@ -33,14 +34,17 @@ switch ($category) {
         break;
 }
 
-if ($moderators) {
-    foreach ($moderators as $i => &$element) {
-        $element->moderator = true;
-    }
-    $speakers_only = get_field('speakers', $post_id);
-    $speakers = array_merge($moderators, $speakers_only);
+
+$speakers = get_field('speakers', $post_id);
+
+if (!empty($moderators) && !empty($speakers)) {
+  $all_speakers = array_merge($moderators, $speakers);
+} elseif (!empty($moderators) && empty($speakers)) {
+  $all_speakers = $moderators;
+} elseif (empty($moderators) && !empty($speakers)) {
+  $all_speakers = $speakers;
 } else {
-    $speakers = get_field('speakers', $post_id);
+  $all_speakers = [];
 }
 
 $partners = get_field('partners', $post_id);
@@ -49,7 +53,7 @@ $learnings = get_field('learnings', $post_id);
 $postevent = get_field('post_event_actions', $post_id);
 $content = false;
 
-if ($subtitle || $speakers || $partners || $sponsors || $learnings || $postevent) {
+if ($subtitle || $all_speakers || $partners || $sponsors || $learnings || $postevent) {
     $content = true;
 }
 ?>
@@ -109,10 +113,10 @@ if ($subtitle || $speakers || $partners || $sponsors || $learnings || $postevent
         <?php endif;?>
 
 
-        <?php if ($speakers) : ?>
+        <?php if ($all_speakers) : ?>
           <div class="pg-single-session__section">
             <h3>Speakers</h3>
-            <?php get_template_part('template-parts/speakers', 'speakers', array('data' => $speakers)) ?>
+            <?php get_template_part('template-parts/speakers', 'speakers', array('data' => $all_speakers)) ?>
           </div>
         <?php endif; ?>
 
