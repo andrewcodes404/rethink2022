@@ -10,238 +10,165 @@ Template Name: Sandpit
 
     <?php get_template_part('template-parts/hero', 'hero', array('post_id' => $post_id)) ?>
 
-    <div class="content-layout content-layout--sandpit">
+    <?php
+
+    $the_query = new WP_Query(
+      array(
+        'post_type' => 'session',
+        'posts_per_page' => -1,
+        'meta_key' => 'time_start',
+        'order' => 'ASC',
+        'orderby' => 'meta_value',
+
+        'meta_query' => array(
+          'relation' => 'AND',
+          array(
+            'key' => 'location',
+            'value' => 'susTrans',
+          ),
+          array(
+            'key' => 'day',
+            'value' => 'day1',
+          ),
+
+        ),
+      )
+    );
 
 
-      <div class="progrid">
+    $the_query2 = new WP_Query(
+      array(
+        'post_type' => 'session',
+        'posts_per_page' => -1,
+        'meta_key' => 'time_start',
+        'order' => 'ASC',
+        'orderby' => 'meta_value',
 
-        <div class="progrid__row progrid__row--titles">
-          <div class="progrid__item">
+        'meta_query' => array(
+          'relation' => 'AND',
+          array(
+            'key' => 'location',
+            'value' => 'bec',
+          ),
+          array(
+            'key' => 'day',
+            'value' => 'day1',
+          ),
 
-          </div>
-          <div class="progrid__item progrid__item--col-title">
-            <div class="progrid__item-title">day1 AM</div>
-          </div>
-          <div class="progrid__item progrid__item--col-title">
-            <div class="progrid__item-title">day1 PM</div>
-          </div>
-          <div class="progrid__item progrid__item--col-title">
-            <div class="progrid__item-title">day2 AM</div>
-          </div>
-          <div class="progrid__item progrid__item--col-title">
-            <div class="progrid__item-title">day2 PM</div>
-          </div>
-        </div>
+        ),
+      )
+    );
 
+    $the_query3 = new WP_Query(
+      array(
+        'post_type' => 'session',
+        'posts_per_page' => -1,
+        'meta_key' => 'time_start',
+        'order' => 'ASC',
+        'orderby' => 'meta_value',
 
-        <div class="progrid__row progrid__row--keynote">
-          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
-            <div class="progrid__item-title">Sustainable Transformation Theatre (Keynote)</div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">Keynote Address
-              & Opening Welcome
-              -
-              Business of Biodiversity </div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking systemic transformation towards a net-zero, nature-positive and equitable future
-              </div>
-              <!-- <div class="progrid__item-info-link">
-                <span>link</span>
-              </div> -->
-            </div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">The Sustainability Imperative
-              in Business
-              -
-              Hong Kong and Beyond: Resetting Our Planet's Trajectory Together
-            </div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking the business and moral imperative for sustainable transformation
-              </div>
-            </div>
-          </div>
+        'meta_query' => array(
+          'relation' => 'AND',
+          array(
+            'key' => 'location',
+            'value' => 'susPart',
+          ),
+          array(
+            'key' => 'day',
+            'value' => 'day1',
+          ),
 
-        </div>
+        ),
+      )
+    );
 
-        <div class="progrid__row progrid__row--business">
-          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
-            <div class="progrid__item-title">Sustainable Business Theatre</div>
-          </div>
-          <div class="progrid__item progrid__item--double  progrid__item--no-cursor">
-            <div class="progrid__item-title">Coming Soon</div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">Rethinking Sustainability for SMEs
-              (Cantonese with English interpretation)
-            </div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking how we mobilise Hong Kong’s SMEs to drive sustainability and prosperity
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-        <div class="progrid__row  progrid__row--partnership">
-          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
-            <div class="progrid__item-title">Sustainable Partnerships Theatre</div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">HK2050isNow Energy & Mobility Summit</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking clean energy and how we move in Hong Kong
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">Green Monday Food & Nature Summit</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking the business of food and natural capital
-              </div>
-            </div>
-          </div>
-
-        </div>
+    ?>
 
 
 
 
-        <div class="progrid__row progrid__row--resources">
-          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
-            <div class="progrid__item-title">Sustainable Resources Theatre</div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">Rethinking Finance</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking how we finance Hong Kong’s transition to a net-zero future
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">Rethinking Supply Chains</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking how we trace and tackle sustainability challenges at source
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">Rethinking Built Spaces</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking our sustainable, vertical city
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">Rethinking Waste</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking how we tackle the city’s waste crisis
-              </div>
-            </div>
-          </div>
-        </div>
+
+    <div class="pro-global">
 
 
-        <div class="progrid__row progrid__row--sustainable">
-          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
-            <div class="progrid__item-title">Sustainable Communities Theatre</div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">Rethinking People & Purpose</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking the business case for “purpose”
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item  progrid__item--no-cursor">
-            <div class="progrid__item-title">Coming Soon</div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">Rethinking Workforce Transformation</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking Diversity, Equity and Inclusion in the workplace
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item">
-            <div class="progrid__item-title">Rethinking Customers & Communications</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking the role of marketing in a sustainable new world
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="schedule" aria-labelledby="schedule-heading">
+
+        <span class="track-slot" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">SusTrans</span>
+        <span class="track-slot" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">BEC</span>
+        <span class="track-slot" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">SusPart</span>
+        <span class="track-slot" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Track 4</span>
+        <span class="track-slot" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Track 5</span>
+        <span class="track-slot" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Track 6</span>
+        <span class="track-slot" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Track 7</span>
+
+        <h2 class="time-slot" style="grid-row: time-0900;">09:00am</h2>
+        <h2 class="time-slot" style="grid-row: time-0930;">09:30am</h2>
+        <h2 class="time-slot" style="grid-row: time-1000;">10:00am</h2>
+        <h2 class="time-slot" style="grid-row: time-1030;">10:30am</h2>
+        <h2 class="time-slot" style="grid-row: time-1100;">11:00am</h2>
+        <h2 class="time-slot" style="grid-row: time-1130;">11:30am</h2>
+        <h2 class="time-slot" style="grid-row: time-1200;">12:00am</h2>
+        <h2 class="time-slot" style="grid-row: time-1230;">12:30am</h2>
+
+        <h2 class="time-slot" style="grid-row: time-1300;">13:00am</h2>
+        <h2 class="time-slot" style="grid-row: time-1330;">13:30am</h2>
+
+        <h2 class="time-slot" style="grid-row: time-1400;">14:00am</h2>
+        <h2 class="time-slot" style="grid-row: time-1430;">14:30am</h2>
+
+        <h2 class="time-slot" style="grid-row: time-1500;">15:00am</h2>
+        <h2 class="time-slot" style="grid-row: time-1530;">15:30am</h2>
+
+        <h2 class="time-slot" style="grid-row: time-1600;">16:00am</h2>
+        <h2 class="time-slot" style="grid-row: time-1630;">16:30am</h2>
+
+
+        <h2 class="time-slot" style="grid-row: time-1700;">17:00am</h2>
+        <h2 class="time-slot" style="grid-row: time-1730;">17:30am</h2>
 
 
 
-        <div class="progrid__row  progrid__row--change">
-          <div class=" progrid__item pro grid__item--row-title progrid__item--no-cursor">
-            <div class="progrid__item-title">Change Makers Stage</div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">Rethinking Innovation & Technology</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking tech for good
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">Rethinking Value</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking how we create business value while addressing societal challenges
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <!-- susTrans : Sustainable Transformation Theatre
+bec : BEC Sustainable Business Theatre
+susPart : Sustainable Partnerships Theatre
+susRes : Sustainable Resources Theatre
+susCom : Sustainable Communities Theatre
+change : Change Makers Stage
+futureLeaders : Future Leaders Stage -->
 
 
-        <div class="progrid__row  progrid__row--future">
-          <div class="progrid__item progrid__item--row-title progrid__item--no-cursor">
-            <div class="progrid__item-title">Future Leaders Stage</div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">Social Innovators of Tomorrow</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking Hong Kong’s next generation entrepreneurial leaders and solutions for sustainable societal impact
-              </div>
-            </div>
-          </div>
-          <div class="progrid__item progrid__item--double">
-            <div class="progrid__item-title">Green Leaders of Tomorrow</div>
-            <div class="progrid__item-info">
-              <div class="progrid__item-info-text">
-                Rethinking Hong Kong’s environmentally conscious business leaders of the future
-              </div>
-            </div>
-          </div>
 
-        </div>
+        <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location' => "susTrans", 'day' => "day1", 'index' => "1", 'color' => '#20a056')) ?>
+        <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location' => "bec", 'day' => "day1", 'index' => "2", 'color' => '#cdda60')) ?>
+        <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location' => "susPart", 'day' => "day1", 'index' => "3", 'color' => '#1fbbee')) ?>
+        <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location' => "susRes", 'day' => "day1", 'index' => "4", 'color' => '#e5593f')) ?>
+        <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location' => "susCom", 'day' => "day1", 'index' => "5", 'color' => '#edb71a')) ?>
+        <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location' => "change", 'day' => "day1", 'index' => "6", 'color' => '#e97193')) ?>
+        <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location' => "futureLeaders", 'day' => "day1", 'index' => "7", 'color' => '#8d5da7')) ?>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
       </div>
 
-
-
     </div>
+
+
+
+    <div class="content-layout">
+      <?php the_content(); ?>
+    </div>
+
 
 
   <?php endwhile;
