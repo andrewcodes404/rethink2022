@@ -66,8 +66,8 @@ $the_query = new WP_Query(
 background-color: <?php echo $color ?>;
     ">
 
-          <h3 class="pro-global__session-title"><a href="#"><?php the_title() ?></a></h3>
-          <span class="pro-global__session-time"><?php the_field('time_start', $post_id) ?> - <?php the_field('time_end', $post_id) ?></span>
+          <h3 class="pro-global__session-title"><a href="<?php echo get_permalink($post_id); ?> " target="_blank"><?php the_title() ?></a></h3>
+          <span class=" pro-global__session-time"><?php the_field('time_start', $post_id) ?> - <?php the_field('time_end', $post_id) ?></span>
 
         </div>
       <?php endwhile; ?>
@@ -92,7 +92,7 @@ background-color: <?php echo $color ?>;
 background-color: <?php echo $color ?>;
     ">
 
-      <h3 class="pro-global__session-title"><a href="#"><?php the_title() ?></a></h3>
+      <h3 class="pro-global__session-title"><a href="<?php echo get_permalink($post_id); ?>" target="_blank"><?php the_title() ?></a></h3>
       <span class="pro-global__session-time"><?php the_field('time_start', $post_id) ?> - <?php the_field('time_end', $post_id) ?></span>
 
     </div>
