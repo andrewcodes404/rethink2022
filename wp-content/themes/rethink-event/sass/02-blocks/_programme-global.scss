@@ -261,14 +261,17 @@
   font-weight: bold;
   font-size: 14px;
   display: none;
+  margin-bottom: 20px;
   @media (min-width: $break-desktop) {
     @supports (display: grid) {
       display: block;
-      padding: 10px 5px 5px;
+      padding: 10px;
       // position: sticky;
       top: 80px;
       // z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.9);
+      @include colour-pick;
+      @include colour-pick-text;
+      color: white;
     }
   }
 }

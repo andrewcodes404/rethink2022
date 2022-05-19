@@ -28,13 +28,13 @@ Template Name: Sandpit
           <div class="pro-global__schedule" aria-labelledby="schedule-heading">
 
 
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Sustainable Transformation Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">BEC Sustainable Business Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Sustainable Partnerships Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Sustainable Resources Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Sustainable Communities Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Change Makers Stage</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Future Leaders Stage</span>
+            <span class="pro-global__track-slot pro-global__track-slot--susTrans" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Sustainable Transformation Theatre (Keynote)</span>
+            <span class="pro-global__track-slot pro-global__track-slot--bec" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">BEC Sustainable Business Theatre</span>
+            <span class="pro-global__track-slot pro-global__track-slot--susPart" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Sustainable Partnerships Theatre</span>
+            <span class="pro-global__track-slot pro-global__track-slot--susRes" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Sustainable Resources Theatre</span>
+            <span class="pro-global__track-slot pro-global__track-slot--susCom" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Sustainable Communities Theatre</span>
+            <span class="pro-global__track-slot pro-global__track-slot--change" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Change Makers Stage</span>
+            <span class="pro-global__track-slot pro-global__track-slot--futureLeaders" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Future Leaders Stage</span>
 
             <!-- <h2 class="pro-global__time-slot" style="grid-row: time-0900;">09:00am</h2> -->
             <h2 class="pro-global__time-slot" style="grid-row: time-0930;">09:30</h2>
@@ -89,13 +89,13 @@ Template Name: Sandpit
           <div class="pro-global__schedule" aria-labelledby="schedule-heading">
 
 
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Sustainable Transformation Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">BEC Sustainable Business Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Sustainable Partnerships Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Sustainable Resources Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Sustainable Communities Theatre</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Change Makers Stage</span>
-            <span class="pro-global__track-slot" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Future Leaders Stage</span>
+            <span class="pro-global__track-slot pro-global__track-slot--susTrans" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Sustainable Transformation Theatre (Keynote)</span>
+            <span class="pro-global__track-slot pro-global__track-slot--bec" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">BEC Sustainable Business Theatre</span>
+            <span class="pro-global__track-slot pro-global__track-slot--susPart" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Sustainable Partnerships Theatre</span>
+            <span class="pro-global__track-slot pro-global__track-slot--susRes" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Sustainable Resources Theatre</span>
+            <span class="pro-global__track-slot pro-global__track-slot--susCom" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Sustainable Communities Theatre</span>
+            <span class="pro-global__track-slot pro-global__track-slot--change" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Change Makers Stage</span>
+            <span class="pro-global__track-slot pro-global__track-slot--futureLeaders" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Future Leaders Stage</span>
 
             <!-- <h2 class="pro-global__time-slot" style="grid-row: time-0900;">09:00am</h2> -->
             <h2 class="pro-global__time-slot" style="grid-row: time-0930;">09:30</h2>
