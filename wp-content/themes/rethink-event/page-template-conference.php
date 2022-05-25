@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Sandpit
+Template Name: Conference
  */
 ?>
 
@@ -10,6 +10,44 @@ Template Name: Sandpit
 
     <?php get_template_part('template-parts/hero', 'hero', array('post_id' => $post_id)) ?>
 
+    <div class="content-layout">
+
+      <h3 class="has-black-color has-text-color">ReThink HK provides insight and inspiration for driving sustainable development across globally recognised risk and opportunity topics, from a Hong Kong context.</h3>
+
+
+
+      <p class="has-black-color has-text-color">The conference programme addresses the sustainability challenges faced by Hong Kong organisations as well as those operating, sourcing, trading or collaborating from our unique city.</p>
+
+
+
+      <p class="has-black-color has-text-color">Two unique days of keynotes, case studies, interviews, simulations, panels, workshops, and interactive sessions addressing the rapidly changing landscape of environmental and societal sustainability whilst unpacking how business leaders and sustainability practitioners can accelerate and amplify change across their complex internal and external stakeholder structures.</p>
+
+
+
+      <h3>Conference Diversity</h3>
+
+
+
+      <p>ReThink HK believes in spreading the knowledge of leaders and experts across the many areas of sustainable business. We believe that greater understanding, collaboration and change are better facilitated by a variety of perspectives, and our goal is to create an inclusive, respectful conference environment that invites participation from people of all races, ethnicities, genders, ages, abilities, religions, and sexual orientation.</p>
+
+
+
+      <p>We are actively seeking to increase the diversity of our attendees, speakers, and sponsors through our calls for speaker proposals, an open door collaboration policy, and dialogue with the communities we are so proud to serve.</p>
+
+
+
+      <p>This is an ongoing process. We seek guidance from our ReThinkTank advisory group, co-organiser, content partners, supporting organisations, session moderators and industry friends about this goal and about ways they can help us achieve it.</p>
+
+
+
+      <p class="has-black-color has-text-color">ReThink HK is committed to striving for&nbsp;<em>no</em>&nbsp;‘manels’ (<em>no</em>&nbsp;all-male panels) and works closely with all those contributing to the programme to ensure a full spectrum of perspectives, opinions and experiences are represented across the programme.</p>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+    </div>
 
 
 
@@ -59,11 +97,11 @@ Template Name: Sandpit
 
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#f7f7f7;">
-              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Welcome</a></h3>
+              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
               <span class="session-time">09:15 - 0940</span>
             </div>
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0940 / time-0950; background-color: #f7f7f7;">
+            <!-- <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0940 / time-0950; background-color: #f7f7f7;">
               <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Welcome</a></h3>
               <span class="session-time">09:40 - 0950</span>
             </div>
@@ -71,7 +109,7 @@ Template Name: Sandpit
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1000 / time-1100; background-color: #f7f7f7;">
               <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#"> From Ambition to Action: Hong Kong’s Race Towards a Net-Zero Future</a></h3>
               <span class="session-time">10:00 - 11:00</span>
-            </div>
+            </div> -->
 
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Transformation Theatre', 'location' => "susTrans", 'day' => "day1", 'index' => "1", 'color' => '#20a056')) ?>
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'BEC Sustainable Business Theatre', 'location' => "bec", 'day' => "day1", 'index' => "2", 'color' => '#cdda60')) ?>
@@ -119,12 +157,12 @@ Template Name: Sandpit
 
 
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0950; background-color:#f7f7f7;">
-              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Welcome for day2</a></h3>
-              <span class="session-time">09:15 - 0950</span>
+            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#f7f7f7;">
+              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
+              <span class="session-time">09:15 - 0940</span>
             </div>
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0950 / time-1015; background-color: #f7f7f7;">
+            <!-- <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0950 / time-1015; background-color: #f7f7f7;">
               <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Welcome</a></h3>
               <span class="session-time">09:50 - 1015</span>
             </div>
@@ -132,7 +170,7 @@ Template Name: Sandpit
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1015 / time-1100; background-color: #f7f7f7;">
               <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#"> From Ambition to Action: Hong Kong’s Race Towards a Net-Zero Future</a></h3>
               <span class="session-time">10:15 - 11:00</span>
-            </div>
+            </div> -->
 
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Transformation Theatre', 'location' => "susTrans", 'day' => "day2", 'index' => "1", 'color' => '#20a056')) ?>
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'BEC Sustainable Business Theatre', 'location' => "bec", 'day' => "day2", 'index' => "2", 'color' => '#cdda60')) ?>
@@ -147,8 +185,6 @@ Template Name: Sandpit
         </div>
 
       </div>
-
-
 
       <div class="content-layout">
         <?php the_content(); ?>
