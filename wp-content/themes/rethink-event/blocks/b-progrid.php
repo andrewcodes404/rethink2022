@@ -106,7 +106,7 @@
       </div>
     </div>
     <div class="progrid__item progrid__item--double">
-      <div class="progrid__item-title">Green Monday Food & ESG Summit</div>
+      <div class="progrid__item-title">Green Monday Food & Sustainability Summit</div>
       <div class="progrid__item-info" data-link="partner">
         <div class="progrid__item-info-text">
           Rethinking the business of food and ESG transformation

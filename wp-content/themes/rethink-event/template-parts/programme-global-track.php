@@ -10,7 +10,7 @@ $location_text = $args['location_text'];
 
 $the_query = new WP_Query(
   array(
-    'post_type' => 'session',
+    'post_type' => 'session-2022',
     'posts_per_page' => -1,
     'meta_key' => 'time_start',
     'order' => 'ASC',

@@ -96,20 +96,20 @@ Template Name: Conference
 
 
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#f7f7f7;">
-              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
+            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#20a056;">
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
               <span class="session-time">09:15 - 0940</span>
             </div>
 
-            <!-- <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0940 / time-0950; background-color: #f7f7f7;">
-              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Welcome</a></h3>
-              <span class="session-time">09:40 - 0950</span>
+            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0940 / time-1000; background-color: #20a056;">
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">Keynote Address</a></h3>
+              <span class="session-time">09:40 - 10:00</span>
             </div>
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1000 / time-1100; background-color: #f7f7f7;">
-              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#"> From Ambition to Action: Hong Kong’s Race Towards a Net-Zero Future</a></h3>
-              <span class="session-time">10:00 - 11:00</span>
-            </div> -->
+            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1000 / time-1050; background-color: #20a056;">
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">From Ambition to Action: Hong Kong's Race Towards a Net-Zero Future</a></h3>
+              <span class="session-time">10:00 - 10:50</span>
+            </div>
 
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Transformation Theatre', 'location' => "susTrans", 'day' => "day1", 'index' => "1", 'color' => '#20a056')) ?>
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'BEC Sustainable Business Theatre', 'location' => "bec", 'day' => "day1", 'index' => "2", 'color' => '#cdda60')) ?>
@@ -157,20 +157,21 @@ Template Name: Conference
 
 
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#f7f7f7;">
-              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
+            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#20a056;">
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
               <span class="session-time">09:15 - 0940</span>
             </div>
 
-            <!-- <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0950 / time-1015; background-color: #f7f7f7;">
-              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#">Opening Welcome</a></h3>
-              <span class="session-time">09:50 - 1015</span>
+            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0940 / time-1000; background-color: #20a056;">
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">
+                  Opening Address: Net Positive</a></h3>
+              <span class="session-time">09:45 - 10:00</span>
             </div>
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1015 / time-1100; background-color: #f7f7f7;">
-              <h3 class="pro-global__session-title pro-global__session-title--black"><a href="#"> From Ambition to Action: Hong Kong’s Race Towards a Net-Zero Future</a></h3>
-              <span class="session-time">10:15 - 11:00</span>
-            </div> -->
+            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1000 / time-1050; background-color: #20a056;">
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">Where We Are, Where We're Headed: The New Ambition Powering Hong Kong's Conglomerates</a></h3>
+              <span class="session-time">10:00 - 11:00</span>
+            </div>
 
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Transformation Theatre', 'location' => "susTrans", 'day' => "day2", 'index' => "1", 'color' => '#20a056')) ?>
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'BEC Sustainable Business Theatre', 'location' => "bec", 'day' => "day2", 'index' => "2", 'color' => '#cdda60')) ?>
