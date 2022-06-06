@@ -97,17 +97,17 @@ Template Name: Conference
 
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-welcome/') ?>" target="_blank">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
               <span class="session-time">09:15 - 0940</span>
             </div>
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0940 / time-1000; background-color: #20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">Keynote Address</a></h3>
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-address/') ?>" target="_blank">Keynote Address</a></h3>
               <span class="session-time">09:40 - 10:00</span>
             </div>
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1000 / time-1050; background-color: #20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">From Ambition to Action: Hong Kong's Race Towards a Net-Zero Future</a></h3>
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/from-ambition-to-action-hong-kongs-race-towards-a-net-zero-future/') ?>" target="_blank">From Ambition to Action: Hong Kong's Race Towards a Net-Zero Future</a></h3>
               <span class="session-time">10:00 - 10:50</span>
             </div>
 
@@ -158,18 +158,18 @@ Template Name: Conference
 
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-welcome-the-sustainability-imperative-for-business-2/') ?>" target="_blank">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
               <span class="session-time">09:15 - 0940</span>
             </div>
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0940 / time-1000; background-color: #20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">
+            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0945 / time-1000; background-color: #20a056;">
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-address-net-positive/') ?>" target="_blank">
                   Opening Address: Net Positive</a></h3>
               <span class="session-time">09:45 - 10:00</span>
             </div>
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1000 / time-1050; background-color: #20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="#">Where We Are, Where We're Headed: The New Ambition Powering Hong Kong's Conglomerates</a></h3>
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/the-new-ambition-powering-hong-kongs-conglomerates/') ?>" target="_blank">Where We Are, Where We're Headed: The New Ambition Powering Hong Kong's Conglomerates</a></h3>
               <span class="session-time">10:00 - 11:00</span>
             </div>
 
