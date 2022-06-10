@@ -47,6 +47,8 @@ Template Name: Conference
       <br>
       <br>
 
+
+      <h2 style="text-align:center">Conference Agenda</h2>
     </div>
 
 
@@ -57,22 +59,47 @@ Template Name: Conference
       <div class="pro-global">
 
         <div class="pro-global__buttons">
-          <button class="pro-global__button pro-global__button--day1 pro-global__button--active">Day 1 - Weds 5th Oct</button>
-          <button class="pro-global__button pro-global__button--day2">Day 2 - Thur 6th Oct </button>
+
+
+          <div class="pro-global__button-wrapper pro-global__button-wrapper--day1 pro-global__button-wrapper--active">
+            <h3>Day 1 - Weds 5th Oct</h3>
+            <button class="pro-global__button"> Show Day 2 </button>
+          </div>
+
+          <div class="pro-global__button-wrapper pro-global__button-wrapper--day2">
+            <h3>Day 2 - Thur 6th Oct </h3>
+            <button class="pro-global__button ">Show Day1 </button>
+          </div>
+
+
         </div>
 
 
+
         <div class="pro-global__day1 pro-global__day1--show">
+
+
+
           <div class="pro-global__schedule" aria-labelledby="schedule-heading">
 
 
-            <span class="pro-global__track-slot pro-global__track-slot--susTrans" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Sustainable Transformation Theatre (Keynote)</span>
-            <span class="pro-global__track-slot pro-global__track-slot--bec" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">BEC Sustainable Business Theatre</span>
-            <span class="pro-global__track-slot pro-global__track-slot--susPart" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Sustainable Partnerships Theatre</span>
-            <span class="pro-global__track-slot pro-global__track-slot--susRes" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Sustainable Resources Theatre</span>
-            <span class="pro-global__track-slot pro-global__track-slot--susCom" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Sustainable Communities Theatre</span>
-            <span class="pro-global__track-slot pro-global__track-slot--change" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Change Makers Stage</span>
-            <span class="pro-global__track-slot pro-global__track-slot--futureLeaders" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Future Leaders Stage</span>
+            <a href="<?php echo site_url('/programme/sustainable-transformation') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--susTrans" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Sustainable Transformation Theatre (Keynote)</a>
+
+            <a href="<?php echo site_url('/programme/bec-theatre') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--bec" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">BEC Sustainable Business Theatre</a>
+
+            <a href="<?php echo site_url('/programme/sustainable-partnerships') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--susPart" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Sustainable Partnerships Theatre</a>
+
+
+            <a href="<?php echo site_url('/programme/sustainable-resources') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--susRes" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Sustainable Resources Theatre</a>
+
+
+            <a href="<?php echo site_url('/programme/sustainable-communities') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--susCom" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Sustainable Communities Theatre</a>
+
+
+            <a href="<?php echo site_url('/programme/change-makers') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--change" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Change Makers Stage</a>
+
+
+            <a href="<?php echo site_url('/programme/future-leaders') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--futureLeaders" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Future Leaders Stage</a>
 
             <!-- <h2 class="pro-global__time-slot" style="grid-row: time-0900;">09:00am</h2> -->
             <h2 class="pro-global__time-slot" style="grid-row: time-0930;">09:30</h2>
@@ -124,16 +151,27 @@ Template Name: Conference
         </div>
 
         <div class="pro-global__day2">
+
+
           <div class="pro-global__schedule" aria-labelledby="schedule-heading">
+            <a href="<?php echo site_url('/programme/sustainable-transformation') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--susTrans" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Sustainable Transformation Theatre (Keynote)</a>
+
+            <a href="<?php echo site_url('/programme/bec-theatre') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--bec" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">BEC Sustainable Business Theatre</a>
+
+            <a href="<?php echo site_url('/programme/sustainable-partnerships') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--susPart" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Sustainable Partnerships Theatre</a>
 
 
-            <span class="pro-global__track-slot pro-global__track-slot--susTrans" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Sustainable Transformation Theatre (Keynote)</span>
-            <span class="pro-global__track-slot pro-global__track-slot--bec" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">BEC Sustainable Business Theatre</span>
-            <span class="pro-global__track-slot pro-global__track-slot--susPart" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Sustainable Partnerships Theatre</span>
-            <span class="pro-global__track-slot pro-global__track-slot--susRes" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Sustainable Resources Theatre</span>
-            <span class="pro-global__track-slot pro-global__track-slot--susCom" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Sustainable Communities Theatre</span>
-            <span class="pro-global__track-slot pro-global__track-slot--change" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Change Makers Stage</span>
-            <span class="pro-global__track-slot pro-global__track-slot--futureLeaders" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Future Leaders Stage</span>
+            <a href="<?php echo site_url('/programme/sustainable-resources') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--susRes" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Sustainable Resources Theatre</a>
+
+
+            <a href="<?php echo site_url('/programme/sustainable-communities') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--susCom" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Sustainable Communities Theatre</a>
+
+
+            <a href="<?php echo site_url('/programme/change-makers') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--change" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Change Makers Stage</a>
+
+
+            <a href="<?php echo site_url('/programme/future-leaders') ?>" target="_blank" class="pro-global__track-slot pro-global__track-slot--futureLeaders" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Future Leaders Stage</a>
+
 
             <!-- <h2 class="pro-global__time-slot" style="grid-row: time-0900;">09:00am</h2> -->
             <h2 class="pro-global__time-slot" style="grid-row: time-0930;">09:30</h2>
@@ -157,9 +195,9 @@ Template Name: Conference
 
 
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-welcome-the-sustainability-imperative-for-business-2/') ?>" target="_blank">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
-              <span class="session-time">09:15 - 0940</span>
+            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0930 / time-0940; background-color:#20a056;">
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-welcome-the-sustainability-imperative-for-business-2/') ?>" target="_blank">Opening Welcome - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
+              <span class="session-time">09:30 - 0940</span>
             </div>
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0945 / time-1000; background-color: #20a056;">
@@ -168,7 +206,7 @@ Template Name: Conference
               <span class="session-time">09:45 - 10:00</span>
             </div>
 
-            <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1000 / time-1050; background-color: #20a056;">
+            <div class="pro-global__session" style="grid-column: track-1; grid-row: time-1000 / time-1050; background-color: #20a056;">
               <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/the-new-ambition-powering-hong-kongs-conglomerates/') ?>" target="_blank">Where We Are, Where We're Headed: The New Ambition Powering Hong Kong's Conglomerates</a></h3>
               <span class="session-time">10:00 - 11:00</span>
             </div>

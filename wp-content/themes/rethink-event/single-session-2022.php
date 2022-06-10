@@ -9,11 +9,11 @@
     $speakers_only = get_field('speakers', $post_id);
 
     // Add a new moderator field to the moderators.. you need this
-      if ($moderators) {
-        foreach ($moderators as $i => &$element) {
-            $element->moderator = true;
-        }
+    if ($moderators) {
+      foreach ($moderators as $i => &$element) {
+        $element->moderator = true;
       }
+    }
 
     if (!empty($moderators) && !empty($speakers_only)) {
       $speakers = array_merge($moderators, $speakers_only);
@@ -29,7 +29,7 @@
     $sponsors = get_field('sponsors', $post_id);
     $learnings = get_field('learnings', $post_id);
     $postevent = get_field('post_event_actions', $post_id);
-    $day = get_field('day', $post_id );
+    $day = get_field('day', $post_id);
     $start = get_field('time_start', $post_id);
     $end = get_field('time_end', $post_id);
     $sdgs = get_field('sdg', $post_id);
@@ -177,9 +177,11 @@
           </div>
         <?php endif ?>
 
-
-
-
+        <div class="b-cta-wrapper">
+          <div class="b-cta b-cta--green ?>">
+            <a href="<?php echo site_url('conference') ?>"> Back to Conference Agenda </a>
+          </div>
+        </div>
       </div>
     </div>
   <?php endwhile;

@@ -437,29 +437,38 @@ if (proGlobalButtons) {
   proGlobalButtons.forEach(proGlobalButton => {
     proGlobalButton.addEventListener('click', () => {
 
+      console.log('👻 clicked');
+
+      const parent = proGlobalButton.parentElement;
       let sibling = ""
-      if (proGlobalButton.nextElementSibling) {
-        sibling = proGlobalButton.nextElementSibling
-      } else if (proGlobalButton.previousElementSibling) {
-        sibling = proGlobalButton.previousElementSibling
+      console.log('parent:', parent);
+
+
+      if (parent.nextElementSibling) {
+        sibling = parent.nextElementSibling
+      } else if (parent.previousElementSibling) {
+        sibling = parent.previousElementSibling
       }
-
       console.log('sibling:', sibling);
-      if (!proGlobalButton.classList.contains('pro-global__button--active')) {
 
 
+      if (parent.classList.contains('pro-global__button-wrapper--active')) {
 
-        proGlobalButton.classList.add('pro-global__button--active')
-        sibling.classList.remove('pro-global__button--active')
-        if (proGlobalButton.classList.contains('pro-global__button--day1')) {
-          proGlobalDay1.classList.add('pro-global__day1--show')
-          proGlobalDay2.classList.remove('pro-global__day2--show')
-        }
+        console.log('parent.classList:', parent.classList);
 
-        if (proGlobalButton.classList.contains('pro-global__button--day2')) {
+        parent.classList.remove('pro-global__button-wrapper--active')
+        sibling.classList.add('pro-global__button-wrapper--active')
+
+        if (parent.classList.contains('pro-global__button-wrapper--day1')) {
+
           proGlobalDay2.classList.add('pro-global__day2--show')
           proGlobalDay1.classList.remove('pro-global__day1--show')
+        }
 
+        if (parent.classList.contains('pro-global__button-wrapper--day2')) {
+          console.log(' proGlobalDay1:', proGlobalDay1);
+          proGlobalDay1.classList.add('pro-global__day1--show')
+          proGlobalDay2.classList.remove('pro-global__day2--show')
         }
 
       }
