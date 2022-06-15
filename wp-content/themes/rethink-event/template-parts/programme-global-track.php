@@ -7,6 +7,7 @@ $day = $args['day'];
 $index = $args['index'];
 $color = $args['color'];
 $location_text = $args['location_text'];
+$times_start = $args['time_start'];
 
 $the_query = new WP_Query(
   array(
@@ -28,7 +29,7 @@ $the_query = new WP_Query(
       ),
       array(
         'key' => 'time_start',
-        'value' => "10:59",
+        'value' => $times_start,
         'type' => 'NUMERIC',
         'compare' => ">"
       ),

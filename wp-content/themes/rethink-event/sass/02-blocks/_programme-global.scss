@@ -138,6 +138,11 @@
   background-color: $yellow;
   color: $black;
   border: none;
+  transition: 0.4s;
+  &:hover {
+    // opacity: 0.8;
+    filter: brightness(0.8);
+  }
 }
 
 .pro-global__day1,

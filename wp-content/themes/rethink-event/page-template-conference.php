@@ -138,13 +138,13 @@ Template Name: Conference
               <span class="session-time">10:00 - 10:50</span>
             </div>
 
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Transformation Theatre', 'location' => "susTrans", 'day' => "day1", 'index' => "1", 'color' => '#20a056')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'BEC Sustainable Business Theatre', 'location' => "bec", 'day' => "day1", 'index' => "2", 'color' => '#cdda60')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Partnerships Theatre', 'location' => "susPart", 'day' => "day1", 'index' => "3", 'color' => '#1fbbee')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Resources Theatre', 'location' => "susRes", 'day' => "day1", 'index' => "4", 'color' => '#e5593f')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Communities Theatre', 'location' => "susCom", 'day' => "day1", 'index' => "5", 'color' => '#edb71a')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Change Makers Stage', 'location' => "change", 'day' => "day1", 'index' => "6", 'color' => '#e97193')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Future Leaders Stage', 'location' => "futureLeaders", 'day' => "day1", 'index' => "7", 'color' => '#8d5da7')) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Transformation Theatre', 'location' => "susTrans", 'day' => "day1", 'index' => "1", 'color' => '#20a056', "time_start" => "10:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'BEC Sustainable Business Theatre', 'location' => "bec", 'day' => "day1", 'index' => "2", 'color' => '#cdda60', "time_start" => "10:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Partnerships Theatre', 'location' => "susPart", 'day' => "day1", 'index' => "3", 'color' => '#1fbbee', "time_start" => "10:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Resources Theatre', 'location' => "susRes", 'day' => "day1", 'index' => "4", 'color' => '#e5593f', "time_start" => "10:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Communities Theatre', 'location' => "susCom", 'day' => "day1", 'index' => "5", 'color' => '#edb71a', "time_start" => "10:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Change Makers Stage', 'location' => "change", 'day' => "day1", 'index' => "6", 'color' => '#e97193', "time_start" => "10:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Future Leaders Stage', 'location' => "futureLeaders", 'day' => "day1", 'index' => "7", 'color' => '#8d5da7', "time_start" => "10:59")) ?>
 
 
           </div>
@@ -211,13 +211,13 @@ Template Name: Conference
               <span class="session-time">10:00 - 11:00</span>
             </div>
 
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Transformation Theatre', 'location' => "susTrans", 'day' => "day2", 'index' => "1", 'color' => '#20a056')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'BEC Sustainable Business Theatre', 'location' => "bec", 'day' => "day2", 'index' => "2", 'color' => '#cdda60')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Partnerships Theatre', 'location' => "susPart", 'day' => "day2", 'index' => "3", 'color' => '#1fbbee')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Resources Theatre', 'location' => "susRes", 'day' => "day2", 'index' => "4", 'color' => '#e5593f')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Communities Theatre', 'location' => "susCom", 'day' => "day2", 'index' => "5", 'color' => '#edb71a')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Change Makers Stage', 'location' => "change", 'day' => "day2", 'index' => "6", 'color' => '#e97193')) ?>
-            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Future Leaders Stage', 'location' => "futureLeaders", 'day' => "day2", 'index' => "7", 'color' => '#8d5da7')) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Transformation Theatre', 'location' => "susTrans", 'day' => "day2", 'index' => "1", 'color' => '#20a056', "time_start" => "09:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'BEC Sustainable Business Theatre', 'location' => "bec", 'day' => "day2", 'index' => "2", 'color' => '#cdda60', "time_start" => "09:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Partnerships Theatre', 'location' => "susPart", 'day' => "day2", 'index' => "3", 'color' => '#1fbbee', "time_start" => "09:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Resources Theatre', 'location' => "susRes", 'day' => "day2", 'index' => "4", 'color' => '#e5593f', "time_start" => "09:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Communities Theatre', 'location' => "susCom", 'day' => "day2", 'index' => "5", 'color' => '#edb71a', "time_start" => "09:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Change Makers Stage', 'location' => "change", 'day' => "day2", 'index' => "6", 'color' => '#e97193', "time_start" => "09:59")) ?>
+            <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Future Leaders Stage', 'location' => "futureLeaders", 'day' => "day2", 'index' => "7", 'color' => '#8d5da7', "time_start" => "09:59")) ?>
 
 
           </div>
