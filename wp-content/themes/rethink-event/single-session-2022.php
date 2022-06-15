@@ -9,6 +9,7 @@
     $speakers_only = get_field('speakers', $post_id);
 
     // Add a new moderator field to the moderators.. you need this
+
     if ($moderators) {
       foreach ($moderators as $i => &$element) {
         $element->moderator = true;
@@ -177,8 +178,13 @@
           </div>
         <?php endif ?>
 
+
+
+        <?php get_template_part('template-parts/prev-next-session-links', 'pre-next-links', array('location_text' => 'Sustainable Transformation Theatre', 'location' => $location, 'day' => $day, "time_start" => $start, "time_end" => $end, "post_id" => $post_id)) ?>
+
         <div class="b-cta-wrapper">
           <div class="b-cta b-cta--green ?>">
+
             <a href="<?php echo site_url('conference') ?>"> Back to Conference Agenda </a>
           </div>
         </div>
