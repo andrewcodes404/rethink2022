@@ -39,6 +39,7 @@
 @import "05-template/sessions-link.scss";
 @import "05-template/hero";
 @import "05-template/link";
+@import "05-template/prev-next-btns";
 
 @import "progrid";
 
@@ -50,6 +51,3 @@ body.logged-in .nav-wrapper {
 body.logged-in .sticky-cta {
   top: 132px;
 }
-
-
-

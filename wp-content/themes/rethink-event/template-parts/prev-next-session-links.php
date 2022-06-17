@@ -1,7 +1,5 @@
 <?php
 
-use function Sodium\compare;
-
 $location = $args['location'];
 $day = $args['day'];
 
@@ -28,13 +26,6 @@ $the_query = new WP_Query(
         'key' => 'day',
         'value' => $day,
       ),
-      // array(
-      //   'key' => 'time_start',
-      //   'value' => $time_start,
-      //   // 'type' => 'NUMERIC',
-      //   'compare' => "<"
-      // ),
-
     ),
   )
 );
@@ -42,39 +33,26 @@ $the_query = new WP_Query(
 ?>
 
 
+<div class="c-prev-next-btns">
+
+  <?php if ($the_query->have_posts()) : ?>
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+      <?php $loop_post_id = get_the_ID(); ?>
+
+      <?php if ($loop_post_id === $post_id_prev) : ?>
+        <div class="b-cta b-cta--green c-prev-next-btns__prev">
+          <a href="<?php echo get_permalink() ?>"> Prev Session </a>
+        </div>
+      <?php endif ?>
+
+      <?php if ($loop_post_id === $post_id_next) : ?>
+        <div class="b-cta b-cta--green c-prev-next-btns__next">
+          <a href="<?php echo get_permalink() ?>"> Next Session </a>
+        </div>
+      <?php endif ?>
 
 
-<?php echo $location ?> <br>
-<?php echo $day ?><br>
-
-<?php echo $location_text ?><br>
-<?php echo $time_start ?><br>
-<?php echo $post_id ?>
-
-
-<?php if ($the_query->have_posts()) : ?>
-
-
-  <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-
-    <?php $loop_post_id = get_the_ID(); ?>
-
-
-
-    <?php if ($loop_post_id === $post_id_prev) : ?>
-      <p>this is the prev <?php the_title() ?></p>
-    <?php endif ?>
-
-    <!-- <p> <?php echo $the_query->current_post; ?> - <?php echo $loop_post_id ?> <?php the_title() ?>
-    </p> -->
-
-    <?php if ($loop_post_id === $post_id_next) : ?>
-      <p>this is the next <?php the_title() ?></p>
-    <?php endif ?>
-
-  <?php endwhile; ?>
-
-
-  <?php wp_reset_postdata(); ?>
-
-<?php endif; ?>
+    <?php endwhile; ?>
+    <?php wp_reset_postdata(); ?>
+  <?php endif; ?>
+</div>

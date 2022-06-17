@@ -106,6 +106,8 @@
 
       <div class="pg-single-session">
 
+
+
         <div class="pg-single-session__top-bar">
 
           <h4 class="pg-single-session__date-time"> Day <?php echo $day_text ?> | <?php echo $start ?> - <?php echo $end ?>
@@ -178,13 +180,10 @@
           </div>
         <?php endif ?>
 
-
-
         <?php get_template_part('template-parts/prev-next-session-links', 'pre-next-links', array('location_text' => 'Sustainable Transformation Theatre', 'location' => $location, 'day' => $day, "time_start" => $start, "time_end" => $end, "post_id" => $post_id)) ?>
 
         <div class="b-cta-wrapper">
           <div class="b-cta b-cta--green ?>">
-
             <a href="<?php echo site_url('conference') ?>"> Back to Conference Agenda </a>
           </div>
         </div>

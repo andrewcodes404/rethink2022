@@ -1,0 +1,26 @@
+.c-prev-next-btns {
+  display: flex;
+
+  justify-content: space-between;
+  @media (min-width: $break-tablet) {
+  }
+  flex-wrap: wrap;
+  .b-cta {
+    margin: 0;
+    margin-bottom: 20px;
+    // font-size: 12px;
+  }
+}
+
+.c-prev-next-btns__prev {
+  display: block;
+  order: 1;
+}
+
+.c-prev-next-btns__next {
+  display: block;
+  order: 2;
+  @media (min-width: $break-tablet) {
+    order: 3;
+  }
+}
