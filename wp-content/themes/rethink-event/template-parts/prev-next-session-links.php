@@ -50,9 +50,6 @@ $prev_next_query = new WP_Query(
         if (isset($prev_next_query->posts[$key - 1]->ID)) {
           $prevID = $prev_next_query->posts[$key - 1]->ID;
         }
-
-
-
         break;
       }
     }
@@ -65,24 +62,44 @@ $prev_next_query = new WP_Query(
       <?php if ($loop_post_id === $post_id) : ?>
 
         <?php if (isset($prevID)) : ?>
-          <div class="b-cta-wrapper c-prev-next-btns__button">
+          <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--mobile">
             <div class="b-cta b-cta--green ?>">
-              <a href="<?= get_the_permalink($prevID) ?>" rel="prev"> Prev Session </a>
+              <a href="<?= get_the_permalink($prevID) ?>" rel="prev"> Prev</a>
+            </div>
+          </div>
+
+
+          <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--desktop">
+            <div class="b-cta b-cta--green ?>">
+              <a href="<?= get_the_permalink($prevID) ?>" rel="prev">Prev Session </a>
             </div>
           </div>
         <?php endif; ?>
 
 
-        <div class="b-cta-wrapper c-prev-next-btns__button">
+        <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--mobile">
           <div class="b-cta b-cta--green">
 
-            <a href="<?php echo site_url('conference') ?>"> Back to Conference Agenda </a>
+            <a href="<?php echo site_url('conference') ?>"> Conference Agenda </a>
 
           </div>
         </div>
 
+
+        <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--desktop">
+          <div class="b-cta b-cta--green">
+            <a href="<?php echo site_url('conference') ?>"> Back to Conference Agenda </a>
+          </div>
+        </div>
+
         <?php if (isset($nextID)) : ?>
-          <div class="b-cta-wrapper c-prev-next-btns__button">
+          <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--mobile">
+            <div class="b-cta b-cta--green ?>">
+              <a href="<?= get_the_permalink($nextID) ?>" rel="next"> Next</a>
+            </div>
+          </div>
+
+          <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--desktop">
             <div class="b-cta b-cta--green ?>">
               <a href="<?= get_the_permalink($nextID) ?>" rel="next"> Next Session </a>
             </div>

@@ -1,11 +1,15 @@
 .c-prev-next-btns {
+  @extend .content-layout;
   display: flex;
   position: absolute;
-  top: 130px;
+  top: 100px;
+
   justify-content: space-between;
+  align-items: center;
   @media (min-width: $break-tablet) {
+    top: 150px;
   }
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   .b-cta {
     margin: 0;
     margin-bottom: 20px;
@@ -17,6 +21,24 @@
   margin-right: 15px;
   .b-cta {
     margin-bottom: 0;
+  }
+
+  &--mobile {
+    @media (min-width: $break-desktop) {
+      display: none;
+    }
+
+    .b-cta {
+      font-size: 14px;
+      padding: 8px 10px;
+    }
+  }
+
+  &--desktop {
+    display: none;
+    @media (min-width: $break-desktop) {
+      display: block;
+    }
   }
 }
 
