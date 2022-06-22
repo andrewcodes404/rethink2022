@@ -15,30 +15,11 @@ Template Name: Conference
       <h3 class="has-black-color has-text-color">ReThink HK provides insight and inspiration for driving sustainable development across globally recognised risk and opportunity topics, from a Hong Kong context.</h3>
 
 
-
-      <p class="has-black-color has-text-color">The conference programme addresses the sustainability challenges faced by Hong Kong organisations as well as those operating, sourcing, trading or collaborating from our unique city.</p>
-
-
-
-      <p class="has-black-color has-text-color">Two unique days of keynotes, case studies, interviews, simulations, panels, workshops, and interactive sessions addressing the rapidly changing landscape of environmental and societal sustainability whilst unpacking how business leaders and sustainability practitioners can accelerate and amplify change across their complex internal and external stakeholder structures.</p>
-
-
-
       <h3>Conference Diversity</h3>
 
 
 
       <p>ReThink HK believes in spreading the knowledge of leaders and experts across the many areas of sustainable business. We believe that greater understanding, collaboration and change are better facilitated by a variety of perspectives, and our goal is to create an inclusive, respectful conference environment that invites participation from people of all races, ethnicities, genders, ages, abilities, religions, and sexual orientation.</p>
-
-
-
-      <p>We are actively seeking to increase the diversity of our attendees, speakers, and sponsors through our calls for speaker proposals, an open door collaboration policy, and dialogue with the communities we are so proud to serve.</p>
-
-
-
-      <p>This is an ongoing process. We seek guidance from our ReThinkTank advisory group, co-organiser, content partners, supporting organisations, session moderators and industry friends about this goal and about ways they can help us achieve it.</p>
-
-
 
       <p class="has-black-color has-text-color">ReThink HK is committed to striving for&nbsp;<em>no</em>&nbsp;‘manels’ (<em>no</em>&nbsp;all-male panels) and works closely with all those contributing to the programme to ensure a full spectrum of perspectives, opinions and experiences are represented across the programme.</p>
       <br>
