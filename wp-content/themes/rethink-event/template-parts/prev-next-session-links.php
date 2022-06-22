@@ -6,9 +6,10 @@ $day = $args['day'];
 $location_text = $args['location_text'];
 $time_start = $args['time_start'];
 $post_id = $args['post_id'];
-$post_id_prev = $post_id - 1;
-$post_id_next = $post_id + 1;
-$the_query = new WP_Query(
+$i = 0;
+
+
+$prev_next_query = new WP_Query(
   array(
     'post_type' => 'session-2022',
     'posts_per_page' => -1,
@@ -35,21 +36,62 @@ $the_query = new WP_Query(
 
 <div class="c-prev-next-btns">
 
-  <?php if ($the_query->have_posts()) : ?>
-    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+  <?php if ($prev_next_query->have_posts()) : ?>
+
+    <?php
+    foreach ($prev_next_query->posts as $key => $value) {
+
+      if ($value->ID == $post->ID) {
+
+        if (isset($prev_next_query->posts[$key + 1]->ID)) {
+          $nextID = $prev_next_query->posts[$key + 1]->ID;
+        }
+
+        if (isset($prev_next_query->posts[$key - 1]->ID)) {
+          $prevID = $prev_next_query->posts[$key - 1]->ID;
+        }
+
+
+
+        break;
+      }
+    }
+    ?>
+
+
+    <?php while ($prev_next_query->have_posts()) : $prev_next_query->the_post(); ?>
       <?php $loop_post_id = get_the_ID(); ?>
 
-      <?php if ($loop_post_id === $post_id_prev) : ?>
-        <div class="b-cta b-cta--green c-prev-next-btns__prev">
-          <a href="<?php echo get_permalink() ?>"> Prev Session </a>
+      <?php if ($loop_post_id === $post_id) : ?>
+
+        <?php if (isset($prevID)) : ?>
+          <div class="b-cta-wrapper c-prev-next-btns__button">
+            <div class="b-cta b-cta--green ?>">
+              <a href="<?= get_the_permalink($prevID) ?>" rel="prev"> Prev Session </a>
+            </div>
+          </div>
+        <?php endif; ?>
+
+
+        <div class="b-cta-wrapper c-prev-next-btns__button">
+          <div class="b-cta b-cta--green">
+
+            <a href="<?php echo site_url('conference') ?>"> Back to Conference Agenda </a>
+
+          </div>
         </div>
+
+        <?php if (isset($nextID)) : ?>
+          <div class="b-cta-wrapper c-prev-next-btns__button">
+            <div class="b-cta b-cta--green ?>">
+              <a href="<?= get_the_permalink($nextID) ?>" rel="next"> Next Session </a>
+            </div>
+          </div>
+        <?php endif; ?>
+
+
       <?php endif ?>
 
-      <?php if ($loop_post_id === $post_id_next) : ?>
-        <div class="b-cta b-cta--green c-prev-next-btns__next">
-          <a href="<?php echo get_permalink() ?>"> Next Session </a>
-        </div>
-      <?php endif ?>
 
 
     <?php endwhile; ?>

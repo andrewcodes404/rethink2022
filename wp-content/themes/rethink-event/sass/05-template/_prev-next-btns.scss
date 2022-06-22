@@ -1,6 +1,7 @@
 .c-prev-next-btns {
   display: flex;
-
+  position: absolute;
+  top: 130px;
   justify-content: space-between;
   @media (min-width: $break-tablet) {
   }
@@ -9,6 +10,13 @@
     margin: 0;
     margin-bottom: 20px;
     // font-size: 12px;
+  }
+}
+
+.c-prev-next-btns__button {
+  margin-right: 15px;
+  .b-cta {
+    margin-bottom: 0;
   }
 }
 

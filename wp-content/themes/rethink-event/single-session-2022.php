@@ -101,7 +101,14 @@
 
     ?>
 
+    <div class="content-layout">
+      <?php get_template_part('template-parts/prev-next-session-links', 'pre-next-links', array('location_text' => 'Sustainable Transformation Theatre', 'location' => $location, 'day' => $day, "time_start" => $start, "time_end" => $end, "post_id" => $post_id)) ?>
+
+    </div>
+
     <?php get_template_part('template-parts/hero', 'hero', array('post_id' => $post_id)) ?>
+
+
     <div class="content-layout">
 
       <div class="pg-single-session">
@@ -180,13 +187,6 @@
           </div>
         <?php endif ?>
 
-        <?php get_template_part('template-parts/prev-next-session-links', 'pre-next-links', array('location_text' => 'Sustainable Transformation Theatre', 'location' => $location, 'day' => $day, "time_start" => $start, "time_end" => $end, "post_id" => $post_id)) ?>
-
-        <div class="b-cta-wrapper">
-          <div class="b-cta b-cta--green ?>">
-            <a href="<?php echo site_url('conference') ?>"> Back to Conference Agenda </a>
-          </div>
-        </div>
       </div>
     </div>
   <?php endwhile;
