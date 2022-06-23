@@ -3,6 +3,7 @@
 $location = $args['location'];
 $day = $args['day'];
 
+$show_back_btn = $args['show_back_btn'];
 $location_text = $args['location_text'];
 $time_start = $args['time_start'];
 $post_id = $args['post_id'];
@@ -63,46 +64,39 @@ $prev_next_query = new WP_Query(
 
         <?php if (isset($prevID)) : ?>
           <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--mobile">
-            <div class="b-cta b-cta--green ?>">
-              <a href="<?= get_the_permalink($prevID) ?>" rel="prev"> Prev</a>
-            </div>
+            <a href="<?= get_the_permalink($prevID) ?>" class="b-cta b-cta--<?php echo $location ?>" rel="prev"> Prev</a>
           </div>
 
 
           <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--desktop">
-            <div class="b-cta b-cta--green ?>">
-              <a href="<?= get_the_permalink($prevID) ?>" rel="prev">Prev Session </a>
-            </div>
+            <a href="<?= get_the_permalink($prevID) ?>" class="b-cta b-cta--<?php echo $location ?>" rel="prev">Prev Session </a>
           </div>
         <?php endif; ?>
 
 
-        <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--mobile">
-          <div class="b-cta b-cta--green">
 
-            <a href="<?php echo site_url('conference') ?>"> Conference Agenda </a>
+        <?php if ($show_back_btn == "true") : ?>
+          <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--mobile">
+
+            <a href="<?php echo site_url('conference') ?>" class="b-cta b-cta--<?php echo $location ?>"> Conference Agenda </a>
 
           </div>
-        </div>
-
-
-        <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--desktop">
-          <div class="b-cta b-cta--green">
-            <a href="<?php echo site_url('conference') ?>"> Back to Conference Agenda </a>
+          <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--desktop">
+            <a class="b-cta b-cta--<?php echo $location ?>" href="<?php echo site_url('conference') ?>"> Back to Conference Agenda </a>
           </div>
-        </div>
+        <?php endif ?>
+
+
 
         <?php if (isset($nextID)) : ?>
           <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--mobile">
-            <div class="b-cta b-cta--green ?>">
-              <a href="<?= get_the_permalink($nextID) ?>" rel="next"> Next</a>
-            </div>
+
+            <a href="<?= get_the_permalink($nextID) ?>" class="b-cta b-cta--<?php echo $location ?>" rel="next"> Next</a>
+
           </div>
 
           <div class="b-cta-wrapper c-prev-next-btns__button c-prev-next-btns__button--desktop">
-            <div class="b-cta b-cta--green ?>">
-              <a href="<?= get_the_permalink($nextID) ?>" rel="next"> Next Session </a>
-            </div>
+            <a href="<?= get_the_permalink($nextID) ?>" class="b-cta b-cta--<?php echo $location ?>" rel="next"> Next Session </a>
           </div>
         <?php endif; ?>
 

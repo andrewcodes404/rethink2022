@@ -101,10 +101,11 @@
 
     ?>
 
-    <div class="content-layout">
-      <?php get_template_part('template-parts/prev-next-session-links', 'pre-next-links', array('location_text' => 'Sustainable Transformation Theatre', 'location' => $location, 'day' => $day, "time_start" => $start, "time_end" => $end, "post_id" => $post_id)) ?>
 
-    </div>
+
+    <?php get_template_part('template-parts/prev-next-session-links', 'pre-next-links', array('location_text' => 'Sustainable Transformation Theatre', 'location' => $location, 'day' => $day, "time_start" => $start, "time_end" => $end, "post_id" => $post_id, "show_back_btn" => false)) ?>
+
+
 
     <?php get_template_part('template-parts/hero', 'hero', array('post_id' => $post_id)) ?>
 
@@ -112,8 +113,6 @@
     <div class="content-layout">
 
       <div class="pg-single-session">
-
-
 
         <div class="pg-single-session__top-bar">
 
@@ -188,7 +187,13 @@
         <?php endif ?>
 
       </div>
+
     </div>
+
+    <?php get_template_part('template-parts/prev-next-session-links', 'pre-next-links', array('location_text' => 'Sustainable Transformation Theatre', 'location' => $location, 'day' => $day, "time_start" => $start, "time_end" => $end, "post_id" => $post_id, "show_back_btn" => true)) ?>
+
+    <br><br><br>
+
   <?php endwhile;
 else : ?>
   <p><?php esc_html_e('Sorry, no posts matched your criteria.'); ?></p>
