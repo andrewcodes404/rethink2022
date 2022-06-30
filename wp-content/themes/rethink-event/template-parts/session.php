@@ -138,7 +138,7 @@ if ($subtitle || $all_speakers || $partners || $sponsors || $learnings || $poste
 
 
         <?php if ($sponsors): ?>
-        <h3>Sponsored by</h3>
+        <h3>With thanks to</h3>
         <?php get_template_part('template-parts/sponsors', 'sponsors', array('data' => $sponsors))?>
         <?php endif;?>
 

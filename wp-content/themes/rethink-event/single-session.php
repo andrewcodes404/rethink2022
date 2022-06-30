@@ -161,7 +161,7 @@
 
         <?php if ($sponsors) : ?>
           <div class="pg-single-session__section">
-            <h3>Sponsored by</h3>
+            <h3>With thanks to</h3>
             <?php get_template_part('template-parts/sponsors', 'sponsors', array('data' => $sponsors)) ?>
           </div>
         <?php endif ?>
