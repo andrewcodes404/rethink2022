@@ -50,21 +50,17 @@
   display: none;
   padding: 5px 8px 1px 5px;
   margin-bottom: 14px;
-  background-color: rgb(216, 216, 216);
 
+  color: $black;
+  a {
+    color: $black;
+  }
   &--open {
     display: block;
   }
 }
 
 // DESKTOP --- DESKTOP --- DESKTOP ---
-
-.pro-global-tracks-desktop {
-  display: none;
-  @media (min-width: $break-desktop) {
-    display: block;
-  }
-}
 
 .pro-global-page-wrapper {
   // overflow-y: visible;
@@ -341,6 +337,13 @@
   }
 }
 
+.pro-global__session--desktop {
+  display: none;
+  @media (min-width: $break-desktop) {
+    display: block;
+  }
+}
+
 .pro-global__session-title {
   margin: 0;
   font-size: 14px;
@@ -361,6 +364,15 @@
   }
 
   &--black {
+    a {
+      color: $black;
+    }
+  }
+}
+
+.pro-global__session--mobile {
+  background-color: rgb(216, 216, 216);
+  .pro-global__session-title {
     a {
       color: $black;
     }

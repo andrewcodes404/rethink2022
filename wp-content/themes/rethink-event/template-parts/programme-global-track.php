@@ -62,9 +62,9 @@ $the_query = new WP_Query(
         $end = str_replace(':', '', $time_end);
         ?>
 
-        <div class="pro-global__session pro-global__session--<?php echo $index ?>" style="grid-column: track-<?php echo $index ?>;
-    grid-row: time-<?php echo $start ?> / time-<?php echo $end ?>;
-background-color: <?php echo $color ?>;
+        <div class="pro-global__session pro-global__session--mobile pro-global__session--<?php echo $index ?>" style="grid-column: track-<?php echo $index ?>
+    grid-row: time-<?php echo $start ?> / time-<?php echo $end ?>
+background-color: <?php echo $color ?>
     ">
 
           <h3 class="pro-global__session-title"><a href="<?php echo get_permalink($post_id); ?> " target="_blank"><?php the_title() ?></a></h3>
@@ -73,9 +73,10 @@ background-color: <?php echo $color ?>;
         </div>
       <?php endwhile; ?>
     </div>
-
-
   </div>
+
+
+
 
   <?php $i = 0;
   while ($the_query->have_posts()) : $the_query->the_post(); ?>
@@ -88,7 +89,7 @@ background-color: <?php echo $color ?>;
     $end = str_replace(':', '', $time_end);
     ?>
 
-    <div class="pro-global__session pro-global__session--<?php echo $index ?>" style="grid-column: track-<?php echo $index ?>;
+    <div class="pro-global__session pro-global__session--desktop pro-global__session--<?php echo $index ?>" style="grid-column: track-<?php echo $index ?>;
     grid-row: time-<?php echo $start ?> / time-<?php echo $end ?>;
 background-color: <?php echo $color ?>;
     ">
@@ -97,6 +98,8 @@ background-color: <?php echo $color ?>;
       <span class=" pro-global__session-time"><?php the_field('time_start', $post_id) ?> - <?php the_field('time_end', $post_id) ?></span>
 
     </div>
+
+
   <?php endwhile; ?>
 
   <?php wp_reset_postdata(); ?>
