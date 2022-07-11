@@ -47,6 +47,9 @@ $sessions = get_posts(array(
 
       <?php $day = get_field('day', $session->ID); ?>
 
+
+
+
       <!-- split sessions into two arrays day1/day2 -->
       <?php
       if ($day === 'day1') {
@@ -65,7 +68,9 @@ $sessions = get_posts(array(
     <?php endif ?>
 
     <?php foreach ($day1sessions as $session) : ?>
-      <a class="t-session-link" href="<?php echo get_permalink($session->ID); ?>">
+
+      <?php $location = get_field('location', $session->ID); ?>
+      <a class="t-session-link t-session-link--<?php echo $location ?>" href="<?php echo get_permalink($session->ID); ?>">
         <?php echo $session->post_title ?>
       </a>
     <?php endforeach; ?>
@@ -77,7 +82,8 @@ $sessions = get_posts(array(
 
 
     <?php foreach ($day2sessions as $session) : ?>
-      <a class="t-session-link" href="<?php echo get_permalink($session->ID); ?>">
+      <?php $location = get_field('location', $session->ID); ?>
+      <a class="t-session-link  t-session-link--<?php echo $location ?>" href="<?php echo get_permalink($session->ID); ?>">
         <?php echo $session->post_title ?>
       </a>
     <?php endforeach; ?>

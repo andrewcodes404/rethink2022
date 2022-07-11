@@ -22,7 +22,6 @@ $speakers = get_posts(array(
 
   <?php if ($allow_pop_up) : ?>
     <?php get_template_part('template-parts/speakers', 'speakers', array('data' => $speakers)) ?>
-
   <?php else : ?>
     <?php get_template_part('template-parts/speakers--no-pop-up', 'speakers', array('data' => $speakers)) ?>
   <?php endif ?>

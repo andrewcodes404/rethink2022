@@ -6,6 +6,9 @@
 }
 
 .t-session-link {
+  @include colour-pick;
+  @include colour-pick-text;
+
   display: inline-block;
   text-decoration: none;
 
