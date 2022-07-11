@@ -9,7 +9,7 @@
     <?php $image = get_field('image', $post_id); ?>
     <?php $moderator = $speaker->moderator ?>
 
-    <div class="t-speaker t-speaker--hover t-modal-parent <?php echo $moderator ? 't-speaker--moderator' : '' ?>  ">
+    <div class="t-speaker  t-modal-parent <?php echo $moderator ? 't-speaker--moderator' : '' ?>  ">
 
       <div class="t-speaker__img">
         <?php if ($image) : ?>
@@ -26,13 +26,14 @@
           <?php echo get_the_title($speaker->ID); ?>
         </p>
 
-        <p class="t-speaker__text__position"> <?php echo get_field('position', $speaker->ID); ?></p>
-        <p class="t-speaker__text__company"> <?php echo get_field('company', $speaker->ID); ?></p>
+        <p class="t-speaker__text__position">
+          <?php echo get_field('position', $speaker->ID); ?>
+        </p>
+        <p class="t-speaker__text__company">
+          <?php echo get_field('company', $speaker->ID); ?>
+        </p>
       </div>
 
     </div>
-
-    <?php get_template_part('template-parts/single-modal', null, array('post_id' => $post_id, 'allow_pop_up' => true)) ?>
-
   <?php endforeach; ?>
 </div>

@@ -57,6 +57,8 @@ $sessions = get_posts(array(
       }
       ?>
     <?php endforeach; ?>
+
+
     <!-- loop through day 1 sessions -->
     <?php if ($day1sessions) : ?>
       <h4>Day 1</h4>
@@ -72,10 +74,12 @@ $sessions = get_posts(array(
     <?php if ($day2sessions) : ?>
       <h4>Day 2</h4>
     <?php endif ?>
+
+
     <?php foreach ($day2sessions as $session) : ?>
       <a class="t-session-link" href="<?php echo get_permalink($session->ID); ?>">
         <?php echo $session->post_title ?>
-      </a> <br>
+      </a>
     <?php endforeach; ?>
 
   </div>

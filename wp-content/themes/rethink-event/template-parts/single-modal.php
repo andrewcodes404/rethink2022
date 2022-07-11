@@ -12,7 +12,7 @@
 <?php $description = get_field("description", $post_id) ?>
 <?php $bio = get_field("bio", $post_id) ?>
 <?php $position = get_field("position", $post_id) ?>
-<?php $assoc_company = get_field("sponsor_partner_company", $post_id)?>
+<?php $assoc_company = get_field("sponsor_partner_company", $post_id) ?>
 <?php $company = get_field("company", $post_id) ?>
 
 
@@ -61,17 +61,18 @@
 
             <?php if ($position) : ?> <p class="t-modal__position"> <?php echo $position ?> </p> <?php endif ?>
 
-                        <?php
-                        if($company){
-                          $company_text = $company;
-                        }
+            <?php
+            $company_text = "";
+            if ($company) {
+              $company_text = $company;
+            }
 
-                        if($assoc_company){
-                          foreach ($assoc_company as $value) {
-                            $company_text =  get_the_title();
-                          }
-                        }
-                        ?>
+            if ($assoc_company) {
+              foreach ($assoc_company as $value) {
+                $company_text =  get_the_title();
+              }
+            }
+            ?>
 
             <?php if ($company_text) : ?> <p class="t-modal__company"> <?php echo $company_text ?></p> <?php endif ?>
           </div>
@@ -140,8 +141,8 @@
         <?php endif ?>
 
 
+        <?php get_template_part('template-parts/assoc-speakers', 'assoc-speakers', array('post_id' => $post_id, 'allow_pop_up' => false, 'post_type' => $post_type)) ?>
 
-        <?php get_template_part('template-parts/session-links', null, array('post_id' => $post_id, 'post_type' => $post_type)) ?>
 
 
       </div>

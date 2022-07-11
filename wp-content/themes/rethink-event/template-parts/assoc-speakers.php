@@ -1,4 +1,5 @@
 <?php
+$allow_pop_up = $args['allow_pop_up'];
 $post_id = $args['post_id'];
 $post_type = get_post_type($post_id);
 $speakers = get_posts(array(
@@ -15,11 +16,16 @@ $speakers = get_posts(array(
 ?>
 
 <?php if ($speakers) : ?>
-  <?php if ($speakers) : ?>
 
-            <h3>Meet our speakers:</h3>
-            <?php get_template_part('template-parts/speakers', 'speakers', array('data' => $speakers)) ?>
 
-        <?php endif; ?>
+  <h3>Meet our speakers:</h3>
+
+  <?php if ($allow_pop_up) : ?>
+    <?php get_template_part('template-parts/speakers', 'speakers', array('data' => $speakers)) ?>
+
+  <?php else : ?>
+    <?php get_template_part('template-parts/speakers--no-pop-up', 'speakers', array('data' => $speakers)) ?>
+  <?php endif ?>
+
 
 <?php endif; ?>
