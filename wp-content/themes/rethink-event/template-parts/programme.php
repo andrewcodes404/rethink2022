@@ -16,6 +16,7 @@ if ($am_or_pm === "both" || null) {
   $the_query = new WP_Query(
     array(
       'post_type' => 'session-2022',
+      'posts_per_page' => '-1',
       'meta_key' => 'time_start',
       'order' => 'ASC',
       'orderby' => 'meta_value',
@@ -38,6 +39,7 @@ if ($am_or_pm === "both" || null) {
   $the_query = new WP_Query(
     array(
       'post_type' => 'session-2022',
+      'posts_per_page' => '-1',
       'meta_key' => 'time_start',
       'order' => 'ASC',
       'orderby' => 'meta_value',
