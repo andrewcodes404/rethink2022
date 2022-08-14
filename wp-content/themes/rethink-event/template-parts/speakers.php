@@ -39,7 +39,7 @@
           $company_text = $company;
         }
 
-        if ($assoc_company) {
+        if ($works_for_a_assoc_company) {
           foreach ($assoc_company as $value) {
             $company_text =  $value->post_title;
           }
