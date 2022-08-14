@@ -70,7 +70,7 @@
       $locationText = "BEC Sustainable Business Theatre";
     } elseif ($location == 'susPart') {
       $locationUrl = $homeUrl . '/programme/sustainable-partnerships';
-      $locationText = "Sustainable Partnership Theatre";
+      $locationText = "Sustainable Partnerships Theatre";
     } elseif ($location == 'susRes') {
       $locationUrl = $homeUrl . '/programme/sustainable-resources/';
       $locationText = "Sustainable Resources Theatre";
