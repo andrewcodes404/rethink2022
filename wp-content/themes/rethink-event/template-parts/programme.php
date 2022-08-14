@@ -67,7 +67,7 @@ if ($am_or_pm === "both" || null) {
 ?>
 
 <?php if (is_admin()) {
-  echo '<p class="b-programme-hint"> <code >hint: this is the ' . $day . " - " . $location . " - " . $am_or_pm . ' PROGRAMME block</code></p>';
+  echo '<p class="b-programme-hint"> <code >hint: this is the test ' . $day . " - " . $location . " - " . $am_or_pm . ' PROGRAMME block</code></p>';
 }
 ?>
 
