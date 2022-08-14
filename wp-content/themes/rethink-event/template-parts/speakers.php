@@ -27,7 +27,27 @@
         </p>
 
         <p class="t-speaker__text__position"> <?php echo get_field('position', $speaker->ID); ?></p>
-        <p class="t-speaker__text__company"> <?php echo get_field('company', $speaker->ID); ?></p>
+
+        <?php
+
+        $company = get_field("company", $speaker->ID);
+        $works_for_a_assoc_company = get_field("works_for_a_company", $speaker->ID);
+        $assoc_company = get_field("sponsor_partner_company",  $speaker->ID);
+
+        $company_text = "";
+        if ($company) {
+          $company_text = $company;
+        }
+
+        if ($assoc_company) {
+          foreach ($assoc_company as $value) {
+            $company_text =  $value->post_title;
+          }
+        }
+        ?>
+
+
+        <p class="t-speaker__text__company"> <?php echo $company_text ?></p>
       </div>
 
     </div>

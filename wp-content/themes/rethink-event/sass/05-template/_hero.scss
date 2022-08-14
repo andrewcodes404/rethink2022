@@ -1,8 +1,9 @@
 //the default is no custom fileds are used
 .t-hero-simple {
   margin-top: 0px;
+  margin-bottom: 0;
   @media (min-width: $break-desktop) {
-    margin-top: 0px;
+    margin-top: 50px;
     margin-bottom: 20px;
   }
 }

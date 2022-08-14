@@ -1,20 +1,33 @@
-<?php $post_id = $args['post_id'] ?>
-<?php $post_type = get_post_type($post_id); ?>
-<?php $image = get_field('image', $post_id); ?>
-<?php $companyLogo = get_field('company_logo', $post_id); ?>
-<?php $title = get_the_title($post_id) ?>
-<?php $booth = get_field('booth', $post_id) ?>
-<?php $website = get_field('website', $post_id) ?>
-<?php $linkedin = get_field('linkedin', $post_id) ?>
-<?php $facebook = get_field('facebook', $post_id) ?>
-<?php $twitter = get_field('twitter', $post_id) ?>
-<?php $instagram = get_field('instagram', $post_id) ?>
-<?php $description = get_field("description", $post_id) ?>
-<?php $bio = get_field("bio", $post_id) ?>
-<?php $position = get_field("position", $post_id) ?>
-<?php $assoc_company = get_field("sponsor_partner_company", $post_id) ?>
-<?php $company = get_field("company", $post_id) ?>
+<?php $post_id = $args['post_id'];
+ $post_type = get_post_type($post_id);
+ $image = get_field('image', $post_id);
+ $companyLogo = get_field('company_logo', $post_id);
+ $title = get_the_title($post_id);
+ $booth = get_field('booth', $post_id);
+ $website = get_field('website', $post_id);
+ $linkedin = get_field('linkedin', $post_id);
+ $facebook = get_field('facebook', $post_id);
+ $twitter = get_field('twitter', $post_id);
+ $instagram = get_field('instagram', $post_id);
+ $description = get_field("description", $post_id);
+ $bio = get_field("bio", $post_id);
+ $position = get_field("position", $post_id);
+ $works_for_a_assoc_company = get_field("works_for_a_company",  $post_id);
+ $assoc_company = get_field("sponsor_partner_company", $post_id);
+ $company = get_field("company", $post_id);
 
+ $company_text = "";
+ if ($company) {
+   $company_text = $company;
+ }
+
+ if ($works_for_a_assoc_company ) {
+   foreach ($assoc_company as $value) {
+     $company_text =  $value->post_title;
+     $companyLogo = get_field('image', $value->ID);
+   }
+ }
+?>
 
 
 
@@ -60,20 +73,6 @@
             </div>
 
             <?php if ($position) : ?> <p class="t-modal__position"> <?php echo $position ?> </p> <?php endif ?>
-
-            <?php
-            $company_text = "";
-            if ($company) {
-              $company_text = $company;
-            }
-
-            if ($assoc_company) {
-              foreach ($assoc_company as $value) {
-                $company_text =  get_the_title();
-              }
-            }
-            ?>
-
             <?php if ($company_text) : ?> <p class="t-modal__company"> <?php echo $company_text ?></p> <?php endif ?>
           </div>
 

@@ -6,6 +6,26 @@
 
 <?php get_template_part('template-parts/hero', 'hero', array('post_id' => $post_id))?>
 
+
+<?php
+ $works_for_a_assoc_company = get_field("works_for_a_company",  $post_id);
+ $assoc_company = get_field("sponsor_partner_company", $post_id);
+ $company_text = get_field("company", $post_id);
+ $logo = get_field('company_logo', $post->ID);
+
+ if ($company) {
+   $company_text = $company;
+ }
+
+ if ($works_for_a_assoc_company ) {
+   foreach ($assoc_company as $value) {
+     $company_text =  $value->post_title;
+     $logo = get_field('image', $value->ID);;
+   }
+ }
+
+                        ?>
+
 <div class="content-layout">
     <div class="s-profile">
 
@@ -23,10 +43,10 @@
 
             <div class="s-profile__logo">
                 <?php
-        $image = get_field('company_logo', $post->ID);
+
         $size = 'carousel';
-        if ($image) {
-            echo wp_get_attachment_image($image, $size);
+        if ($logo) {
+            echo wp_get_attachment_image($logo, $size);
         }
         ?>
             </div>
@@ -35,19 +55,7 @@
 
         <p class="s-profile__position"> <?php the_field('position')?> </p>
 
-                <?php $assoc_company = get_field("sponsor_partner_company", $post->ID)?>
-                <?php $company = get_field("company", $post->ID) ?>
-                <?php
-                        if($company){
-                          $company_text = $company;
-                        }
 
-                        if($assoc_company){
-                          foreach ($assoc_company as $value) {
-                            $company_text =  get_the_title($value->ID);
-                          }
-                        }
-                        ?>
 
         <p class="s-profile__company"> <?php echo $company_text ?></p>
 
@@ -59,7 +67,7 @@
             <div class="s-profile__social-icon">
                 <a href="<?php echo $linkedin ?>" target="_blank" rel="noopener noreferrer">
 
-                    <?php echo load_inline_svg('linkedin.svg') ?>
+                <?php echo file_get_contents(get_template_directory() . '/images/svg/modal-linkedin.svg'); ?>
                 </a>
             </div>
             <?php endif;?>
@@ -68,7 +76,7 @@
             <?php $facebook = get_field('facebook');if ($facebook): ?>
             <div class="s-profile__social-icon">
                 <a href="<?php the_field('facebook')?>" target="_blank" rel="noopener noreferrer">
-                    <?php include get_theme_file_uri('images/svg/facebook.svg');?>
+                <?php echo file_get_contents(get_template_directory() . '/images/svg/modal-facebook.svg'); ?>
                 </a>
             </div>
             <?php endif;?>
@@ -76,7 +84,7 @@
             <?php $instagram = get_field('instagram');if ($instagram): ?>
             <div class="s-profile__social-icon">
                 <a href="<?php the_field('instagram')?>" target="_blank" rel="noopener noreferrer">
-                    <?php include get_theme_file_uri('images/svg/insta.svg');?>
+                <?php echo file_get_contents(get_template_directory() . '/images/svg/modal-instagram.svg'); ?>
                 </a>
             </div>
             <?php endif;?>
@@ -85,7 +93,7 @@
             <?php $twitter = get_field('twitter');if ($twitter): ?>
             <div class="s-profile__social-icon">
                 <a href="<?php the_field('twitter')?>" target="_blank" rel="noopener noreferrer">
-                    <?php include get_theme_file_uri('images/svg/twitter.svg');?>
+                <?php echo file_get_contents(get_template_directory() . '/images/svg/modal-twitter.svg'); ?>
                 </a>
             </div>
             <?php endif;?>
@@ -94,7 +102,7 @@
             <?php $website = get_field('website');if ($website): ?>
             <div class="s-profile__social-icon website">
                 <a href="<?php the_field('website')?>" target="_blank" rel="noopener noreferrer">
-                    <p>www.</p>
+                <?php echo file_get_contents(get_template_directory() . '/images/svg/modal-website.svg'); ?>
                 </a>
             </div>
             <?php endif;?>
