@@ -145,8 +145,8 @@
 
         <?php get_template_part('template-parts/assoc-speakers', 'assoc-speakers', array('post_id' => $post_id, 'allow_pop_up' => false, 'post_type' => $post_type)) ?>
 
-        <!-- hide session links on partner and sponsor pop-ups -->
-        <?php if (!$post_type = "sponsor-items" || !$post_type = "partner-items") : ?>
+        <!--only show session links on speker pop-ups -->
+        <?php if($post_type === "speaker-items"): ?>
           <?php get_template_part('template-parts/session-links', 'session-links', array('post_id' => $post_id)) ?>
         <?php endif ?>
 
