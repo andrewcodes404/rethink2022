@@ -187,10 +187,6 @@ Template Name: Conference
               <span class="session-time">09:45 - 10:00</span>
             </div>
 
-            <div class="pro-global__session" style="grid-column: track-1; grid-row: time-1000 / time-1050; background-color: #20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/the-new-ambition-powering-hong-kongs-conglomerates/') ?>" target="_blank">Where We Are, Where We're Headed: The New Ambition Powering Hong Kong's Conglomerates</a></h3>
-              <span class="session-time">10:00 - 11:00</span>
-            </div>
 
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'Sustainable Transformation Theatre', 'location' => "susTrans", 'day' => "day2", 'index' => "1", 'color' => '#20a056', "time_start" => "09:59")) ?>
             <?php get_template_part('template-parts/programme-global-track', 'proglo', array('location_text' => 'BEC Sustainable Business Theatre', 'location' => "bec", 'day' => "day2", 'index' => "2", 'color' => '#cdda60', "time_start" => "09:59")) ?>

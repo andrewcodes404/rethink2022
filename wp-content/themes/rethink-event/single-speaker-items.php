@@ -20,7 +20,7 @@
  if ($works_for_a_assoc_company ) {
    foreach ($assoc_company as $value) {
      $company_text =  $value->post_title;
-     $logo = get_field('image', $value->ID);;
+     $logo = get_field('image', $value->ID);
    }
  }
 
