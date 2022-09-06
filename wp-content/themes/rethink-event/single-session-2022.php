@@ -81,14 +81,14 @@
       $locationUrl = $homeUrl . '/programme/change-makers/';
       $locationText = "Change Makers Stage";
     } elseif ($location == 'workshop1') {
-      $locationUrl = $homeUrl . '';
-      $locationText = "Workshop 1";
+      $locationUrl = $homeUrl . '/workshops';
+      $locationText = "Workshop A";
     } elseif ($location == 'workshop2') {
-      $locationUrl = $homeUrl . '';
-      $locationText = "Workshop 2";
+      $locationUrl = $homeUrl . '/workshops';
+      $locationText = "Workshop B";
     } elseif ($location == 'workshop3') {
-      $locationUrl = $homeUrl . '';
-      $locationText = "Workshop 3";
+      $locationUrl = $homeUrl . '/workshops';
+      $locationText = "Workshop C";
     } elseif ($location == 'futureLeaders') {
       $locationUrl = $homeUrl . '/programme/future-leaders/';
       $locationText = "Future Leaders Stage";
