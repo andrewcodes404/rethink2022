@@ -105,13 +105,13 @@ Template Name: Conference
 
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0915 / time-0940; background-color:#20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-welcome/') ?>" target="_blank">Opening Ceremony - livestreamed from Sustainable Transformation Theatre (Keynote) across all Theatres/Stages</a></h3>
-              <span class="session-time">09:15 - 0940</span>
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-welcome/') ?>" target="_blank">Opening Ceremony</a></h3>
+              <span class="session-time">09:25 - 0950</span>
             </div>
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-0940 / time-1000; background-color: #20a056;">
-              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-address/') ?>" target="_blank">Keynote Address</a></h3>
-              <span class="session-time">09:40 - 10:00</span>
+              <h3 class="pro-global__session-title pro-global__session-title--green"><a href="<?php echo site_url('/programme/sessions2022/opening-address/') ?>" target="_blank">Opening Address</a></h3>
+              <span class="session-time">09:50 - 10:00</span>
             </div>
 
             <div class="pro-global__session" style="grid-column: track-1-start / track-7-end; grid-row: time-1000 / time-1050; background-color: #20a056;">
