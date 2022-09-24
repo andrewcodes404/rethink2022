@@ -1,11 +1,12 @@
-.b-youtube{
-
+.b-youtube {
   margin: 20px 0;
-  iframe{
+  display: flex;
+  justify-content: center;
+  iframe {
     width: 100%;
     max-width: 640px;
   }
-  @media (min-width: $break-desktop){
+  @media (min-width: $break-desktop) {
     margin: 40px 0;
   }
 }
