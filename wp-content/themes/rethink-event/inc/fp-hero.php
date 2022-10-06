@@ -18,17 +18,17 @@
     <div class="hero-line-break"></div>
 
     <h1 class="h1-front-page">
-      05 - 06 October 2022 <br /> Hall 3FG, HKCEC, Hong Kong
+    14 – 15 September 2023 <br /> Hall 1CDE, HKCEC, Hong Kong
     </h1>
 
     <div class="hero-line-break"></div>
 
-    <div class="fp-co-org">
+    <!-- <div class="fp-co-org">
       <p>co-organised by</p>
       <div class="fp-co-org__logo">
         <img src="<?php echo get_template_directory_uri(); ?>/images/png/BEC-logo-30.png" alt="">
       </div>
-    </div>
+    </div> -->
 
     <h1 class="h1-front-page">#AccelerateTheChange</h1>
 
@@ -36,7 +36,7 @@
     <div class="fp-btns">
 
       <div class="fp-btn fp-btn--green" id="gtm-hero-attend">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScyeLbYa9OSbcB5lLAPEEcwL_-xb5nLO2nt7YENbBAOefldwg/viewform" target="_blank" rel="noopener noreferrer">
+        <a href="https://forms.gle/iNHUfVsUMmXmd4iN9" target="_blank" rel="noopener noreferrer">
           Attend
         </a>
       </div>
@@ -71,7 +71,7 @@
           <?php echo file_get_contents(get_template_directory() . '/images/svg/delegate-white.svg'); ?>
         </div>
         <div class="card-text">
-          <h4>+3000 Attendees</h4>
+          <h4>+6000 Attendees</h4>
         </div>
       </div>
       <div class="icon-card">
@@ -80,7 +80,7 @@
           <?php echo file_get_contents(get_template_directory() . '/images/svg/workshops-white.svg'); ?>
         </div>
         <div class="card-text">
-          <h4>+200 Solutions</h4>
+          <h4>+250 Solutions</h4>
         </div>
       </div>
       <div class="icon-card">
@@ -89,7 +89,7 @@
           <?php echo file_get_contents(get_template_directory() . '/images/svg/panels-white.svg'); ?>
         </div>
         <div class="card-text">
-          <h4>24 Workshops</h4>
+          <h4>48 Workshops</h4>
         </div>
       </div>
       <div class="icon-card">
@@ -107,7 +107,7 @@
           <?php echo file_get_contents(get_template_directory() . '/images/svg/case-studies-white.svg'); ?>
         </div>
         <div class="card-text">
-          <h4>7 Themed Theatres</h4>
+          <h4>8 Themed Theatres</h4>
         </div>
       </div>
 
