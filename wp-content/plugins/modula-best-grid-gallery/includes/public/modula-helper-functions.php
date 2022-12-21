@@ -133,7 +133,6 @@ function modula_check_lightboxes_and_links( $item_data, $item, $settings ) {
 		$item_data['link_attributes']['rel']           = $settings['gallery_id'];
 		$item_data['link_attributes']['data-caption']  = $caption;
 		$item_data['link_attributes']['aria-label']    = esc_html__('Open image in lightbox', 'modula-best-grid-gallery');
-		$item_data['link_attributes']['title']         = esc_html__('Open image in lightbox', 'modula-best-grid-gallery');
 
 	}
 
@@ -217,7 +216,7 @@ function modula_add_align_classes( $template_data ){
 function modula_show_schemaorg( $settings ){
 	global $wp;
 
-	$current_url = home_url(add_query_arg(array(), $wp->request));
+	$current_url = esc_url( home_url( add_query_arg( array(), $wp->request ) ) );
 
 	?>
 
@@ -323,19 +322,30 @@ function modula_sources_and_sizes( $data ) {
 
 	// Lets creat our $image object
 	$image = '<img class="' . esc_attr( implode( ' ', $data->img_classes ) ) . '" ' . Modula_Helper::generate_attributes( $data->img_attributes ) . '/>';
-
+	
+	// Check if srcset is disabled for an early return.
+	$troubleshoot_opt = get_option( 'modula_troubleshooting_option' );
+	if( isset( $troubleshoot_opt['disable_srcset'] ) && '1' == $troubleshoot_opt[ 'disable_srcset' ] ){
+		echo $image;
+		return;
+	}
+	
+	$image_meta = array();
 	// Get the imag meta
-	$image_meta = wp_get_attachment_metadata( $data->link_attributes['data-image-id'] );
+	if( isset( $data->link_attributes['data-image-id']  ) ){
+		$image_meta = wp_get_attachment_metadata( $data->link_attributes['data-image-id'] );
+	}
 
 	$mime_type = '';
 
 	if ( isset( $image_meta['sizes']['thumbnail']['mime-type'] ) ) {
 		$mime_type = $image_meta['sizes']['thumbnail']['mime-type'];
-	} else if ( function_exists( 'mime_content_type' ) && $data->image_info['file_path'] ) {
+	} else if ( function_exists( 'mime_content_type' ) && $data->image_info) {
 		$mime_type = mime_content_type( $data->image_info['file_path'] );
 	}
 
-	if ( ! empty( $data->image_info ) ) {
+	//Add custom size only if it's different than original image size
+	if ( ! empty( $data->image_info ) && $data->image_info && !empty( $image_meta ) && $image_meta['width'] !== $data->img_attributes['width'] && $image_meta['height'] !== $data->img_attributes['height'] ) {
 		$image_meta['sizes']['custom'] = array(
 				'file'      => $data->image_info['name'] . '-' . $data->image_info['suffix'] . '.' . $data->image_info['ext'],
 				'width'     => $data->img_attributes['width'],

@@ -29,6 +29,9 @@ class Modula {
 
 		add_action( 'divi_extensions_init', array( $this, 'initialize_divi_extension' ) );
 
+		// Gallery 'srcset' management.
+		add_action( 'modula_before_gallery', array( $this, 'disable_wp_srcset' ) );
+		add_action( 'modula_after_gallery', array( $this, 'enable_wp_srcset' ) );
 	}
 
 	private function load_dependencies() {
@@ -70,7 +73,7 @@ class Modula {
 			require_once MODULA_PATH . 'includes/class-modula-upgrades.php';
 			require_once MODULA_PATH . 'includes/libraries/class-modula-review.php';
 			require_once MODULA_PATH . 'includes/uninstall/class-modula-uninstall.php';
-			require_once MODULA_PATH . 'includes/update/class-modula-update.php';
+			require_once MODULA_PATH . 'includes/admin/pages/about/class-modula-about-page.php';
 			require_once MODULA_PATH . 'includes/migrate/class-modula-importer.php';
 			require_once MODULA_PATH . 'includes/migrate/class-modula-ajax-migrator.php';
 			// Admin Helpers
@@ -79,8 +82,7 @@ class Modula {
 			require_once MODULA_PATH . 'includes/admin/class-modula-addons.php';
 			// Modula Debug Class
 			require_once MODULA_PATH . 'includes/admin/class-modula-debug.php';
-
-
+			require_once MODULA_PATH . 'includes/admin/class-modula-onboarding.php';
 
 		}
 
@@ -177,8 +179,7 @@ class Modula {
 				add_filter('get_user_option_meta-box-order_modula-gallery', '__return_empty_string');
 				add_filter('get_user_option_closedpostboxes_modula-gallery', '__return_empty_string');
 				add_filter( 'admin_body_class', array( $this, 'no_drag_classes' ), 15, 1 );
-				//prevents the modula metaboxes from being dragged.
-				wp_deregister_script('postbox');
+
 			}
 
 			/*
@@ -297,7 +298,45 @@ class Modula {
 
 	}
 
+	/**
+	 * Filters the maximum image width to be included in a 'srcset' attribute.
+	 * 
+	 * @return int
+	 *
+	 */
+	public function disable_wp_responsive_images() {
+		return 1;
+	}
 
+	/**
+	 * Prevents WP from adding srcsets to modula gallery images if srcsets are disabled.
+	 * 
+	 * @param $settings
+	 * @return void
+	 *
+	 */
+
+	public function disable_wp_srcset( $settings ){
+		$troubleshoot_opt = get_option( 'modula_troubleshooting_option' );
+
+		if( isset( $troubleshoot_opt['disable_srcset'] ) && '1' == $troubleshoot_opt[ 'disable_srcset' ] ){
+
+			add_filter('max_srcset_image_width', array( $this, 'disable_wp_responsive_images' ), 999 );
+		}
+		
+	}
+
+	/**
+	 * Allows WP to add srcsets to other content after the gallery was created.
+	 * 
+	 * @param $settings
+	 * @return void
+	 *
+	 */
+	public function enable_wp_srcset( $settings ){
+
+		remove_filter('max_srcset_image_width', array( $this, 'disable_wp_responsive_images' ) );
+	}
 
 	// Register and load the widget
 	public function modula_load_widget() {

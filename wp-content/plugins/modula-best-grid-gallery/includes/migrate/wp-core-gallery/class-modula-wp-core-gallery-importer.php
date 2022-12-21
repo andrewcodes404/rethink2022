@@ -122,11 +122,12 @@ class Modula_WP_Core_Gallery_Importer {
             if (!isset($_POST['id'])) {
                 $this->modula_import_result(false, esc_html__('No gallery was selected', 'modula-best-grid-gallery'));
             }
-
-            // Need to make replace so we can search our shortcode in content
-            $galery_atts = str_replace('\"','"',$_POST['id']);
+			// Reinitialize as array, it may be string
+	        $galery_atts = array();
+	        // Need to make replace so we can search our shortcode in content
+	        $galery_atts['id']        = absint( $_POST['id']['id'] );
+	        $galery_atts['shortcode'] = str_replace( '\"', '"', sanitize_text_field( $_POST['id']['shortcode'] ) );
         }
-
 
         // Get page with gallery
         $post          = get_post($galery_atts['id']);
@@ -175,7 +176,7 @@ class Modula_WP_Core_Gallery_Importer {
                 $modula_gallery_id = wp_insert_post(array(
                     'post_type'   => 'modula-gallery',
                     'post_status' => 'publish',
-                    'post_title'  => sanitize_text_field($_POST['gallery_title']),
+                    'post_title'  => isset( $_POST['gallery_title'] ) ? sanitize_text_field($_POST['gallery_title']) : '',
                 ));
 
 

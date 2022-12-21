@@ -57,14 +57,14 @@ $isGoogleFeed = false;
 
                 <div class="input">
                     <button class="button button-primary button-hero wpallexport-large-button download_data"
-                            rel="<?php echo add_query_arg(array('action' => 'download', 'id' => $update_previous->id, '_wpnonce' => wp_create_nonce('_wpnonce-download_feed')), $this->baseUrl); ?>"><?php echo strtoupper(wp_all_export_get_export_format($update_previous->options)); ?></button>
+                            rel="<?php echo esc_url_raw(add_query_arg(array('action' => 'download', 'id' => $update_previous->id, '_wpnonce' => wp_create_nonce('_wpnonce-download_feed')), $this->baseUrl)); ?>"><?php echo strtoupper(wp_all_export_get_export_format($update_previous->options)); ?></button>
                     <?php if (!empty($update_previous->options['split_large_exports'])): ?>
                         <button class="button button-primary button-hero wpallexport-large-button download_data"
-                                rel="<?php echo add_query_arg(array('page' => 'pmxe-admin-manage', 'id' => $update_previous->id, 'action' => 'split_bundle', '_wpnonce' => wp_create_nonce('_wpnonce-download_split_bundle')), $this->baseUrl); ?>"><?php printf(esc_html__('Split %ss', 'wp_all_export_plugin'), esc_html(strtoupper(wp_all_export_get_export_format($update_previous->options)))); ?></button>
+                                rel="<?php echo esc_url_raw(add_query_arg(array('page' => 'pmxe-admin-manage', 'id' => $update_previous->id, 'action' => 'split_bundle', '_wpnonce' => wp_create_nonce('_wpnonce-download_split_bundle')), $this->baseUrl)); ?>"><?php printf(esc_html__('Split %ss', 'wp_all_export_plugin'), esc_html(strtoupper(wp_all_export_get_export_format($update_previous->options)))); ?></button>
                     <?php endif; ?>
                     <?php if (PMXE_Export_Record::is_bundle_supported($update_previous->options)): ?>
                         <button class="button button-primary button-hero wpallexport-large-button download_data"
-                                id="download-bundle" rel="<?php echo add_query_arg(array('page' => 'pmxe-admin-manage', 'id' => $update_previous->id, 'action' => 'bundle', '_wpnonce' => wp_create_nonce('_wpnonce-download_bundle')), $this->baseUrl); ?>"><?php esc_html_e('Bundle', 'wp_all_export_plugin'); ?></button>
+                                id="download-bundle" rel="<?php echo esc_url_raw(add_query_arg(array('page' => 'pmxe-admin-manage', 'id' => $update_previous->id, 'action' => 'bundle', '_wpnonce' => wp_create_nonce('_wpnonce-download_bundle')), $this->baseUrl)); ?>"><?php esc_html_e('Bundle', 'wp_all_export_plugin'); ?></button>
                     <?php endif; ?>
                 </div>
 

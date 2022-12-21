@@ -19,7 +19,7 @@ class PMXE_Admin_Export extends PMXE_Controller_Admin
             $id = $this->input->get('id');
             $this->data['export'] = $export = new PMXE_Export_Record();
             if (!$id or $export->getById($id)->isEmpty()) { // specified import is not found
-                wp_redirect(add_query_arg('page', 'pmxe-admin-manage', admin_url('admin.php')));
+                wp_redirect(esc_url_raw(add_query_arg('page', 'pmxe-admin-manage', admin_url('admin.php'))));
                 die();
             }
             $this->isWizard = false;
@@ -30,7 +30,7 @@ class PMXE_Admin_Export extends PMXE_Controller_Admin
         }
 
         // preserve id parameter as part of baseUrl
-        $id = $this->input->get('id') and $this->baseUrl = add_query_arg('id', $id, $this->baseUrl);
+        $id = $this->input->get('id') and $this->baseUrl = esc_url_raw(add_query_arg('id', $id, $this->baseUrl));
 
     }
 
@@ -155,10 +155,10 @@ class PMXE_Admin_Export extends PMXE_Controller_Admin
             PMXE_Plugin::$session->save_data();
 
             if (!empty($post['auto_generate'])) {
-                wp_redirect(add_query_arg('action', 'options', $this->baseUrl));
+                wp_redirect(esc_url_raw(add_query_arg('action', 'options', $this->baseUrl)));
                 die();
             } else {
-                wp_redirect(add_query_arg('action', 'template', $this->baseUrl));
+                wp_redirect(esc_url_raw(add_query_arg('action', 'template', $this->baseUrl)));
                 die();
             }
 
@@ -301,7 +301,7 @@ class PMXE_Admin_Export extends PMXE_Controller_Admin
                         PMXE_Plugin::$session->set($key, $value);
                     }
                     PMXE_Plugin::$session->save_data();
-                    wp_redirect(add_query_arg('action', 'options', $this->baseUrl));
+                    wp_redirect(esc_url_raw(add_query_arg('action', 'options', $this->baseUrl)));
                     die();
                 } else {
                     $this->data['export']->set(array('options' => $post, 'settings_update_on' => date('Y-m-d H:i:s')))->save();
@@ -310,7 +310,7 @@ class PMXE_Admin_Export extends PMXE_Controller_Admin
                         $this->data['export']->set(array('friendly_name' => $post['friendly_name'], 'scheduled' => (($post['is_scheduled']) ? $post['scheduled_period'] : '')))->save();
                     }
 
-                    wp_redirect(add_query_arg(array('page' => 'pmxe-admin-manage', 'pmxe_nt' => urlencode(__('Options updated', 'pmxi_plugin'))) + array_intersect_key($_GET, array_flip($this->baseUrlParamNames)), admin_url('admin.php')));
+                    wp_redirect(esc_url_raw(add_query_arg(array('page' => 'pmxe-admin-manage', 'pmxe_nt' => urlencode(__('Options updated', 'pmxi_plugin'))) + array_intersect_key($_GET, array_flip($this->baseUrlParamNames)), admin_url('admin.php'))));
                     die();
                 }
             }
@@ -379,6 +379,7 @@ class PMXE_Admin_Export extends PMXE_Controller_Admin
                         'options' => $post,
                         'friendly_name' => $this->getFriendlyName($post),
                         'last_activity' => date('Y-m-d H:i:s')
+
                     )
                 )->save();
 
@@ -434,7 +435,7 @@ class PMXE_Admin_Export extends PMXE_Controller_Admin
                         PMXE_Plugin::$session->set($key, $value);
                     }
                     PMXE_Plugin::$session->save_data();
-                    wp_redirect(add_query_arg('action', 'process', $this->baseUrl));
+                    wp_redirect(esc_url_raw(add_query_arg('action', 'process', $this->baseUrl)));
                     die();
                 }
             } else {
@@ -444,7 +445,7 @@ class PMXE_Admin_Export extends PMXE_Controller_Admin
                     if (!empty($post['friendly_name'])) {
                         $this->data['export']->set(array('friendly_name' => $post['friendly_name'], 'scheduled' => (($post['is_scheduled']) ? $post['scheduled_period'] : '')))->save();
                     }
-                    wp_redirect(add_query_arg(array('page' => 'pmxe-admin-manage', 'pmxe_nt' => urlencode(__('Options updated', 'wp_all_export_plugin'))) + array_intersect_key($_GET, array_flip($this->baseUrlParamNames)), admin_url('admin.php')));
+                    wp_redirect(esc_url_raw(add_query_arg(array('page' => 'pmxe-admin-manage', 'pmxe_nt' => urlencode(__('Options updated', 'wp_all_export_plugin'))) + array_intersect_key($_GET, array_flip($this->baseUrlParamNames)), admin_url('admin.php'))));
                     die();
                 }
             }

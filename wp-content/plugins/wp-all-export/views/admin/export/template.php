@@ -167,7 +167,7 @@ if(!defined('ABSPATH')) {
 								</div>
 
 								<!-- Warning Messages -->
-								<?php if ( ($addons->isWooCommerceAddonActive() || $addons->isWooCommerceOrderAddonActive()) && ! XmlExportWooCommerceOrder::$is_active && ! XmlExportComment::$is_active && ! XmlExportTaxonomy::$is_active ) : ?>
+                                <?php if ( (($addons->isWooCommerceAddonActive() || $addons->isWooCommerceOrderAddonActive()) && ! XmlExportWooCommerceOrder::$is_active) && ! XmlExportComment::$is_active && ! XmlExportTaxonomy::$is_active ) : ?>
 								<div class="wp-all-export-warning" <?php if ( empty($post['ids']) or count($post['ids']) > 1 ) echo 'style="display:none;"'; ?>>
 									<p></p>
 									<input type="hidden" id="warning_template" value="<?php esc_html_e("Warning: without %s you won't be able to re-import this data back to this site using WP All Import.", "wp_all_export_plugin"); ?>"/>
@@ -175,8 +175,8 @@ if(!defined('ABSPATH')) {
 								</div>
 								<?php endif; ?>
 
-								<?php if ( $addons->isWooCommerceAddonActive() || $addons->isWooCommerceProductAddonActive() && XmlExportWooCommerce::$is_active ) : ?>
-								<input type="hidden" id="is_product_export" value="1"/>													
+								<?php if ( ($addons->isWooCommerceAddonActive() || $addons->isWooCommerceProductAddonActive()) && in_array('product', XmlExportEngine::$post_types) ) : ?>
+								<input type="hidden" id="is_product_export" value="1"/>
 								<?php endif; ?>
 
 								<?php if ( empty($post['cpt']) and ! ($addons->isWooCommerceAddonActive() && XmlExportWooCommerceOrder::$is_active) and ! ($addons->isUserAddonActive() && XmlExportUser::$is_active) and ! XmlExportComment::$is_active and ! XmlExportTaxonomy::$is_active ) : ?>

@@ -15,8 +15,6 @@ use Google\Site_Kit\Core\Modules\Module_Settings;
 use Google\Site_Kit\Core\Modules\Module_With_Debug_Fields;
 use Google\Site_Kit\Core\Modules\Module_With_Owner;
 use Google\Site_Kit\Core\Modules\Module_With_Owner_Trait;
-use Google\Site_Kit\Core\Modules\Module_With_Screen;
-use Google\Site_Kit\Core\Modules\Module_With_Screen_Trait;
 use Google\Site_Kit\Core\Modules\Module_With_Scopes;
 use Google\Site_Kit\Core\Modules\Module_With_Scopes_Trait;
 use Google\Site_Kit\Core\Authentication\Clients\Google_Site_Kit_Client;
@@ -44,6 +42,7 @@ use Google\Site_Kit_Dependencies\Psr\Http\Message\ResponseInterface;
 use Google\Site_Kit_Dependencies\Psr\Http\Message\RequestInterface;
 use WP_Error;
 use Exception;
+use Google\Site_Kit\Core\Util\Sort;
 
 /**
  * Class representing the Search Console module.
@@ -53,8 +52,8 @@ use Exception;
  * @ignore
  */
 final class Search_Console extends Module
-	implements Module_With_Screen, Module_With_Scopes, Module_With_Settings, Module_With_Assets, Module_With_Debug_Fields, Module_With_Owner, Module_With_Service_Entity {
-	use Module_With_Screen_Trait, Module_With_Scopes_Trait, Module_With_Settings_Trait, Google_URL_Matcher_Trait, Module_With_Assets_Trait, Module_With_Owner_Trait;
+	implements Module_With_Scopes, Module_With_Settings, Module_With_Assets, Module_With_Debug_Fields, Module_With_Owner, Module_With_Service_Entity {
+	use Module_With_Scopes_Trait, Module_With_Settings_Trait, Google_URL_Matcher_Trait, Module_With_Assets_Trait, Module_With_Owner_Trait;
 
 	/**
 	 * Module slug name.
@@ -69,10 +68,6 @@ final class Search_Console extends Module
 	public function register() {
 		$this->register_scopes_hook();
 
-		if ( ! Feature_Flags::enabled( 'unifiedDashboard' ) ) {
-			$this->register_screen_hook();
-		}
-
 		// Detect and store Search Console property when receiving token for the first time.
 		add_action(
 			'googlesitekit_authorize_user',
@@ -82,7 +77,10 @@ final class Search_Console extends Module
 				}
 
 				// If the response includes the Search Console property, set that.
-				if ( ! empty( $token_response['search_console_property'] ) ) {
+				// But only if it is being set for the first time or if Search Console
+				// has no owner or the current user is the owner.
+				if ( ! empty( $token_response['search_console_property'] ) &&
+				( empty( $this->get_property_id() ) || ( in_array( $this->get_owner_id(), array( 0, get_current_user_id() ), true ) ) ) ) {
 					$this->get_settings()->merge(
 						array( 'propertyID' => $token_response['search_console_property'] )
 					);
@@ -288,9 +286,11 @@ final class Search_Console extends Module
 		switch ( "{$data->method}:{$data->datapoint}" ) {
 			case 'GET:matched-sites':
 				/* @var Google_Service_SearchConsole_SitesListResponse $response Response object. */
-				$entries = $this->map_sites( (array) $response->getSiteEntry() );
-				$strict  = filter_var( $data['strict'], FILTER_VALIDATE_BOOLEAN );
-
+				$entries     = Sort::case_insensitive_list_sort(
+					$this->map_sites( (array) $response->getSiteEntry() ),
+					'name'
+				);
+				$strict      = filter_var( $data['strict'], FILTER_VALIDATE_BOOLEAN );
 				$current_url = $this->context->get_reference_site_url();
 				if ( ! $strict ) {
 					$current_url = untrailingslashit( $current_url );
@@ -556,6 +556,7 @@ final class Search_Console extends Module
 						'googlesitekit-api',
 						'googlesitekit-data',
 						'googlesitekit-modules',
+						'googlesitekit-components',
 					),
 				)
 			),

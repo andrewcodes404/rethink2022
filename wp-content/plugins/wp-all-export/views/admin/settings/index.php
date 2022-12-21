@@ -3,37 +3,6 @@ if(!defined('ABSPATH')) {
     die();
 }
 ?>
-<style type="text/css">
-    .wpae-shake {
-        -webkit-animation: wpae_shake 0.4s 1 linear;
-        -moz-animation: wpae_shake 0.4s 1 linear;
-        -o-animation: wpae_shake 0.4s 1 linear;
-    }
-    @-webkit-keyframes wpae_shake {
-        0% { -webkit-transform: translate(30px); }
-        20% { -webkit-transform: translate(-30px); }
-        40% { -webkit-transform: translate(15px); }
-        60% { -webkit-transform: translate(-15px); }
-        80% { -webkit-transform: translate(8px); }
-        100% { -webkit-transform: translate(0px); }
-    }
-    @-moz-keyframes wpae_shake {
-        0% { -moz-transform: translate(30px); }
-        20% { -moz-transform: translate(-30px); }
-        40% { -moz-transform: translate(15px); }
-        60% { -moz-transform: translate(-15px); }
-        80% { -moz-transform: translate(8px); }
-        100% { -moz-transform: translate(0px); }
-    }
-    @-o-keyframes wpae_shake {
-        0% { -o-transform: translate(30px); }
-        20% { -o-transform: translate(-30px); }
-        40% { -o-transform: translate(15px); }
-        60% { -o-transform: translate(-15px); }
-        80% { -o-transform: translate(8px); }
-        100% { -o-origin-transform: translate(0px); }
-    }
-</style>
 
 <form class="settings" method="post" action="<?php echo esc_url($this->baseUrl); ?>" enctype="multipart/form-data">
 

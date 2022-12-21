@@ -311,10 +311,17 @@ final class Idea_Hub extends Module
 			self::SLUG_SAVED_IDEAS,
 			array(
 				'content'         => function() use ( $escape_and_wrap_notice_content ) {
-					$message = sprintf(
+					$message_body = sprintf(
 						/* translators: %s: URL to saved ideas */
 						__( 'Want some inspiration for a new post? <a href="%s">Revisit your saved ideas</a> in Site Kit.', 'google-site-kit' ),
 						esc_url( $this->context->admin_url( 'dashboard', array( 'idea-hub-tab' => 'saved-ideas' ) ) )
+					);
+
+					$message = sprintf(
+						/* translators: 1: Plugin name. 2: Message. */
+						__( '%1$s: %2$s', 'google-site-kit' ),
+						__( 'Site Kit by Google', 'google-site-kit' ),
+						$message_body
 					);
 
 					return $escape_and_wrap_notice_content( $message );
@@ -347,10 +354,17 @@ final class Idea_Hub extends Module
 			self::SLUG_NEW_IDEAS,
 			array(
 				'content'         => function() use ( $escape_and_wrap_notice_content ) {
-					$message = sprintf(
-						/* translators: %s: URL to new ideas */
+					$message_body = sprintf(
+						/* translators: %s: URL to saved ideas */
 						__( 'Want some inspiration for a new post? <a href="%s">Review your new ideas</a> in Site Kit.', 'google-site-kit' ),
 						esc_url( $this->context->admin_url( 'dashboard', array( 'idea-hub-tab' => 'new-ideas' ) ) )
+					);
+
+					$message = sprintf(
+						/* translators: 1: Plugin name. 2: Message. */
+						__( '%1$s: %2$s', 'google-site-kit' ),
+						__( 'Site Kit by Google', 'google-site-kit' ),
+						$message_body
 					);
 
 					return $escape_and_wrap_notice_content( $message );
@@ -553,7 +567,7 @@ final class Idea_Hub extends Module
 						return new WP_Error(
 							'wrong_parameter_type',
 							sprintf(
-								/* translators: %1$s: parameter name, %2$s expected type, %3$s received type */
+								/* translators: 1: parameter name, 2: expected type, 3: received type */
 								__( 'Wrong parameter type for %1$s, expected %2$s, received %3$s', 'google-site-kit' ),
 								$parameter_name,
 								$expected_parameter_type,
@@ -766,6 +780,7 @@ final class Idea_Hub extends Module
 						'googlesitekit-api',
 						'googlesitekit-data',
 						'googlesitekit-modules',
+						'googlesitekit-components',
 					),
 				)
 			),
@@ -780,6 +795,7 @@ final class Idea_Hub extends Module
 						'googlesitekit-datastore-ui',
 						'googlesitekit-datastore-user',
 						'googlesitekit-modules',
+						'googlesitekit-components',
 					),
 				)
 			),
@@ -793,6 +809,7 @@ final class Idea_Hub extends Module
 						'wp-api-fetch',
 						'wp-polyfill',
 						'wp-url',
+						'googlesitekit-components',
 					),
 					'load_contexts' => array( Asset::CONTEXT_ADMIN_POST_EDITOR ),
 				)

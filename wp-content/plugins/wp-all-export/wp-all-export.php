@@ -3,7 +3,7 @@
 Plugin Name: WP All Export
 Plugin URI: http://www.wpallimport.com/upgrade-to-wp-all-export-pro/?utm_source=export-plugin-free&utm_medium=wp-plugins-page&utm_campaign=upgrade-to-pro
 Description: Export any post type to a CSV or XML file. Edit the exported data, and then re-import it later using WP All Import.
-Version: 1.3.4
+Version: 1.3.8
 Author: Soflyy
 */
 
@@ -59,7 +59,7 @@ else {
 	 */
 	define('PMXE_PREFIX', 'pmxe_');
 
-	define('PMXE_VERSION', '1.3.4');
+	define('PMXE_VERSION', '1.3.8');
 
     define('PMXE_ASSETS_VERSION', '-1.0.2');
 
@@ -618,11 +618,13 @@ else {
                     require_once $path;
                     return TRUE;
                 }
-                if ( ! $is_prefix) {
-                    $pathAlt = self::ROOT_DIR . '/' . $subdir . '/' . $filePathAlt;
-                    if(strpos($className, '_') !== false) {
-                        $pathAlt = $this->lreplace('_',DIRECTORY_SEPARATOR, $pathAlt);
+                if (!$is_prefix) {
+                    if (strpos($className, '_') !== false) {
+                        $filePathAlt = $this->lreplace('_', DIRECTORY_SEPARATOR, $filePathAlt);
                     }
+
+                    $pathAlt = self::ROOT_DIR . DIRECTORY_SEPARATOR . $subdir . DIRECTORY_SEPARATOR . $filePathAlt;
+
                     if (is_file($pathAlt)) {
                         require_once $pathAlt;
                         return TRUE;
@@ -827,10 +829,12 @@ else {
 			if ( ! $export_post_type ){
 				$wpdb->query("ALTER TABLE {$table} ADD `export_post_type` TEXT NOT NULL DEFAULT '';");
 			}
+
             if ( ! $created_at ){
-                $wpdb->query("ALTER TABLE {$table} ADD `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP;");
+                $wpdb->query("ALTER TABLE {$table} ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;");
                 $wpdb->query("UPDATE {$table} SET `created_at` = `registered_on` WHERE 1");
             }
+
 
 			update_option( "wp_all_export_free_db_version", PMXE_VERSION );
 		}

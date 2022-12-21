@@ -1,3 +1,8 @@
+<?php
+if(!defined('ABSPATH')) {
+    die();
+}
+?>
 <style type="text/css">
     .days-of-week {
         margin-left: 5px;
@@ -201,7 +206,7 @@
 </style>
 <?php
 $scheduling = \Wpae\Scheduling\Scheduling::create();
-$post = $export->options;
+$schedulingExportOptions = $export->options;
 $hasActiveLicense = $scheduling->checkLicense();
 $cron_job_key = PMXE_Plugin::getInstance()->getOption('cron_job_key');
 $options = \PMXE_Plugin::getInstance()->getOption();
@@ -416,7 +421,7 @@ $export_id = $export->id;
                     });
                 });
 
-                <?php if($post['scheduling_timezone'] == 'UTC') {
+                <?php if($schedulingExportOptions['scheduling_timezone'] == 'UTC') {
                 ?>
                 var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
@@ -462,7 +467,7 @@ $export_id = $export->id;
                         $('#subscribe-button .easing-spinner').show();
                         var license = $('#add-subscription-field').val();
                         $.ajax({
-                            url:ajaxurl+'?action=wpae_api&q=schedulingLicense/saveSchedulingLicense&security=<?php echo wp_create_nonce("wp_all_export_secure");?>',
+                            url:ajaxurl+'?action=wpae_api&q=schedulingLicense/saveSchedulingLicense&security=<?php echo esc_js(wp_create_nonce("wp_all_export_secure"));?>',
                             type:"POST",
                             data: {
                                 license: license
@@ -473,7 +478,7 @@ $export_id = $export->id;
                                 $('#subscribe-button .button-subscribe').css('background-color','#425f9a');
                                 if(response.success) {
                                     hasActiveLicense = true;
-                                    $('.wpae-save-button').slideDown().css('display','block');
+                                    $('.wpae-save-button').removeClass('disabled');
                                     $('#subscribe-button .easing-spinner').hide();
                                     $('#subscribe-button svg.success').show();
                                     $('#subscribe-button svg.success').fadeOut(3000, function () {
@@ -499,7 +504,7 @@ $export_id = $export->id;
 
                                     setTimeout(function () {
                                         $('#add-subscription-field').animate({width:'140px'}, 225);
-                                        $('#add-subscription-field').animate({left:'-155px'}, 225);
+                                        $('#add-subscription-field').animate({left:'-152px'}, 225);
                                     }, 300);
 
                                     $('#add-subscription-field').val('');
@@ -550,19 +555,21 @@ $export_id = $export->id;
             <div class="wpallexport-collapsed-content-inner" style="padding-bottom: 0; overflow: auto; padding-right: 0;">
                 <div style="margin-bottom: 20px;">
                     <label>
-                        <input type="radio" name="scheduling_enable" value="0" <?php if($post['scheduling_enable'] == 0) { ?> checked="checked" <?php } ?>/>
+                        <input type="radio" name="scheduling_enable" value="0" <?php if($schedulingExportOptions['scheduling_enable'] == 0) { ?> checked="checked" <?php } ?>/>
                         <h4 style="display: inline-block;"><?php esc_html_e('Do Not Schedule'); ?></h4>
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input type="radio" name="scheduling_enable" value="1" <?php if($post['scheduling_enable'] == 1) {?> checked="checked" <?php }?>/>
+                        <input type="radio" name="scheduling_enable" value="1" <?php if($schedulingExportOptions['scheduling_enable'] == 1) {?> checked="checked" <?php }?>/>
                         <h4 style="margin: 0; display: inline-flex; align-items: center;"><?php esc_html_e('Automatic Scheduling', PMXE_Plugin::LANGUAGE_DOMAIN); ?>
-                            <span class="connection-icon" style="margin-left: 8px;">
+                            <span class="connection-icon" style="margin-left: 8px; height: 16px;">
 															<?php include_once('ConnectionIcon.php'); ?>
 														</span>
-                            <?php if (!$scheduling->checkConnection()) { ?>
-                                <span class="wpai-license  wpai-license-text" style="margin-left: 8px; font-weight: normal; <?php if(!$hasActiveLicense) { ?> display: none; <?php }?> color: #f2b03d;  ">Unable to connect, please contact support.</span>
+                            <?php if($schedulingExportOptions['scheduling_enable'] == 1) { ?>
+                                <?php if (!$scheduling->checkConnection()) { ?>
+                                    <span class="wpai-license" style="margin-left: 8px; font-weight: normal; font-weight: normal; <?php if(!$hasActiveLicense) { ?> display: none; <?php }?>"><span class="unable-to-connect">Unable to connect, please contact support.</span></span>
+                                <?php } ?>
                             <?php } ?>
                         </h4>
                     </label>
@@ -576,26 +583,26 @@ $export_id = $export->id;
                     </label>
                 </div>
                 <div id="automatic-scheduling"
-                     style="margin-left: 21px; <?php if ($post['scheduling_enable'] != 1) { ?> display: none; <?php } ?>">
+                     style="margin-left: 21px; <?php if ($schedulingExportOptions['scheduling_enable'] != 1) { ?> display: none; <?php } ?>">
                     <div>
                         <div class="input">
                             <label style="color: rgb(68,68,68);">
                                 <input
-                                    type="radio" <?php if ($post['scheduling_run_on'] != 'monthly') { ?> checked="checked" <?php } ?>
+                                    type="radio" <?php if ($schedulingExportOptions['scheduling_run_on'] != 'monthly') { ?> checked="checked" <?php } ?>
                                     name="scheduling_run_on" value="weekly"
                                     checked="checked"/> <?php esc_html_e('Every week on...', PMXE_Plugin::LANGUAGE_DOMAIN); ?>
                             </label>
                         </div>
                         <input type="hidden" style="width: 500px;" name="scheduling_weekly_days"
-                               value="<?php echo esc_attr($post['scheduling_weekly_days']); ?>" id="weekly_days"/>
+                               value="<?php echo esc_attr($schedulingExportOptions['scheduling_weekly_days']); ?>" id="weekly_days"/>
                         <?php
-                        if (isset($post['scheduling_weekly_days'])) {
-                            $weeklyArray = explode(',', $post['scheduling_weekly_days']);
+                        if (isset($schedulingExportOptions['scheduling_weekly_days'])) {
+                            $weeklyArray = explode(',', $schedulingExportOptions['scheduling_weekly_days']);
                         } else {
                             $weeklyArray = array();
                         }
                         ?>
-                        <ul class="days-of-week" id="weekly" style="<?php if ($post['scheduling_run_on'] == 'monthly') { ?> display: none; <?php } ?>">
+                        <ul class="days-of-week" id="weekly" style="<?php if ($schedulingExportOptions['scheduling_run_on'] == 'monthly') { ?> display: none; <?php } ?>">
                             <li data-day="0" <?php if (in_array('0', $weeklyArray)) { ?> class="selected" <?php } ?>>
                                 Mon
                             </li>
@@ -624,21 +631,21 @@ $export_id = $export->id;
                         <div class="input">
                             <label style="color: rgb(68,68,68);">
                                 <input
-                                    type="radio" <?php if ($post['scheduling_run_on'] == 'monthly') { ?> checked="checked" <?php } ?>
+                                    type="radio" <?php if ($schedulingExportOptions['scheduling_run_on'] == 'monthly') { ?> checked="checked" <?php } ?>
                                     name="scheduling_run_on"
                                     value="monthly"/> <?php esc_html_e('Every month on the first...', PMXE_Plugin::LANGUAGE_DOMAIN); ?>
                             </label>
                         </div>
-                        <input type="hidden" name="scheduling_monthly_days" value="<?php if(isset($post['scheduling_monthly_days'])) echo esc_attr($post['scheduling_monthly_days']); ?>" id="monthly_days"/>
+                        <input type="hidden" name="scheduling_monthly_days" value="<?php if(isset($schedulingExportOptions['scheduling_monthly_days'])) echo esc_attr($schedulingExportOptions['scheduling_monthly_days']); ?>" id="monthly_days"/>
                         <?php
-                        if (isset($post['scheduling_monthly_days'])) {
-                            $monthlyArray = explode(',', $post['scheduling_monthly_days']);
+                        if (isset($schedulingExportOptions['scheduling_monthly_days'])) {
+                            $monthlyArray = explode(',', $schedulingExportOptions['scheduling_monthly_days']);
                         } else {
                             $monthlyArray = array();
                         }
                         ?>
                         <ul class="days-of-week" id="monthly"
-                            style="<?php if ($post['scheduling_run_on'] != 'monthly') { ?> display: none; <?php } ?>">
+                            style="<?php if ($schedulingExportOptions['scheduling_run_on'] != 'monthly') { ?> display: none; <?php } ?>">
                             <li data-day="0" <?php if (in_array('0', $monthlyArray)) { ?> class="selected" <?php } ?>>
                                 Mon
                             </li>
@@ -670,8 +677,8 @@ $export_id = $export->id;
                         </div>
 
                         <div id="times" style="margin-bottom: 10px;">
-                            <?php if (is_array($post['scheduling_times'])) {
-                                foreach ($post['scheduling_times'] as $time) { ?>
+                            <?php if (is_array($schedulingExportOptions['scheduling_times'])) {
+                                foreach ($schedulingExportOptions['scheduling_times'] as $time) { ?>
 
                                     <?php if ($time) { ?>
                                         <input class="timepicker" type="text" name="scheduling_times[]"
@@ -686,8 +693,8 @@ $export_id = $export->id;
                             <?php
 
                             $timezoneValue = false;
-                            if ($post['scheduling_timezone']) {
-                                $timezoneValue = $post['scheduling_timezone'];
+                            if ($schedulingExportOptions['scheduling_timezone']) {
+                                $timezoneValue = $schedulingExportOptions['scheduling_timezone'];
                             }
 
                             $timezoneSelect = new \Wpae\Scheduling\Timezone\TimezoneSelect();
@@ -746,8 +753,8 @@ $export_id = $export->id;
     <div style="clear: both;"></div>
 </div>
 
-<div class="wpae-save-button button button-primary button-hero wpallexport-large-button wpae-export-complete-save-button" id="save-scheduling-button"
-     style="position: relative; width: 285px; <?php if($hasActiveLicense) { echo 'display: block;';} else { echo "display: none;";}?> margin:auto; background-image: none; margin-top: 25px;">
+<div class="wpae-save-button button button-primary button-hero wpallexport-large-button wpae-export-complete-save-button <?php if(!$hasActiveLicense) { echo 'disabled'; }?>"
+     style="position: relative; width: 285px; display: block; margin:auto; background-image: none; margin-top: 25px;">
     <svg width="30" height="30" viewBox="0 0 1792 1792"
          xmlns="http://www.w3.org/2000/svg"
          style="fill: white;">

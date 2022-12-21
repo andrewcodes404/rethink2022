@@ -74,7 +74,7 @@ $columns = apply_filters('pmxe_manage_imports_columns', $columns);
 
 ?>
 
-<form method="post" id="import-list" action="<?php echo remove_query_arg('pmxe_nt') ?>">
+<form method="post" id="import-list" action="<?php echo esc_url_raw(remove_query_arg('pmxe_nt')); ?>">
 
     <input type="hidden" name="action" value="bulk"/>
     <?php wp_nonce_field('bulk-exports', '_wpnonce_bulk-exports') ?>
@@ -182,8 +182,8 @@ $columns = apply_filters('pmxe_manage_imports_columns', $columns);
 								<td style="min-width: 325px;">
 									<strong><?php echo wp_all_export_clear_xss(esc_html($item['friendly_name'])); ?></strong> <br>
 									<div class="row-actions">										
-										<span class="edit"><a class="edit" href="<?php echo esc_url(add_query_arg(array('id' => $item['id'], 'action' => 'template'), $this->baseUrl)) ?>"><?php esc_html_e('Edit Export', 'wp_all_export_plugin') ?></a></span> |
-										<span class="edit"><a class="edit" href="<?php echo esc_url(add_query_arg(array('id' => $item['id'], 'action' => 'options'), $this->baseUrl)) ?>"><?php esc_html_e('Export Settings', 'wp_all_export_plugin') ?></a></span> |
+										<span class="edit"><a class="edit" href="<?php echo esc_url(add_query_arg(array('id' => $item['id'], 'action' => 'template'), $this->baseUrl)) ?>"><?php esc_html_e('Edit Template', 'wp_all_export_plugin') ?></a></span> |
+										<span class="edit"><a class="edit" href="<?php echo esc_url(add_query_arg(array('id' => $item['id'], 'action' => 'options'), $this->baseUrl)) ?>"><?php esc_html_e('Settings', 'wp_all_export_plugin') ?></a></span> |
 										
 										<?php if ( ! $is_secure_import and $item['attch_id']): ?>
 										<span class="update"><a class="update" href="<?php echo esc_url(add_query_arg(array('id' => $item['id'], 'action' => 'get_file', '_wpnonce' => wp_create_nonce( '_wpnonce-download_feed' )), $this->baseUrl)) ?>"><?php echo esc_html(strtoupper(wp_all_export_get_export_format($item['options']))); ?></a></span> |
@@ -241,7 +241,7 @@ $columns = apply_filters('pmxe_manage_imports_columns', $columns);
                                                 <?php
                                                 // Disable scheduling options for ACF exports if ACF Export Add-On isn't enabled
                                             } else if (
-                                                ((!in_array('comments', $item['options']['cpt']) || !in_array('shop_review', $item['options']['cpt'])) && in_array('acf', $item['options']['cc_type']) && !$addons->isAcfAddonActive()) ||
+                                                (isset($item['options']['cpt']) && (!in_array('comments', $item['options']['cpt']) || !in_array('shop_review', $item['options']['cpt'])) && isset($item['options']['cc_type']) && in_array('acf', $item['options']['cc_type']) && !$addons->isAcfAddonActive()) ||
                                                 ($item['options']['export_type'] == 'advanced' && $item['options']['wp_query_selector'] != 'wp_comment_query' && in_array('acf', $item['options']['cc_type']) && !$addons->isAcfAddonActive())
                                             ) {
                                                 ?>

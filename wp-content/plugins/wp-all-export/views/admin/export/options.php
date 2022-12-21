@@ -35,7 +35,7 @@ $l10n = array(
 	
 				<?php do_action('pmxe_options_header', $this->isWizard, $post); ?>
 				
-				<div class="ajax-console">					
+				<div class="ajax-console">
 					<?php if ($this->errors->get_error_codes()): ?>
 						<?php $this->error() ?>
 					<?php endif ?>					
